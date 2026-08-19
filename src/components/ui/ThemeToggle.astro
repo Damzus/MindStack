@@ -1,0 +1,60 @@
+---
+---
+
+<button id="ms-theme" class="theme-toggle" type="button" aria-label="Toggle colour theme">
+  <span class="label label-light">Light</span>
+  <span class="label label-dark">Dark</span>
+</button>
+
+<style>
+  .theme-toggle {
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
+    padding: 0 12px;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-md);
+    background: transparent;
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition:
+      border-color var(--dur-hover) var(--ease),
+      color var(--dur-hover) var(--ease);
+  }
+
+  .theme-toggle:hover {
+    border-color: var(--border-hover);
+    color: var(--text-primary);
+  }
+
+  .label-light {
+    display: none;
+  }
+
+  :global([data-theme='dark']) .label-light {
+    display: inline;
+  }
+
+  :global([data-theme='dark']) .label-dark {
+    display: none;
+  }
+</style>
+
+<script>
+  const button = document.getElementById('ms-theme');
+  button?.addEventListener('click', () => {
+    const root = document.documentElement;
+    const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+    root.dataset.theme = next;
+    try {
+      localStorage.setItem('ms-theme', next);
+    } catch (err) {
+      /* preference simply will not persist */
+    }
+  });
+</script>

@@ -1,0 +1,51 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  linkLabel?: string;
+  linkHref?: string;
+  narrow?: boolean;
+}
+
+const { eyebrow, title, linkLabel, linkHref, narrow = false } = Astro.props;
+---
+
+<div class="head" data-reveal>
+  <div>
+    <p class="eyebrow">{eyebrow}</p>
+    <h2 class={narrow ? 'title title-narrow' : 'title'}>{title}</h2>
+  </div>
+  {linkHref && linkLabel && <a class="head-link" href={linkHref}>{linkLabel} →</a>}
+</div>
+
+<style>
+  .head {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: clamp(28px, 3.5vw, 44px);
+  }
+
+  .eyebrow {
+    margin: 0 0 var(--space-4);
+  }
+
+  .title {
+    font-size: var(--size-h2);
+    line-height: var(--leading-h2);
+    letter-spacing: var(--tracking-h2);
+    max-width: 22em;
+  }
+
+  .title-narrow {
+    max-width: 16em;
+  }
+
+  .head-link {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 15px;
+  }
+</style>

@@ -1,0 +1,68 @@
+const REVEAL = '[data-reveal]';
+const GATE = '[data-anim-scope]';
+
+function initReveals() {
+  const nodes = Array.from(document.querySelectorAll<HTMLElement>(REVEAL));
+  if (!nodes.length) return;
+
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce || !('IntersectionObserver' in window)) return;
+
+  for (const node of nodes) {
+    node.style.opacity = '0';
+    node.style.transform = `translateY(var(--reveal-rise, 14px))`;
+    node.style.transition =
+      'opacity var(--dur-reveal) var(--ease), transform var(--dur-reveal) var(--ease)';
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      let index = 0;
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        const el = entry.target as HTMLElement;
+        el.style.transitionDelay = `calc(var(--reveal-stagger, 60ms) * ${index})`;
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+        observer.unobserve(el);
+        index += 1;
+      }
+    },
+    { rootMargin: '0px 0px -12% 0px', threshold: 0.12 }
+  );
+
+  for (const node of nodes) observer.observe(node);
+}
+
+function initAnimGating() {
+  if (!('IntersectionObserver' in window)) return;
+
+  const scopes = Array.from(document.querySelectorAll<HTMLElement>(GATE));
+  if (!scopes.length) return;
+
+  const animated = new Map<Element, HTMLElement[]>();
+
+  for (const scope of scopes) {
+    const list = [scope, ...Array.from(scope.querySelectorAll<HTMLElement>('*'))].filter(
+      (el) => getComputedStyle(el).animationName !== 'none'
+    );
+    animated.set(scope, list);
+    for (const el of list) el.style.animationPlayState = 'paused';
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        const list = animated.get(entry.target) ?? [];
+        const state = entry.isIntersecting ? 'running' : 'paused';
+        for (const el of list) el.style.animationPlayState = state;
+      }
+    },
+    { rootMargin: '140px 0px' }
+  );
+
+  for (const scope of scopes) observer.observe(scope);
+}
+
+initReveals();
+initAnimGating();

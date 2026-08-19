@@ -1,0 +1,106 @@
+---
+const answers = [
+  {
+    q: 'Who owns the code and the cloud account?',
+    a: 'You do, from the first commit. Placeholder — confirm your actual arrangement.',
+  },
+  {
+    q: 'What happens after launch?',
+    a: 'Either we operate it under a managed agreement, or we hand over against a documented plan on an agreed date.',
+  },
+  {
+    q: 'How quickly can you start?',
+    a: 'Placeholder — your real lead time. Vague answers here cost deals.',
+  },
+  {
+    q: "What don't you take on?",
+    a: 'Placeholder — naming what you decline is the most credible thing on this page.',
+  },
+];
+---
+
+<section class="section" id="answers">
+  <div class="shell split">
+    <div class="intro" data-reveal>
+      <p class="eyebrow">Straight answers</p>
+      <h2 class="title">The questions that decide it.</h2>
+      <p class="lead">
+        Answered here rather than on an FAQ page, because these are the objections that stop a
+        project starting.
+      </p>
+    </div>
+
+    <dl class="answers">
+      {
+        answers.map((item) => (
+          <div class="answer" data-reveal>
+            <dt class="answer-q">{item.q}</dt>
+            <dd class="answer-a">{item.a}</dd>
+          </div>
+        ))
+      }
+    </dl>
+  </div>
+</section>
+
+<style>
+  .split {
+    display: flex;
+    flex-wrap: wrap;
+    gap: clamp(32px, 5vw, 72px);
+  }
+
+  .intro {
+    flex: 1 1 300px;
+  }
+
+  .eyebrow {
+    margin: 0 0 var(--space-4);
+  }
+
+  .title {
+    margin-bottom: var(--space-4);
+    max-width: 16em;
+    font-size: var(--size-h2);
+    line-height: var(--leading-h2);
+    letter-spacing: var(--tracking-h2);
+  }
+
+  .lead {
+    margin: 0;
+    max-width: 26em;
+    color: var(--text-secondary);
+  }
+
+  .answers {
+    flex: 1 1 420px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .answer {
+    padding: 22px 0;
+    border-top: 1px solid var(--border-default);
+  }
+
+  .answer:last-child {
+    border-bottom: 1px solid var(--border-default);
+  }
+
+  .answer-q {
+    margin-bottom: var(--space-2);
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 1.35;
+    letter-spacing: -0.012em;
+  }
+
+  .answer-a {
+    margin: 0;
+    max-width: 34em;
+    font-size: 15px;
+    color: var(--text-secondary);
+  }
+</style>

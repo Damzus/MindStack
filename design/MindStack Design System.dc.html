@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#faf9f7;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#14171a;text-wrap:pretty}
+a{color:oklch(0.52 0.14 245)}a:hover{color:oklch(0.42 0.14 245)}
+</style></helmet>
+
+<div style="max-width:1180px;margin:0 auto;padding:72px 56px 120px">
+
+<div style="display:flex;align-items:center;gap:14px;margin-bottom:56px">
+  <svg width="26" height="26" viewBox="0 0 46 46"><rect x="4" y="6" width="38" height="8" rx="2" fill="#14171a"></rect><rect x="4" y="19" width="26" height="8" rx="2" fill="#14171a"></rect><rect x="4" y="32" width="14" height="8" rx="2" fill="oklch(0.58 0.15 245)"></rect></svg>
+  <span style="font:600 15px/1 'Space Grotesk',sans-serif;letter-spacing:-.01em">MindStack</span>
+  <span style="font:400 11px/1 'JetBrains Mono',monospace;color:rgba(0,0,0,.4);margin-left:auto;letter-spacing:.04em">DESIGN SYSTEM · v1</span>
+</div>
+
+<h1 style="font:600 46px/1.08 'Space Grotesk',sans-serif;letter-spacing:-.032em;margin:0 0 18px;max-width:16em">A restrained system built for density, technical credibility and one loud accent</h1>
+<p style="font:400 17px/1.65;color:rgba(0,0,0,.62);max-width:32em;margin:0 0 56px">Near-monochrome by default so the accent means something. Every value below is a decision, not a scale for its own sake — if a token isn't used on the site, it isn't here.</p>
+
+<div style="height:1px;background:rgba(0,0,0,.12);margin-bottom:52px"></div>
+
+<!-- LOGO -->
+<div style="display:grid;grid-template-columns:170px 1fr;gap:44px;margin-bottom:64px">
+  <div><div style="font:500 11px/1 'JetBrains Mono',monospace;color:rgba(0,0,0,.4);letter-spacing:.06em">01</div><h2 style="font:600 20px/1.25 'Space Grotesk',sans-serif;letter-spacing:-.02em;margin:12px 0 0">Mark</h2><p style="font:400 12.5px/1.6;color:rgba(0,0,0,.5);margin:12px 0 0">Three bars narrowing to a point: layers of a stack. Accent always on the shortest bar.</p></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+    <div style="background:#fff;border:1px solid rgba(0,0,0,.09);border-radius:10px;padding:26px">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:22px">
+        <svg width="40" height="40" viewBox="0 0 46 46"><rect x="4" y="6" width="38" height="8" rx="2" fill="#14171a"></rect><rect x="4" y="19" width="26" height="8" rx="2" fill="#14171a"></rect><rect x="4" y="32" width="14" height="8" rx="2" fill="oklch(0.58 0.15 245)"></rect></svg>
+        <span style="font:600 26px/1 'Space Grotesk',sans-serif;letter-spacing:-.028em">MindStack</span>
+      </div>
+      <div style="font:400 12.5px/1.7;color:rgba(0,0,0,.62)">Clear space equals the height of one bar on all sides. Minimum lockup width 108px; below that, symbol only. Never re-colour the two upper bars.</div>
+    </div>
+    <div style="background:#14171a;border-radius:10px;padding:26px;display:flex;flex-direction:column;justify-content:space-between">
+      <div style="display:flex;align-items:center;gap:14px">
+        <svg width="40" height="40" viewBox="0 0 46 46"><rect x="4" y="6" width="38" height="8" rx="2" fill="#fff"></rect><rect x="4" y="19" width="26" height="8" rx="2" fill="#fff"></rect><rect x="4" y="32" width="14" height="8" rx="2" fill="oklch(0.7 0.15 245)"></rect></svg>
+        <span style="font:600 26px/1 'Space Grotesk',sans-serif;letter-spacing:-.028em;color:#fff">MindStack</span>
+      </div>
+      <div style="display:flex;gap:14px;align-items:flex-end">
+        <div style="width:44px;height:44px;border-radius:10px;background:oklch(0.58 0.15 245);display:grid;place-items:center"><svg width="26" height="26" viewBox="0 0 46 46"><rect x="4" y="6" width="38" height="8" rx="2" fill="#fff"></rect><rect x="4" y="19" width="26" height="8" rx="2" fill="#fff"></rect><rect x="4" y="32" width="14" height="8" rx="2" fill="rgba(255,255,255,.5)"></rect></svg></div>
+        <div style="width:28px;height:28px;border-radius:6px;background:oklch(0.58 0.15 245);display:grid;place-items:center"><svg width="17" height="17" viewBox="0 0 46 46"><rect x="4" y="6" width="38" height="8" rx="2" fill="#fff"></rect><rect x="4" y="19" width="26" height="8" rx="2" fill="#fff"></rect><rect x="4" y="32" width="14" height="8" rx="2" fill="rgba(255,255,255,.55)"></rect></svg></div>
+        <div style="width:16px;height:16px;border-radius:4px;background:oklch(0.58 0.15 245);display:grid;place-items:center"><svg width="11" height="11" viewBox="0 0 46 46"><rect x="4" y="6" width="38" height="8" rx="2" fill="#fff"></rect><rect x="4" y="19" width="26" height="8" rx="2" fill="#fff"></rect><rect x="4" y="32" width="14" height="8" rx="2" fill="rgba(255,255,255,.55)"></rect></svg></div>
+        <span style="font:400 10px/1 'JetBrains Mono',monospace;color:rgba(255,255,255,.4);margin-left:6px">APP · 32 · FAVICON</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- COLOUR -->
+<div style="display:grid;grid-template-columns:170px 1fr;gap:44px;margin-bottom:64px">
+  <div><div style="font:500 11px/1 'JetBrains Mono',monospace;color:rgba(0,0,0,.4);letter-spacing:.06em">02</div><h2 style="font:600 20px/1.25 'Space Grotesk',sans-serif;letter-spacing:-.02em;margin:12px 0 0">Colour</h2><p style="font:400 12.5px/1.6;color:rgba(0,0,0,.5);margin:12px 0 0">One accent, used only for the conversion action and single points of emphasis. Amber and red are signals, never decoration.</p></div>
+  <div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:12px">
+      <div style="background:#fff;border:1px solid rgba(0,0,0,.09);border-radius:10px;overflow:hidden"><div style="height:74px;background:#14171a"></div><div style="padding:12px 14px"><div style="font:600 12.5px 'Space Grotesk',sans-serif">Ink</div><div style="font:400 10.5px 'JetBrains Mono',monospace;color:rgba(0,0,0,.5);margin-top:3px">#14171A</div><div style="font:400 11px/1.5;color:rgba(0,0,0,.55);margin-top:6px">Text, dark sections, footer</div></div></div>
+      <div style="background:#fff;border:1px solid rgba(0,0,0,.09);border-radius:10px;overflow:hidden"><div style="height:74px;background:#faf9f7;border-bottom:1px solid rgba(0,0,0,.08)"></div><div style="padding:12px 14px"><div style="font:600 12.5px 'Space Grotesk',sans-serif">Paper</div><div style="font:400 10.5px 'JetBrains Mono',monospace;color:rgba(0,0,0,.5);margin-top:3px">#FAF9F7</div><div style="font:400 11px/1.5;color:rgba(0,0,0,.55);margin-top:6px">Page background</div></div></div>
+      <div style="background:#fff;border:1px solid rgba(0,0,0,.09);border-radius:10px;overflow:hidden"><div style="height:74px;background:#fff;border-bottom:1px solid rgba(0,0,0,.08)"></div><div style="padding:12px 14px"><div style="font:600 12.5px 'Space Grotesk',sans-serif">Surface</div><div style="font:400 10.5px 'JetBrains Mono',monospace;color:rgba(0,0,0,.5);margin-top:3px">#FFFFFF</div><div style="font:400 11px/1.5;color:rgba(0,0,0,.55);margin-top:6px">Cards, panels</div></div></div>
+      <div style="background:#fff;border:1px solid rgba(0,0,0,.09);border-radius:10px;overflow:hidden"><div style="height:74px;background:oklch(0.58 0.15 245)"></div><div style="padding:12px 14px"><div style="font:600 12.5px 'Space Grotesk',sans-serif">Accent</div><div style="font:400 10.5px 'JetBrains Mono',monospace;color:rgba(0,0,0,.5);margin-top:3px">oklch(.58 .15 245)</div><div style="font:400 11px/1.5;color:rgba(0,0,0,.55);margin-top:6px">Primary CTA, links, one emphasis per view</div></div></div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-bottom:14px">
+      <div style="background:#fff;border:1px solid rgba(0,0,0,.09);border-radius:8px;padding:10px 12px"><div style="height:24px;border-radius:4px;background:oklch(0.7 0.13 245);margin-bottom:8px"></div><div style="font:400 10px 'JetBrains Mono',monospace;color:rgba(0,0,0,.55)">ACCENT / LIGHT</div></div>
+      <div style="background:#fff;border:1px solid rgba(0,0,0,.09);border-radius:8px;padding:10px 12px"><div style="height:24px;border-radius:4px;background:oklch(0.42 0.12 245);margin-bottom:8px"></div><div style="font:400 10px 'JetBrains Mono',monospace;color:rgba(0,0,0,.55)">ACCENT / DEEP</div></div>
+      <div style="background:#fff;border:1px solid rgba(0,0,0,.09);border-radius:8px;padding:10px 12px"><div style="height:24px;border-radius:4px;background:oklch(0.62 0.13 150);margin-bottom:8px"></div><div style="font:400 10px 'JetBrains Mono',monospace;color:rgba(0,0,0,.55)">SUCCESS</div></div>
+      <div style="background:#fff;border:1px solid rgba(0,0,0,.09);border-radius:8px;padding:10px 12px"><div style="height:24px;border-radius:4px;background:oklch(0.74 0.14 70);margin-bottom:8px"></div><div style="font:400 10px 'JetBrains Mono',monospace;color:rgba(0,0,0,.55)">WARNING</div></div>
+      <div style="background:#fff;border:1px solid rgba(0,0,0,.09);border-radius:8px;padding:10px 12px"><div style="height:24px;border-radius:4px;background:oklch(0.55 0.17 25);margin-bottom:8px"></div><div style="font:400 10px 'JetBrains Mono',monospace;color:rgba(0,0,0,.55)">ERROR</div></div>
+      <div style="background:#fff;border:1px solid rgba(0,0,0,.09);border-radius:8px;padding:10px 12px"><div style="height:24px;border-radius:4px;border:1px solid rgba(0,0,0,.13);background:#f0efec;margin-bottom:8px"></div><div style="font:400 10px 'JetBrains Mono',monospace;color:rgba(0,0,0,.55)">BORDER</div></div>
+    </div>
+    <div style="background:#fff;border:1px solid rgba(0,0,0,.09);border-radius:10px;padding:18px 22px;font:400 13px/1.7;color:rgba(0,0,0,.68)">
+      <strong style="font-weight:600">Text colours.</strong> Primary <code style="font:400 12px 'JetBrains Mono',monospace">#14171A</code> · secondary <code style="font:400 12px 'JetBrains Mono',monospace">rgba(0,0,0,.62)</code> · tertiary <code style="font:400 12px 'JetBrains Mono',monospace">rgba(0,0,0,.45)</code>. On ink: <code style="font:400 12px 'JetBrains Mono',monospace">#fff</code> · <code style="font:400 12px 'JetBrains Mono',monospace">rgba(255,255,255,.62)</code>. Tertiary is for metadata only — never body copy. All pairings clear 4.5:1.
+    </div>
+  </div>
+</div>
+
+<!-- TYPE -->
+<div style="display:grid;grid-template-columns:170px 1fr;gap:44px;margin-bottom:64px">
+  <div><div style="font:500 11px/1 'JetBrains Mono',monospace;color:rgba(0,0,0,.4);letter-spacing:.06em">03</div><h2 style="font:600 20px/1.25 'Space Grotesk',sans-serif;letter-spacing:-.02em;margin:12px 0 0">Type</h2><p style="font:400 12.5px/1.6;color:rgba(0,0,0,.5);margin:12px 0 0">Space Grotesk for anything structural, IBM Plex Sans for reading, JetBrains Mono for anything a machine produced.</p></div>
+  <div style="background:#fff;border:1px solid rgba(0,0,0,.09);border-radius:10px;overflow:hidden">
+    <div style="display:flex;align-items:baseline;gap:24px;padding:22px 26px;border-bottom:1px solid rgba(0,0,0,.07)"><div style="font:400 10.5px 'JetBrains Mono',monospace;color:rgba(0,0,0,.45);width:118px;flex:none">DISPLAY · 64/1.04</div><div style="font:600 44px/1.04 'Space Grotesk',sans-serif;letter-spacing:-.035em">Build it properly</div></div>
+    <div style="display:flex;align-items:baseline;gap:24px;padding:20px 26px;border-bottom:1px solid rgba(0,0,0,.07)"><div style="font:400 10.5px 'JetBrains Mono',monospace;color:rgba(0,0,0,.45);width:118px;flex:none">H1 · 44/1.1</div><div style="font:600 34px/1.1 'Space Grotesk',sans-serif;letter-spacing:-.03em">Page heading</div></div>
+    <div style="display:flex;align-items:baseline;gap:24px;padding:18px 26px;border-bottom:1px solid rgba(0,0,0,.07)"><div style="font:400 10.5px 'JetBrains Mono',monospace;color:rgba(0,0,0,.45);width:118px;flex:none">H2 · 30/1.2</div><div style="font:600 26px/1.2 'Space Grotesk',sans-serif;letter-spacing:-.022em">Section heading</div></div>
+    <div style="display:flex;align-items:baseline;gap:24px;padding:16px 26px;border-bottom:1px solid rgba(0,0,0,.07)"><div style="font:400 10.5px 'JetBrains Mono',monospace;color:rgba(0,0,0,.45);width:118px;flex:none">H3 · 20/1.3</div><div style="font:600 19px/1.3 'Space Grotesk',sans-serif;letter-spacing:-.015em">Card and subsection title</div></div>
+    <div style="display:flex;align-items:baseline;gap:24px;padding:16px 26px;border-bottom:1px solid rgba(0,0,0,.07)"><div style="font:400 10.5px 'JetBrains Mono',monospace;color:rgba(0,0,0,.45);width:118px;flex:none">LEAD · 20/1.6</div><div style="font:400 19px/1.6;color:rgba(0,0,0,.7);max-width:26em">Intro paragraph, one per section maximum, capped at three lines.</div></div>
+    <div style="display:flex;align-items:baseline;gap:24px;padding:16px 26px;border-bottom:1px solid rgba(0,0,0,.07)"><div style="font:400 10.5px 'JetBrains Mono',monospace;color:rgba(0,0,0,.45);width:118px;flex:none">BODY · 16/1.65</div><div style="font:400 16px/1.65;max-width:32em">Default reading size. Measure capped at 34em; anything wider gets two columns instead of a longer line.</div></div>
+    <div style="display:flex;align-items:baseline;gap:24px;padding:16px 26px;border-bottom:1px solid rgba(0,0,0,.07)"><div style="font:400 10.5px 'JetBrains Mono',monospace;color:rgba(0,0,0,.45);width:118px;flex:none">SMALL · 14/1.6</div><div style="font:400 14px/1.6;color:rgba(0,0,0,.62)">Card body, captions, form help text.</div></div>
+    <div style="display:flex;align-items:baseline;gap:24px;padding:16px 26px;border-bottom:1px solid rgba(0,0,0,.07)"><div style="font:400 10.5px 'JetBrains Mono',monospace;color:rgba(0,0,0,.45);width:118px;flex:none">EYEBROW · 11 MONO</div><div style="font:500 11px 'JetBrains Mono',monospace;letter-spacing:.07em;color:rgba(0,0,0,.5)">SECTION LABEL · UPPERCASE</div></div>
+    <div style="display:flex;align-items:baseline;gap:24px;padding:16px 26px"><div style="font:400 10.5px 'JetBrains Mono',monospace;color:rgba(0,0,0,.45);width:118px;flex:none">CODE · 13.5 MONO</div><div style="font:400 13.5px/1.6 'JetBrains Mono',monospace;background:#f2f1ee;border-radius:5px;padding:6px 10px">terraform apply --auto-approve</div></div>
+  </div>
+</div>
+
+<!-- SPACE / RADIUS / ELEVATION -->
+<div style="display:grid;grid-template-columns:170px 1fr;gap:44px;margin-bottom:64px">
+  <div><div style="font:500 11px/1 'JetBrains Mono',monospace;color:rgba(0,0,0,.4);letter-spacing:.06em">04</div><h2 style="font:600 20px/1.25 'Space Grotesk',sans-serif;letter-spacing:-.02em;margin:12px 0 0">Space, grid, form</h2></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+    <div style="background:#fff;border:1px solid rgba(0,0,0,.09);border-radius:10px;padding:22px 24px">
+      <div style="font:600 13px 'Space Grotesk',sans-serif;margin-bottom:14px">Spacing — 4px base, seven steps</div>
+      <div style="display:flex;align-items:flex-end;gap:8px;margin-bottom:14px">
+        <div style="width:26px;height:4px;background:oklch(0.58 0.15 245)"></div><div style="width:26px;height:8px;background:oklch(0.58 0.15 245)"></div><div style="width:26px;height:12px;background:oklch(0.58 0.15 245)"></div><div style="width:26px;height:20px;background:oklch(0.58 0.15 245)"></div><div style="width:26px;height:32px;background:oklch(0.58 0.15 245)"></div><div style="width:26px;height:48px;background:oklch(0.58 0.15 245)"></div><div style="width:26px;height:72px;background:oklch(0.58 0.15 245)"></div>
+      </div>
+      <div style="font:400 11px 'JetBrains Mono',monospace;color:rgba(0,0,0,.55);margin-bottom:10px">4 · 8 · 12 · 20 · 32 · 48 · 72</div>
+      <div style="font:400 12.5px/1.65;color:rgba(0,0,0,.62)">Section rhythm: 120px desktop, 88px tablet, 64px mobile. Nothing between steps.</div>
+    </div>
+    <div style="background:#fff;border:1px solid rgba(0,0,0,.09);border-radius:10px;padding:22px 24px">
+      <div style="font:600 13px 'Space Grotesk',sans-serif;margin-bottom:14px">Grid</div>
+      <div style="display:grid;grid-template-columns:repeat(12,1fr);gap:4px;margin-bottom:14px">
+        <div style="height:44px;background:rgba(0,0,0,.06)"></div><div style="height:44px;background:rgba(0,0,0,.06)"></div><div style="height:44px;background:rgba(0,0,0,.06)"></div><div style="height:44px;background:rgba(0,0,0,.06)"></div><div style="height:44px;background:rgba(0,0,0,.06)"></div><div style="height:44px;background:rgba(0,0,0,.06)"></div><div style="height:44px;background:rgba(0,0,0,.06)"></div><div style="height:44px;background:rgba(0,0,0,.06)"></div><div style="height:44px;background:rgba(0,0,0,.06)"></div><div style="height:44px;background:rgba(0,0,0,.06)"></div><div style="height:44px;background:rgba(0,0,0,.06)"></div><div style="height:44px;background:rgba(0,0,0,.06)"></div>
+      </div>
+      <div style="font:400 12.5px/1.7;color:rgba(0,0,0,.62)">12 cols, 24px gutters, 1280px max content width, 56px page margin. Tablet 8 cols / 32px margin. Mobile 4 cols / 20px margin. Breakpoints 640 · 900 · 1280.</div>
+    </div>
+    <div style="background:#fff;border:1px solid rgba(0,0,0,.09);border-radius:10px;padding:22px 24px">
+      <div style="font:600 13px 'Space Grotesk',sans-serif;margin-bottom:16px">Radius</div>
+      <div style="display:flex;gap:10px;align-items:flex-end;margin-bottom:12px">
+        <div style="width:52px;height:52px;border:1px solid rgba(0,0,0,.15);border-radius:4px;display:grid;place-items:center;font:400 10px 'JetBrains Mono',monospace;color:rgba(0,0,0,.5)">4</div>
+        <div style="width:52px;height:52px;border:1px solid rgba(0,0,0,.15);border-radius:8px;display:grid;place-items:center;font:400 10px 'JetBrains Mono',monospace;color:rgba(0,0,0,.5)">8</div>
+        <div style="width:52px;height:52px;border:1px solid rgba(0,0,0,.15);border-radius:14px;display:grid;place-items:center;font:400 10px 'JetBrains Mono',monospace;color:rgba(0,0,0,.5)">14</div>
+        <div style="width:70px;height:34px;border:1px solid rgba(0,0,0,.15);border-radius:99px;display:grid;place-items:center;font:400 10px 'JetBrains Mono',monospace;color:rgba(0,0,0,.5)">pill</div>
+      </div>
+      <div style="font:400 12.5px/1.65;color:rgba(0,0,0,.62)">4 inputs and chips · 8 buttons and cards · 14 large panels and media · pill filters only.</div>
+    </div>
+    <div style="background:#fff;border:1px solid rgba(0,0,0,.09);border-radius:10px;padding:22px 24px">
+      <div style="font:600 13px 'Space Grotesk',sans-serif;margin-bottom:16px">Elevation — borders first, shadow rarely</div>
+      <div style="display:flex;gap:10px;margin-bottom:12px">
+        <div style="flex:1;height:52px;border-radius:8px;background:#fff;border:1px solid rgba(0,0,0,.1);display:grid;place-items:center;font:400 10px 'JetBrains Mono',monospace;color:rgba(0,0,0,.5)">FLAT</div>
+        <div style="flex:1;height:52px;border-radius:8px;background:#fff;border:1px solid rgba(0,0,0,.08);box-shadow:0 1px 2px rgba(0,0,0,.06);display:grid;place-items:center;font:400 10px 'JetBrains Mono',monospace;color:rgba(0,0,0,.5)">RAISED</div>
+        <div style="flex:1;height:52px;border-radius:8px;background:#fff;box-shadow:0 8px 28px -8px rgba(0,0,0,.22);display:grid;place-items:center;font:400 10px 'JetBrains Mono',monospace;color:rgba(0,0,0,.5)">OVERLAY</div>
+      </div>
+      <div style="font:400 12.5px/1.65;color:rgba(0,0,0,.62)">Overlay is reserved for nav dropdowns and modals. Cards never gain shadow on hover — the border darkens instead.</div>
+    </div>
+  </div>
+</div>
+
+<!-- COMPONENTS -->
+<div style="display:grid;grid-template-columns:170px 1fr;gap:44px;margin-bottom:64px">
+  <div><div style="font:500 11px/1 'JetBrains Mono',monospace;color:rgba(0,0,0,.4);letter-spacing:.06em">05</div><h2 style="font:600 20px/1.25 'Space Grotesk',sans-serif;letter-spacing:-.02em;margin:12px 0 0">Components</h2><p style="font:400 12.5px/1.6;color:rgba(0,0,0,.5);margin:12px 0 0">Hover the specimens — states are live.</p></div>
+  <div style="display:flex;flex-direction:column;gap:14px">
+
+    <div style="background:#fff;border:1px solid rgba(0,0,0,.09);border-radius:10px;padding:24px 26px">
+      <div style="font:600 13px 'Space Grotesk',sans-serif;margin-bottom:16px">Buttons — 44px min height, 120ms transition</div>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center">
+        <button type="button" style="height:44px;padding:0 22px;border:none;border-radius:8px;background:oklch(0.58 0.15 245);color:#fff;font:500 15px 'Space Grotesk',sans-serif;cursor:pointer;transition:background 120ms" style-hover="background:oklch(0.5 0.15 245)">Talk to sales</button>
+        <button type="button" style="height:44px;padding:0 22px;border:1px solid rgba(0,0,0,.18);border-radius:8px;background:#fff;color:#14171a;font:500 15px 'Space Grotesk',sans-serif;cursor:pointer;transition:border-color 120ms,background 120ms" style-hover="border-color:rgba(0,0,0,.4);background:#faf9f7">See the work</button>
+        <button type="button" style="height:44px;padding:0 4px;border:none;background:none;color:oklch(0.5 0.14 245);font:500 15px 'Space Grotesk',sans-serif;cursor:pointer;text-decoration:none;transition:opacity 120ms" style-hover="text-decoration:underline">Read the case study →</button>
+        <button type="button" disabled="{{ true }}" style="height:44px;padding:0 22px;border:1px solid rgba(0,0,0,.1);border-radius:8px;background:#f2f1ee;color:rgba(0,0,0,.35);font:500 15px 'Space Grotesk',sans-serif">Disabled</button>
+        <div style="height:44px;padding:0 20px;border-radius:8px;background:#14171a;color:#fff;font:500 15px 'Space Grotesk',sans-serif;display:grid;place-items:center">On ink</div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1.15fr 1fr;gap:14px">
+      <div style="background:#fff;border:1px solid rgba(0,0,0,.09);border-radius:10px;padding:24px 26px">
+        <div style="font:600 13px 'Space Grotesk',sans-serif;margin-bottom:16px">Case card — the site's workhorse</div>
+        <div style="border:1px solid rgba(0,0,0,.1);border-radius:8px;overflow:hidden;display:flex;transition:border-color 160ms;cursor:pointer" style-hover="border-color:rgba(0,0,0,.38)">
+          <div style="width:42%;background:repeating-linear-gradient(45deg,rgba(0,0,0,.05) 0 7px,transparent 7px 14px);border-right:1px solid rgba(0,0,0,.1);min-height:132px;display:grid;place-items:center"><span style="font:400 10px/1.5 'JetBrains Mono',monospace;color:rgba(0,0,0,.45);text-align:center">PROJECT UI<br>16:10</span></div>
+          <div style="padding:18px 20px;flex:1">
+            <div style="font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.06em;color:rgba(0,0,0,.45);margin-bottom:8px">SECTOR · SERVICE</div>
+            <div style="font:600 18px/1.25 'Space Grotesk',sans-serif;letter-spacing:-.015em;margin-bottom:6px">Project name</div>
+            <div style="font:400 14px/1.6;color:rgba(0,0,0,.62)">One-line outcome, client-approved.</div>
+            <div style="font:500 13.5px 'Space Grotesk',sans-serif;color:oklch(0.5 0.14 245);margin-top:12px">Read the case →</div>
+          </div>
+        </div>
+      </div>
+      <div style="background:#fff;border:1px solid rgba(0,0,0,.09);border-radius:10px;padding:24px 26px">
+        <div style="font:600 13px 'Space Grotesk',sans-serif;margin-bottom:16px">Form field &amp; chips</div>
+        <div style="font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.06em;color:rgba(0,0,0,.5);margin-bottom:6px">WORK EMAIL</div>
+        <input type="text" placeholder="you@company.com" style="width:100%;box-sizing:border-box;height:44px;padding:0 14px;border:1px solid rgba(0,0,0,.18);border-radius:4px;background:#fff;font:400 15px 'IBM Plex Sans',sans-serif;outline:none;transition:border-color 120ms" style-focus="border-color:oklch(0.58 0.15 245)">
+        <div style="font:400 12.5px/1.5;color:rgba(0,0,0,.5);margin-top:7px">Help text sits below, never as placeholder.</div>
+        <div style="display:flex;gap:8px;margin-top:16px">
+          <div style="height:34px;padding:0 14px;border-radius:99px;border:1px solid #14171a;background:#14171a;color:#fff;font:500 13px 'Space Grotesk',sans-serif;display:grid;place-items:center">Web</div>
+          <div style="height:34px;padding:0 14px;border-radius:99px;border:1px solid rgba(0,0,0,.18);font:500 13px 'Space Grotesk',sans-serif;display:grid;place-items:center;color:rgba(0,0,0,.7);cursor:pointer;transition:border-color 120ms" style-hover="border-color:rgba(0,0,0,.45)">Apps</div>
+          <div style="height:34px;padding:0 14px;border-radius:99px;border:1px solid rgba(0,0,0,.18);font:500 13px 'Space Grotesk',sans-serif;display:grid;place-items:center;color:rgba(0,0,0,.7);cursor:pointer;transition:border-color 120ms" style-hover="border-color:rgba(0,0,0,.45)">Infra</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:#fff;border:1px solid rgba(0,0,0,.09);border-radius:10px;padding:0;overflow:hidden">
+      <div style="font:600 13px 'Space Grotesk',sans-serif;padding:24px 26px 14px">Header — 68px, sticky, border appears on scroll</div>
+      <div style="display:flex;align-items:center;gap:28px;padding:0 26px;height:68px;border-top:1px solid rgba(0,0,0,.07);border-bottom:1px solid rgba(0,0,0,.07);background:rgba(250,249,247,.9)">
+        <div style="display:flex;align-items:center;gap:10px"><svg width="20" height="20" viewBox="0 0 46 46"><rect x="4" y="6" width="38" height="8" rx="2" fill="#14171a"></rect><rect x="4" y="19" width="26" height="8" rx="2" fill="#14171a"></rect><rect x="4" y="32" width="14" height="8" rx="2" fill="oklch(0.58 0.15 245)"></rect></svg><span style="font:600 15px 'Space Grotesk',sans-serif;letter-spacing:-.015em">MindStack</span></div>
+        <div style="display:flex;gap:22px;font:500 14.5px 'Space Grotesk',sans-serif;color:rgba(0,0,0,.7)">
+          <span style="cursor:pointer;transition:color 120ms" style-hover="color:#14171a">What we do</span>
+          <span style="cursor:pointer;transition:color 120ms" style-hover="color:#14171a">Work</span>
+          <span style="cursor:pointer;transition:color 120ms" style-hover="color:#14171a">Solutions</span>
+          <span style="cursor:pointer;transition:color 120ms" style-hover="color:#14171a">How we build</span>
+          <span style="cursor:pointer;transition:color 120ms" style-hover="color:#14171a">Engagement</span>
+        </div>
+        <div style="margin-left:auto;height:38px;padding:0 18px;border-radius:8px;background:oklch(0.58 0.15 245);color:#fff;font:500 14px 'Space Grotesk',sans-serif;display:grid;place-items:center;cursor:pointer">Talk to sales</div>
+      </div>
+      <div style="padding:14px 26px 24px;font:400 12.5px/1.65;color:rgba(0,0,0,.6)">Mobile: logo left, hamburger right, CTA persists as a full-width button at the bottom of the sheet. Nav items 48px tall in the sheet.</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- MOTION -->
+<div style="display:grid;grid-template-columns:170px 1fr;gap:44px;margin-bottom:64px">
+  <div><div style="font:500 11px/1 'JetBrains Mono',monospace;color:rgba(0,0,0,.4);letter-spacing:.06em">06</div><h2 style="font:600 20px/1.25 'Space Grotesk',sans-serif;letter-spacing:-.02em;margin:12px 0 0">Motion</h2><p style="font:400 12.5px/1.6;color:rgba(0,0,0,.5);margin:12px 0 0">One curve for everything. Three showpiece moments; everywhere else the motion should be barely noticed.</p></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+    <div style="background:#fff;border:1px solid rgba(0,0,0,.09);border-radius:10px;padding:24px 26px">
+      <div style="font:600 13px 'Space Grotesk',sans-serif;margin-bottom:14px">Tokens</div>
+      <div style="font:400 12.5px/2 'JetBrains Mono',monospace;color:rgba(0,0,0,.7)">
+        ease &nbsp;cubic-bezier(.22,.61,.36,1)<br>
+        hover &nbsp;120ms<br>
+        reveal &nbsp;400ms · 14px rise<br>
+        stagger &nbsp;60ms<br>
+        page &nbsp;&nbsp;240ms fade<br>
+        showpiece &nbsp;≤1600ms, once
+      </div>
+    </div>
+    <div style="background:#fff;border:1px solid rgba(0,0,0,.09);border-radius:10px;padding:24px 26px;font:400 13px/1.7;color:rgba(0,0,0,.68)">
+      <div style="font:600 13px 'Space Grotesk',sans-serif;color:#14171a;margin-bottom:12px">Rules</div>
+      Reveals fire once, never on scroll-up. Nothing animates in forms or on Contact. No parallax on text. No scroll-jacking on touch — sticky sequences become stacked cards below 900px. <code style="font:400 12px 'JetBrains Mono',monospace">prefers-reduced-motion</code> removes every reveal and freezes showpieces on their final frame.
+    </div>
+  </div>
+</div>
+
+<!-- IMAGERY & ICONS -->
+<div style="display:grid;grid-template-columns:170px 1fr;gap:44px">
+  <div><div style="font:500 11px/1 'JetBrains Mono',monospace;color:rgba(0,0,0,.4);letter-spacing:.06em">07</div><h2 style="font:600 20px/1.25 'Space Grotesk',sans-serif;letter-spacing:-.02em;margin:12px 0 0">Imagery &amp; icons</h2></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+    <div style="background:#fff;border:1px solid rgba(0,0,0,.09);border-radius:10px;padding:24px 26px">
+      <div style="font:600 13px 'Space Grotesk',sans-serif;margin-bottom:14px">Image direction</div>
+      <div style="height:100px;border:1px solid rgba(0,0,0,.12);border-radius:8px;background:repeating-linear-gradient(45deg,rgba(0,0,0,.05) 0 7px,transparent 7px 14px);display:grid;place-items:center;margin-bottom:14px"><span style="font:400 10.5px/1.5 'JetBrains Mono',monospace;color:rgba(0,0,0,.45);text-align:center">PLACEHOLDER PATTERN<br>USED UNTIL REAL ASSETS ARRIVE</span></div>
+      <div style="font:400 12.5px/1.7;color:rgba(0,0,0,.62)">Product interfaces at 16:10, shown square-on and cropped to one meaningful region — never tilted in a laptop mockup. Team photography only if it's real; if there is none, the site stays typographic. No stock imagery, no illustration, no 3D renders.</div>
+    </div>
+    <div style="background:#fff;border:1px solid rgba(0,0,0,.09);border-radius:10px;padding:24px 26px">
+      <div style="font:600 13px 'Space Grotesk',sans-serif;margin-bottom:14px">Icons</div>
+      <div style="display:flex;gap:12px;margin-bottom:14px">
+        <div style="width:40px;height:40px;border:1.5px solid #14171a;border-radius:6px"></div>
+        <div style="width:40px;height:40px;border:1.5px solid #14171a;border-radius:50%"></div>
+        <div style="width:40px;height:40px;border:1.5px solid #14171a;transform:rotate(45deg)"></div>
+        <div style="width:40px;height:40px;display:flex;flex-direction:column;gap:5px;justify-content:center"><div style="height:1.5px;background:#14171a"></div><div style="height:1.5px;background:#14171a;width:70%"></div><div style="height:1.5px;background:#14171a;width:40%"></div></div>
+      </div>
+      <div style="font:400 12.5px/1.7;color:rgba(0,0,0,.62)">1.5px stroke, 24px grid, square caps, no fills, no rounded corners beyond 2px. Geometric and dry, drawn from the same vocabulary as the mark. Icons label, they don't decorate — no icon per bullet point.</div>
+    </div>
+  </div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}"></script>
+</body>
+</html>

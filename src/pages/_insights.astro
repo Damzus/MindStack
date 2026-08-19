@@ -1,0 +1,25 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHeader from '../components/layout/PageHeader.astro';
+import Pending from '../components/sections/Pending.astro';
+import CtaBand from '../components/sections/CtaBand.astro';
+---
+
+<Base
+  title="Insights — MindStack"
+  description="Technical writing from the MindStack team."
+>
+  <PageHeader
+    eyebrow="Insights"
+    title="Technical writing that earns its place."
+    lead="Six good posts beat sixty thin ones. Nothing is published here yet."
+  />
+  <Pending
+    needed={[
+      'Two or three topics you have genuine authority on',
+      'Who is writing, and how often they can realistically publish',
+      'Whether posts can reference client work by name',
+    ]}
+  />
+  <CtaBand />
+</Base>

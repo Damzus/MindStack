@@ -1,0 +1,109 @@
+---
+interface Props {
+  name: string;
+  label: string;
+  type?: 'text' | 'email' | 'textarea';
+  placeholder?: string;
+  help?: string;
+  required?: boolean;
+  rows?: number;
+}
+
+const {
+  name,
+  label,
+  type = 'text',
+  placeholder,
+  help,
+  required = false,
+  rows = 5,
+} = Astro.props;
+
+const helpId = help ? `${name}-help` : undefined;
+---
+
+<div class="field">
+  <label class="eyebrow field-label" for={name}>
+    {label}{required && <span aria-hidden="true"> *</span>}
+  </label>
+  {
+    type === 'textarea' ? (
+      <textarea
+        id={name}
+        name={name}
+        rows={rows}
+        placeholder={placeholder}
+        required={required}
+        aria-describedby={helpId}
+      />
+    ) : (
+      <input
+        id={name}
+        name={name}
+        type={type}
+        placeholder={placeholder}
+        required={required}
+        aria-describedby={helpId}
+      />
+    )
+  }
+  {help && <p class="field-help" id={helpId}>{help}</p>}
+</div>
+
+<style>
+  .field {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .field-label {
+    margin-bottom: var(--space-2);
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 14px;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-sm);
+    background: var(--surface-card);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: 15px;
+    outline: none;
+    transition: border-color var(--dur-hover) var(--ease);
+  }
+
+  input {
+    height: var(--tap-min);
+  }
+
+  textarea {
+    padding-block: 12px;
+    line-height: var(--leading-body);
+    resize: vertical;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: var(--text-tertiary);
+  }
+
+  input:focus,
+  textarea:focus {
+    border-color: var(--accent);
+  }
+
+  input:user-invalid,
+  textarea:user-invalid {
+    border-color: var(--error);
+  }
+
+  .field-help {
+    margin: 7px 0 0;
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: var(--text-tertiary);
+  }
+</style>

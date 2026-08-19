@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics><meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#f1efec;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#1a1c1e;text-wrap:pretty}
+a{color:oklch(0.5 0.13 250)}a:hover{color:oklch(0.4 0.13 250)}
+</style></helmet>
+
+<div style="max-width:1120px;margin:0 auto;padding:72px 56px 120px">
+
+<div style="display:flex;align-items:center;gap:14px;margin-bottom:56px">
+  <svg width="26" height="26" viewBox="0 0 46 46"><rect x="4" y="6" width="38" height="8" rx="2" fill="#1a1c1e"></rect><rect x="4" y="19" width="26" height="8" rx="2" fill="#1a1c1e"></rect><rect x="4" y="32" width="14" height="8" rx="2" fill="oklch(0.62 0.17 250)"></rect></svg>
+  <span style="font:600 15px/1 'Space Grotesk',sans-serif;letter-spacing:-.01em">MindStack</span>
+  <span style="font:400 11px/1 'JetBrains Mono',monospace;color:rgba(0,0,0,.4);margin-left:auto;letter-spacing:.04em">SITEMAP &amp; UX STRATEGY · v1 · DRAFT</span>
+</div>
+
+<h1 style="font:600 46px/1.08 'Space Grotesk',sans-serif;letter-spacing:-.032em;margin:0 0 20px;max-width:15em">Information architecture and conversion strategy for the MindStack website</h1>
+<p style="font:400 17px/1.65 'IBM Plex Sans',sans-serif;color:rgba(0,0,0,.62);max-width:30em;margin:0 0 64px">A ten-page site built around one conversion action — talk to sales — for a firm that designs and builds websites, applications and the cloud infrastructure that runs them.</p>
+
+<div style="height:1px;background:rgba(0,0,0,.12);margin-bottom:56px"></div>
+
+<!-- 01 what we know -->
+<div style="display:grid;grid-template-columns:170px 1fr;gap:44px;margin-bottom:72px">
+  <div><div style="font:500 11px/1 'JetBrains Mono',monospace;color:rgba(0,0,0,.4);letter-spacing:.06em">01</div><h2 style="font:600 20px/1.25 'Space Grotesk',sans-serif;letter-spacing:-.02em;margin:12px 0 0">What we know</h2></div>
+  <div style="display:flex;flex-direction:column;gap:20px">
+    <div style="background:#fff;border:1px solid rgba(0,0,0,.09);border-radius:10px;padding:26px 28px">
+      <div style="font:500 11px/1 'JetBrains Mono',monospace;color:oklch(0.5 0.13 155);letter-spacing:.06em;margin-bottom:14px">CONFIRMED BY YOU</div>
+      <ul style="margin:0;padding-left:20px;font:400 14.5px/1.75 'IBM Plex Sans',sans-serif;color:rgba(0,0,0,.75)">
+        <li>MindStack develops websites and applications for businesses, and supports cloud infrastructure.</li>
+        <li>Buyers span engineering leadership (CTO, VP Eng), business ops and finance leaders, and individual developers.</li>
+        <li>Primary conversion action is <strong>talk to sales</strong>.</li>
+        <li>Motion should be a showpiece — the site itself is proof of craft.</li>
+        <li>All ten pages are in scope.</li>
+      </ul>
+    </div>
+    <div style="background:#fff;border:1px solid rgba(0,0,0,.09);border-radius:10px;padding:26px 28px">
+      <div style="font:500 11px/1 'JetBrains Mono',monospace;color:oklch(0.55 0.15 60);letter-spacing:.06em;margin-bottom:14px">MY ASSUMPTIONS — CORRECT THESE</div>
+      <ul style="margin:0;padding-left:20px;font:400 14.5px/1.75 'IBM Plex Sans',sans-serif;color:rgba(0,0,0,.75)">
+        <li>You sell <em>projects and retainers</em>, not seat-based software. Pricing is therefore engagement models, not a price table.</li>
+        <li>Deal sizes justify a sales conversation, so there is no self-serve path.</li>
+        <li>You have delivered work you're allowed to name. Case studies depend on this.</li>
+        <li>The developer audience matters for hiring and credibility rather than purchase.</li>
+        <li>You want inbound leads from search and referral, not paid acquisition funnels.</li>
+      </ul>
+    </div>
+    <div style="background:#fff;border:1px solid rgba(0,0,0,.09);border-radius:10px;padding:26px 28px">
+      <div style="font:500 11px/1 'JetBrains Mono',monospace;color:rgba(0,0,0,.45);letter-spacing:.06em;margin-bottom:14px">DELIBERATELY EMPTY</div>
+      <p style="margin:0;font:400 14.5px/1.75 'IBM Plex Sans',sans-serif;color:rgba(0,0,0,.7)">No client names, logos, testimonials, metrics, team members, certifications or partnerships appear anywhere in this plan. Every such slot is a labelled placeholder. Fabricated proof is the fastest way to lose a technical buyer.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 02 positioning -->
+<div style="display:grid;grid-template-columns:170px 1fr;gap:44px;margin-bottom:72px">
+  <div><div style="font:500 11px/1 'JetBrains Mono',monospace;color:rgba(0,0,0,.4);letter-spacing:.06em">02</div><h2 style="font:600 20px/1.25 'Space Grotesk',sans-serif;letter-spacing:-.02em;margin:12px 0 0">The strategic problem</h2></div>
+  <div>
+    <p style="font:400 15.5px/1.75 'IBM Plex Sans',sans-serif;color:rgba(0,0,0,.75);margin:0 0 22px;max-width:34em">Every agency site says the same three things: we listen, we're technical, we deliver. Buyers have stopped reading them. The differentiator available to a firm that builds <em>and then runs</em> software is continuity — the same team that ships the app owns the infrastructure it runs on, so nobody is handed a repository and left to operate it.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+      <div style="background:#fff;border:1px solid rgba(0,0,0,.09);border-radius:10px;padding:24px">
+        <div style="font:600 13px/1.3 'Space Grotesk',sans-serif;margin-bottom:10px">The narrative the site should carry</div>
+        <p style="margin:0;font:400 14px/1.7 'IBM Plex Sans',sans-serif;color:rgba(0,0,0,.68)">Build it properly, then keep it running. Design, engineering and infrastructure from one team, with the operational record to prove it.</p>
+      </div>
+      <div style="background:#fff;border:1px solid rgba(0,0,0,.09);border-radius:10px;padding:24px">
+        <div style="font:600 13px/1.3 'Space Grotesk',sans-serif;margin-bottom:10px">What the site must prove, not claim</div>
+        <p style="margin:0;font:400 14px/1.7 'IBM Plex Sans',sans-serif;color:rgba(0,0,0,.68)">That the craft is real. The site's own performance, motion and detail are the primary evidence — which is why the motion system is a strategy item, not decoration.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 03 sitemap -->
+<div style="display:grid;grid-template-columns:170px 1fr;gap:44px;margin-bottom:72px">
+  <div><div style="font:500 11px/1 'JetBrains Mono',monospace;color:rgba(0,0,0,.4);letter-spacing:.06em">03</div><h2 style="font:600 20px/1.25 'Space Grotesk',sans-serif;letter-spacing:-.02em;margin:12px 0 0">Sitemap</h2><p style="font:400 12.5px/1.6 'IBM Plex Sans',sans-serif;color:rgba(0,0,0,.5);margin:14px 0 0">Six items in the primary nav. Everything else lives in the footer or one level down.</p></div>
+  <div style="background:#fff;border:1px solid rgba(0,0,0,.09);border-radius:10px;padding:32px 30px">
+
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px">
+      <div style="font:600 13px/1 'Space Grotesk',sans-serif;padding:9px 14px;background:#1a1c1e;color:#fff;border-radius:6px">Home</div>
+      <div style="flex:1;height:1px;background:rgba(0,0,0,.1)"></div>
+      <div style="font:400 11px/1 'JetBrains Mono',monospace;color:rgba(0,0,0,.4)">TALK TO SALES</div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:14px">
+      <div style="border:1px solid rgba(0,0,0,.12);border-radius:8px;padding:16px 16px 14px">
+        <div style="font:600 13px/1.3 'Space Grotesk',sans-serif;margin-bottom:4px">What we do</div>
+        <div style="font:400 11px/1 'JetBrains Mono',monospace;color:rgba(0,0,0,.4);margin-bottom:12px">NAV · HUB</div>
+        <div style="display:flex;flex-direction:column;gap:7px;font:400 13px/1.4 'IBM Plex Sans',sans-serif;color:rgba(0,0,0,.7)">
+          <div style="padding-left:12px;border-left:2px solid oklch(0.62 0.17 250)">Web platforms</div>
+          <div style="padding-left:12px;border-left:2px solid oklch(0.62 0.17 250)">Product &amp; app engineering</div>
+          <div style="padding-left:12px;border-left:2px solid oklch(0.62 0.17 250)">Cloud &amp; infrastructure</div>
+        </div>
+      </div>
+      <div style="border:1px solid rgba(0,0,0,.12);border-radius:8px;padding:16px 16px 14px">
+        <div style="font:600 13px/1.3 'Space Grotesk',sans-serif;margin-bottom:4px">Work</div>
+        <div style="font:400 11px/1 'JetBrains Mono',monospace;color:rgba(0,0,0,.4);margin-bottom:12px">NAV · INDEX</div>
+        <div style="display:flex;flex-direction:column;gap:7px;font:400 13px/1.4 'IBM Plex Sans',sans-serif;color:rgba(0,0,0,.7)">
+          <div style="padding-left:12px;border-left:2px solid oklch(0.62 0.17 250)">Case study detail ×n</div>
+          <div style="padding-left:12px;border-left:2px solid rgba(0,0,0,.15);color:rgba(0,0,0,.45)">Filter by industry</div>
+        </div>
+      </div>
+      <div style="border:1px solid rgba(0,0,0,.12);border-radius:8px;padding:16px 16px 14px">
+        <div style="font:600 13px/1.3 'Space Grotesk',sans-serif;margin-bottom:4px">Solutions</div>
+        <div style="font:400 11px/1 'JetBrains Mono',monospace;color:rgba(0,0,0,.4);margin-bottom:12px">NAV · HUB</div>
+        <div style="display:flex;flex-direction:column;gap:7px;font:400 13px/1.4 'IBM Plex Sans',sans-serif;color:rgba(0,0,0,.7)">
+          <div style="padding-left:12px;border-left:2px solid oklch(0.62 0.17 250)">By industry ×3–4</div>
+          <div style="padding-left:12px;border-left:2px solid oklch(0.62 0.17 250)">By situation (replatform, scale, modernise)</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:14px">
+      <div style="border:1px solid rgba(0,0,0,.12);border-radius:8px;padding:16px">
+        <div style="font:600 13px/1.3 'Space Grotesk',sans-serif;margin-bottom:4px">How we build</div>
+        <div style="font:400 11px/1 'JetBrains Mono',monospace;color:rgba(0,0,0,.4);margin-bottom:10px">NAV · PAGE</div>
+        <p style="margin:0;font:400 12.5px/1.6 'IBM Plex Sans',sans-serif;color:rgba(0,0,0,.6)">Technology and architecture, process, stack, reliability practice. Merges the brief's "Technology" and "Process".</p>
+      </div>
+      <div style="border:1px solid rgba(0,0,0,.12);border-radius:8px;padding:16px">
+        <div style="font:600 13px/1.3 'Space Grotesk',sans-serif;margin-bottom:4px">Engagement</div>
+        <div style="font:400 11px/1 'JetBrains Mono',monospace;color:rgba(0,0,0,.4);margin-bottom:10px">NAV · PAGE</div>
+        <p style="margin:0;font:400 12.5px/1.6 'IBM Plex Sans',sans-serif;color:rgba(0,0,0,.6)">Replaces "Pricing". Engagement models, what a project costs in ranges, what's included, how billing works.</p>
+      </div>
+      <div style="border:1px solid rgba(0,0,0,.12);border-radius:8px;padding:16px">
+        <div style="font:600 13px/1.3 'Space Grotesk',sans-serif;margin-bottom:4px">Contact</div>
+        <div style="font:400 11px/1 'JetBrains Mono',monospace;color:rgba(0,0,0,.4);margin-bottom:10px">NAV CTA · PAGE</div>
+        <p style="margin:0;font:400 12.5px/1.6 'IBM Plex Sans',sans-serif;color:rgba(0,0,0,.6)">Single destination for every CTA on the site. Qualifying form plus a direct email and calendar option.</p>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px">
+      <div style="border:1px dashed rgba(0,0,0,.18);border-radius:8px;padding:14px 16px">
+        <div style="font:500 13px/1.3 'Space Grotesk',sans-serif;color:rgba(0,0,0,.7)">Insights</div>
+        <div style="font:400 10.5px/1 'JetBrains Mono',monospace;color:rgba(0,0,0,.38);margin-top:5px">FOOTER + INDEX</div>
+      </div>
+      <div style="border:1px dashed rgba(0,0,0,.18);border-radius:8px;padding:14px 16px">
+        <div style="font:500 13px/1.3 'Space Grotesk',sans-serif;color:rgba(0,0,0,.7)">About · Careers</div>
+        <div style="font:400 10.5px/1 'JetBrains Mono',monospace;color:rgba(0,0,0,.38);margin-top:5px">FOOTER</div>
+      </div>
+      <div style="border:1px dashed rgba(0,0,0,.18);border-radius:8px;padding:14px 16px">
+        <div style="font:500 13px/1.3 'Space Grotesk',sans-serif;color:rgba(0,0,0,.7)">Privacy · Terms · Security</div>
+        <div style="font:400 10.5px/1 'JetBrains Mono',monospace;color:rgba(0,0,0,.38);margin-top:5px">FOOTER · LEGAL</div>
+      </div>
+    </div>
+
+    <p style="margin:24px 0 0;font:400 13px/1.7 'IBM Plex Sans',sans-serif;color:rgba(0,0,0,.55);border-top:1px solid rgba(0,0,0,.08);padding-top:18px">Two deliberate departures from your list. <strong style="color:#1a1c1e;font-weight:600">Pricing becomes Engagement</strong> — a firm selling projects cannot publish a price table without losing the deals worth having, but silence on money loses trust, so the page publishes ranges and models instead. <strong style="color:#1a1c1e;font-weight:600">FAQ is not a page</strong> — the questions get answered inline on the pages where they arise, which converts better than a dumping ground.</p>
+  </div>
+</div>
+
+<!-- 04 page by page -->
+<div style="display:grid;grid-template-columns:170px 1fr;gap:44px;margin-bottom:72px">
+  <div><div style="font:500 11px/1 'JetBrains Mono',monospace;color:rgba(0,0,0,.4);letter-spacing:.06em">04</div><h2 style="font:600 20px/1.25 'Space Grotesk',sans-serif;letter-spacing:-.02em;margin:12px 0 0">Page by page</h2><p style="font:400 12.5px/1.6 'IBM Plex Sans',sans-serif;color:rgba(0,0,0,.5);margin:14px 0 0">Intent, the objection that kills the deal on that page, the mechanism that answers it, and where the visitor goes next.</p></div>
+  <div style="display:flex;flex-direction:column;gap:14px">
+
+    <div style="background:#fff;border:1px solid rgba(0,0,0,.09);border-radius:10px;padding:24px 26px">
+      <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:16px"><span style="font:600 16px/1 'Space Grotesk',sans-serif">Home</span><span style="font:400 11px/1 'JetBrains Mono',monospace;color:rgba(0,0,0,.4)">ALL AUDIENCES · FIRST TOUCH</span></div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;font:400 13.5px/1.65 'IBM Plex Sans',sans-serif">
+        <div><div style="font:500 11px/1 'JetBrains Mono',monospace;color:rgba(0,0,0,.4);margin-bottom:7px">INTENT</div><div style="color:rgba(0,0,0,.72)">Is this firm serious, and do they do what I need?</div></div>
+        <div><div style="font:500 11px/1 'JetBrains Mono',monospace;color:rgba(0,0,0,.4);margin-bottom:7px">OBJECTION</div><div style="color:rgba(0,0,0,.72)">Another agency claiming to be end-to-end.</div></div>
+        <div><div style="font:500 11px/1 'JetBrains Mono',monospace;color:rgba(0,0,0,.4);margin-bottom:7px">MECHANISM</div><div style="color:rgba(0,0,0,.72)">Live product demonstration in the hero, not a stock illustration; real work above the fold-and-a-half.</div></div>
+        <div><div style="font:500 11px/1 'JetBrains Mono',monospace;color:rgba(0,0,0,.4);margin-bottom:7px">NEXT</div><div style="color:rgba(0,0,0,.72)">Work, or a service page. CTA: talk to sales.</div></div>
+      </div>
+    </div>
+
+    <div style="background:#fff;border:1px solid rgba(0,0,0,.09);border-radius:10px;padding:24px 26px">
+      <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:16px"><span style="font:600 16px/1 'Space Grotesk',sans-serif">What we do — hub + 3 service pages</span><span style="font:400 11px/1 'JetBrains Mono',monospace;color:rgba(0,0,0,.4)">CTO / VP ENG</span></div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;font:400 13.5px/1.65 'IBM Plex Sans',sans-serif">
+        <div><div style="font:500 11px/1 'JetBrains Mono',monospace;color:rgba(0,0,0,.4);margin-bottom:7px">INTENT</div><div style="color:rgba(0,0,0,.72)">Can they do my specific thing, at my scale?</div></div>
+        <div><div style="font:500 11px/1 'JetBrains Mono',monospace;color:rgba(0,0,0,.4);margin-bottom:7px">OBJECTION</div><div style="color:rgba(0,0,0,.72)">Generalists who will learn on my budget.</div></div>
+        <div><div style="font:500 11px/1 'JetBrains Mono',monospace;color:rgba(0,0,0,.4);margin-bottom:7px">MECHANISM</div><div style="color:rgba(0,0,0,.72)">Depth: named stack, architecture decisions, what you explicitly don't take on.</div></div>
+        <div><div style="font:500 11px/1 'JetBrains Mono',monospace;color:rgba(0,0,0,.4);margin-bottom:7px">NEXT</div><div style="color:rgba(0,0,0,.72)">Matching case study → Engagement.</div></div>
+      </div>
+    </div>
+
+    <div style="background:#fff;border:1px solid rgba(0,0,0,.09);border-radius:10px;padding:24px 26px">
+      <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:16px"><span style="font:600 16px/1 'Space Grotesk',sans-serif">Work index + case study detail</span><span style="font:400 11px/1 'JetBrains Mono',monospace;color:rgba(0,0,0,.4)">HIGHEST-INTENT PAGE ON THE SITE</span></div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;font:400 13.5px/1.65 'IBM Plex Sans',sans-serif">
+        <div><div style="font:500 11px/1 'JetBrains Mono',monospace;color:rgba(0,0,0,.4);margin-bottom:7px">INTENT</div><div style="color:rgba(0,0,0,.72)">Show me something you built for someone like me.</div></div>
+        <div><div style="font:500 11px/1 'JetBrains Mono',monospace;color:rgba(0,0,0,.4);margin-bottom:7px">OBJECTION</div><div style="color:rgba(0,0,0,.72)">Pretty screenshots that hide who actually did the work.</div></div>
+        <div><div style="font:500 11px/1 'JetBrains Mono',monospace;color:rgba(0,0,0,.4);margin-bottom:7px">MECHANISM</div><div style="color:rgba(0,0,0,.72)">Structure every case as constraint → decision → outcome, naming the team, timeline and what you'd do differently.</div></div>
+        <div><div style="font:500 11px/1 'JetBrains Mono',monospace;color:rgba(0,0,0,.4);margin-bottom:7px">NEXT</div><div style="color:rgba(0,0,0,.72)">Talk to sales, pre-filled with that case's context.</div></div>
+      </div>
+      <p style="margin:16px 0 0;padding-top:14px;border-top:1px solid rgba(0,0,0,.07);font:400 12.5px/1.6 'IBM Plex Sans',sans-serif;color:oklch(0.55 0.15 60)">Blocked until you supply approved client work. Wireframes will use placeholders.</p>
+    </div>
+
+    <div style="background:#fff;border:1px solid rgba(0,0,0,.09);border-radius:10px;padding:24px 26px">
+      <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:16px"><span style="font:600 16px/1 'Space Grotesk',sans-serif">Solutions</span><span style="font:400 11px/1 'JetBrains Mono',monospace;color:rgba(0,0,0,.4)">BUSINESS OPS / FINANCE</span></div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;font:400 13.5px/1.65 'IBM Plex Sans',sans-serif">
+        <div><div style="font:500 11px/1 'JetBrains Mono',monospace;color:rgba(0,0,0,.4);margin-bottom:7px">INTENT</div><div style="color:rgba(0,0,0,.72)">Do they understand my business, not just the code?</div></div>
+        <div><div style="font:500 11px/1 'JetBrains Mono',monospace;color:rgba(0,0,0,.4);margin-bottom:7px">OBJECTION</div><div style="color:rgba(0,0,0,.72)">Engineers who need everything specified for them.</div></div>
+        <div><div style="font:500 11px/1 'JetBrains Mono',monospace;color:rgba(0,0,0,.4);margin-bottom:7px">MECHANISM</div><div style="color:rgba(0,0,0,.72)">Framed by situation, in the buyer's language, with commercial consequences stated.</div></div>
+        <div><div style="font:500 11px/1 'JetBrains Mono',monospace;color:rgba(0,0,0,.4);margin-bottom:7px">NEXT</div><div style="color:rgba(0,0,0,.72)">Case study in the same situation.</div></div>
+      </div>
+    </div>
+
+    <div style="background:#fff;border:1px solid rgba(0,0,0,.09);border-radius:10px;padding:24px 26px">
+      <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:16px"><span style="font:600 16px/1 'Space Grotesk',sans-serif">How we build</span><span style="font:400 11px/1 'JetBrains Mono',monospace;color:rgba(0,0,0,.4)">TECHNICAL EVALUATOR</span></div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;font:400 13.5px/1.65 'IBM Plex Sans',sans-serif">
+        <div><div style="font:500 11px/1 'JetBrains Mono',monospace;color:rgba(0,0,0,.4);margin-bottom:7px">INTENT</div><div style="color:rgba(0,0,0,.72)">Will I inherit something maintainable?</div></div>
+        <div><div style="font:500 11px/1 'JetBrains Mono',monospace;color:rgba(0,0,0,.4);margin-bottom:7px">OBJECTION</div><div style="color:rgba(0,0,0,.72)">Lock-in, or a handover that never happens.</div></div>
+        <div><div style="font:500 11px/1 'JetBrains Mono',monospace;color:rgba(0,0,0,.4);margin-bottom:7px">MECHANISM</div><div style="color:rgba(0,0,0,.72)">Publish the actual practice: environments, review, testing, on-call, ownership transfer.</div></div>
+        <div><div style="font:500 11px/1 'JetBrains Mono',monospace;color:rgba(0,0,0,.4);margin-bottom:7px">NEXT</div><div style="color:rgba(0,0,0,.72)">Engagement.</div></div>
+      </div>
+    </div>
+
+    <div style="background:#fff;border:1px solid rgba(0,0,0,.09);border-radius:10px;padding:24px 26px">
+      <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:16px"><span style="font:600 16px/1 'Space Grotesk',sans-serif">Engagement</span><span style="font:400 11px/1 'JetBrains Mono',monospace;color:rgba(0,0,0,.4)">BUDGET HOLDER · LAST STOP BEFORE CONTACT</span></div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;font:400 13.5px/1.65 'IBM Plex Sans',sans-serif">
+        <div><div style="font:500 11px/1 'JetBrains Mono',monospace;color:rgba(0,0,0,.4);margin-bottom:7px">INTENT</div><div style="color:rgba(0,0,0,.72)">Can I afford this, and how does it work?</div></div>
+        <div><div style="font:500 11px/1 'JetBrains Mono',monospace;color:rgba(0,0,0,.4);margin-bottom:7px">OBJECTION</div><div style="color:rgba(0,0,0,.72)">No prices means I'm about to be sized up.</div></div>
+        <div><div style="font:500 11px/1 'JetBrains Mono',monospace;color:rgba(0,0,0,.4);margin-bottom:7px">MECHANISM</div><div style="color:rgba(0,0,0,.72)">Honest ranges per model, minimum engagement stated, what changes the number.</div></div>
+        <div><div style="font:500 11px/1 'JetBrains Mono',monospace;color:rgba(0,0,0,.4);margin-bottom:7px">NEXT</div><div style="color:rgba(0,0,0,.72)">Contact.</div></div>
+      </div>
+    </div>
+
+    <div style="background:#fff;border:1px solid rgba(0,0,0,.09);border-radius:10px;padding:24px 26px">
+      <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:16px"><span style="font:600 16px/1 'Space Grotesk',sans-serif">Contact</span><span style="font:400 11px/1 'JetBrains Mono',monospace;color:rgba(0,0,0,.4)">CONVERSION</span></div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;font:400 13.5px/1.65 'IBM Plex Sans',sans-serif">
+        <div><div style="font:500 11px/1 'JetBrains Mono',monospace;color:rgba(0,0,0,.4);margin-bottom:7px">INTENT</div><div style="color:rgba(0,0,0,.72)">Reach a human who can answer.</div></div>
+        <div><div style="font:500 11px/1 'JetBrains Mono',monospace;color:rgba(0,0,0,.4);margin-bottom:7px">OBJECTION</div><div style="color:rgba(0,0,0,.72)">A form into the void, then a drip sequence.</div></div>
+        <div><div style="font:500 11px/1 'JetBrains Mono',monospace;color:rgba(0,0,0,.4);margin-bottom:7px">MECHANISM</div><div style="color:rgba(0,0,0,.72)">State the response time, who replies, and what the first call covers. Five fields maximum.</div></div>
+        <div><div style="font:500 11px/1 'JetBrains Mono',monospace;color:rgba(0,0,0,.4);margin-bottom:7px">NEXT</div><div style="color:rgba(0,0,0,.72)">Confirmation that sets expectations for the call.</div></div>
+      </div>
+    </div>
+
+    <div style="background:#fff;border:1px solid rgba(0,0,0,.09);border-radius:10px;padding:24px 26px">
+      <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:16px"><span style="font:600 16px/1 'Space Grotesk',sans-serif">About · Careers · Insights</span><span style="font:400 11px/1 'JetBrains Mono',monospace;color:rgba(0,0,0,.4)">SUPPORTING</span></div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;font:400 13.5px/1.65 'IBM Plex Sans',sans-serif;color:rgba(0,0,0,.72)">
+        <div><div style="font:500 11px/1 'JetBrains Mono',monospace;color:rgba(0,0,0,.4);margin-bottom:7px">ABOUT</div><div>Who is accountable. Real people, real history. Serves due diligence, not brand storytelling.</div></div>
+        <div><div style="font:500 11px/1 'JetBrains Mono',monospace;color:rgba(0,0,0,.4);margin-bottom:7px">CAREERS</div><div>Reads to clients as much as candidates — the calibre of the team is itself a trust signal.</div></div>
+        <div><div style="font:500 11px/1 'JetBrains Mono',monospace;color:rgba(0,0,0,.4);margin-bottom:7px">INSIGHTS</div><div>Technical writing that earns search and referral. Six good posts beat sixty thin ones.</div></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- 05 journeys -->
+<div style="display:grid;grid-template-columns:170px 1fr;gap:44px;margin-bottom:72px">
+  <div><div style="font:500 11px/1 'JetBrains Mono',monospace;color:rgba(0,0,0,.4);letter-spacing:.06em">05</div><h2 style="font:600 20px/1.25 'Space Grotesk',sans-serif;letter-spacing:-.02em;margin:12px 0 0">Three journeys</h2><p style="font:400 12.5px/1.6 'IBM Plex Sans',sans-serif;color:rgba(0,0,0,.5);margin:14px 0 0">One per buyer you named. Each ends at the same place by a different road.</p></div>
+  <div style="display:flex;flex-direction:column;gap:14px">
+
+    <div style="background:#fff;border:1px solid rgba(0,0,0,.09);border-radius:10px;padding:24px 26px">
+      <div style="font:600 14px/1.3 'Space Grotesk',sans-serif;margin-bottom:4px">VP Engineering · replatforming under a deadline</div>
+      <div style="font:400 12.5px/1.6 'IBM Plex Sans',sans-serif;color:rgba(0,0,0,.55);margin-bottom:18px">Arrives from a peer referral. Sceptical, technical, time-poor. Evaluates craft before claims.</div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;font:500 12px/1 'JetBrains Mono',monospace">
+        <span style="padding:8px 12px;background:#f1efec;border-radius:5px">Home</span><span style="color:rgba(0,0,0,.3)">→</span>
+        <span style="padding:8px 12px;background:#f1efec;border-radius:5px">Work</span><span style="color:rgba(0,0,0,.3)">→</span>
+        <span style="padding:8px 12px;background:#f1efec;border-radius:5px">Case detail</span><span style="color:rgba(0,0,0,.3)">→</span>
+        <span style="padding:8px 12px;background:#f1efec;border-radius:5px">How we build</span><span style="color:rgba(0,0,0,.3)">→</span>
+        <span style="padding:8px 12px;background:#f1efec;border-radius:5px">Engagement</span><span style="color:rgba(0,0,0,.3)">→</span>
+        <span style="padding:8px 12px;background:#1a1c1e;color:#fff;border-radius:5px">Contact</span>
+      </div>
+      <p style="margin:16px 0 0;font:400 13px/1.7 'IBM Plex Sans',sans-serif;color:rgba(0,0,0,.68)">Design implication: Work must be reachable in one click from the hero, and case studies must survive technical reading. This is the journey the site should be optimised for.</p>
+    </div>
+
+    <div style="background:#fff;border:1px solid rgba(0,0,0,.09);border-radius:10px;padding:24px 26px">
+      <div style="font:600 14px/1.3 'Space Grotesk',sans-serif;margin-bottom:4px">Head of Operations · a manual process is breaking</div>
+      <div style="font:400 12.5px/1.6 'IBM Plex Sans',sans-serif;color:rgba(0,0,0,.55);margin-bottom:18px">Arrives from search with a problem, not a spec. Needs to see their own situation described.</div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;font:500 12px/1 'JetBrains Mono',monospace">
+        <span style="padding:8px 12px;background:#f1efec;border-radius:5px">Insight post</span><span style="color:rgba(0,0,0,.3)">→</span>
+        <span style="padding:8px 12px;background:#f1efec;border-radius:5px">Solutions</span><span style="color:rgba(0,0,0,.3)">→</span>
+        <span style="padding:8px 12px;background:#f1efec;border-radius:5px">Case detail</span><span style="color:rgba(0,0,0,.3)">→</span>
+        <span style="padding:8px 12px;background:#f1efec;border-radius:5px">Engagement</span><span style="color:rgba(0,0,0,.3)">→</span>
+        <span style="padding:8px 12px;background:#1a1c1e;color:#fff;border-radius:5px">Contact</span>
+      </div>
+      <p style="margin:16px 0 0;font:400 13px/1.7 'IBM Plex Sans',sans-serif;color:rgba(0,0,0,.68)">Design implication: Solutions pages carry no jargon, and Engagement must answer "roughly what does this cost" before they'll make contact.</p>
+    </div>
+
+    <div style="background:#fff;border:1px solid rgba(0,0,0,.09);border-radius:10px;padding:24px 26px">
+      <div style="font:600 14px/1.3 'Space Grotesk',sans-serif;margin-bottom:4px">Developer · evaluating MindStack as a place to work or partner</div>
+      <div style="font:400 12.5px/1.6 'IBM Plex Sans',sans-serif;color:rgba(0,0,0,.55);margin-bottom:18px">Not a buyer. Influences buyers, and becomes the team that wins the work.</div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;font:500 12px/1 'JetBrains Mono',monospace">
+        <span style="padding:8px 12px;background:#f1efec;border-radius:5px">Insights</span><span style="color:rgba(0,0,0,.3)">→</span>
+        <span style="padding:8px 12px;background:#f1efec;border-radius:5px">How we build</span><span style="color:rgba(0,0,0,.3)">→</span>
+        <span style="padding:8px 12px;background:#f1efec;border-radius:5px">Careers</span><span style="color:rgba(0,0,0,.3)">→</span>
+        <span style="padding:8px 12px;background:#1a1c1e;color:#fff;border-radius:5px">Apply</span>
+      </div>
+      <p style="margin:16px 0 0;font:400 13px/1.7 'IBM Plex Sans',sans-serif;color:rgba(0,0,0,.68)">Design implication: this audience gets depth, not a second CTA. Serve them through Insights and How we build; don't distort the commercial pages for them.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- 06 motion -->
+<div style="display:grid;grid-template-columns:170px 1fr;gap:44px;margin-bottom:72px">
+  <div><div style="font:500 11px/1 'JetBrains Mono',monospace;color:rgba(0,0,0,.4);letter-spacing:.06em">06</div><h2 style="font:600 20px/1.25 'Space Grotesk',sans-serif;letter-spacing:-.02em;margin:12px 0 0">Motion as evidence</h2><p style="font:400 12.5px/1.6 'IBM Plex Sans',sans-serif;color:rgba(0,0,0,.5);margin:14px 0 0">You asked for showpiece motion. Here is where it earns its place, and where it must stay out of the way.</p></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+    <div style="background:#fff;border:1px solid rgba(0,0,0,.09);border-radius:10px;padding:24px">
+      <div style="font:600 13px/1.3 'Space Grotesk',sans-serif;margin-bottom:12px">Showpiece moments — three, no more</div>
+      <ul style="margin:0;padding-left:18px;font:400 13.5px/1.7 'IBM Plex Sans',sans-serif;color:rgba(0,0,0,.7)">
+        <li>Hero: a working interface assembling itself, once, on load.</li>
+        <li>How we build: a scroll-driven walk through the architecture.</li>
+        <li>Case study opening: the before state resolving into the after.</li>
+      </ul>
+    </div>
+    <div style="background:#fff;border:1px solid rgba(0,0,0,.09);border-radius:10px;padding:24px">
+      <div style="font:600 13px/1.3 'Space Grotesk',sans-serif;margin-bottom:12px">Everywhere else — quiet system</div>
+      <ul style="margin:0;padding-left:18px;font:400 13.5px/1.7 'IBM Plex Sans',sans-serif;color:rgba(0,0,0,.7)">
+        <li>Reveals: 12–16px rise, 400ms, one easing curve, staggered 60ms.</li>
+        <li>Hover: 120ms, state change only, never scale-and-shadow.</li>
+        <li>Nothing animates on the Contact page or in forms.</li>
+        <li><code style="font:400 12.5px 'JetBrains Mono',monospace">prefers-reduced-motion</code> replaces every reveal with an instant state and freezes the hero on its final frame.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- 07 missing -->
+<div style="display:grid;grid-template-columns:170px 1fr;gap:44px;margin-bottom:72px">
+  <div><div style="font:500 11px/1 'JetBrains Mono',monospace;color:rgba(0,0,0,.4);letter-spacing:.06em">07</div><h2 style="font:600 20px/1.25 'Space Grotesk',sans-serif;letter-spacing:-.02em;margin:12px 0 0">What I need from you</h2><p style="font:400 12.5px/1.6 'IBM Plex Sans',sans-serif;color:rgba(0,0,0,.5);margin:14px 0 0">Ordered by how much it blocks. Wireframes can proceed without any of it; hi-fi cannot ship without the first four.</p></div>
+  <div style="background:#fff;border:1px solid rgba(0,0,0,.09);border-radius:10px;overflow:hidden">
+    <div style="display:grid;grid-template-columns:34px 1fr 110px;gap:16px;padding:14px 24px;background:#1a1c1e;font:500 11px/1 'JetBrains Mono',monospace;color:rgba(255,255,255,.6);letter-spacing:.05em"><div></div><div>ITEM</div><div>BLOCKS</div></div>
+    <div style="display:grid;grid-template-columns:34px 1fr 110px;gap:16px;padding:16px 24px;border-bottom:1px solid rgba(0,0,0,.07);font:400 14px/1.5 'IBM Plex Sans',sans-serif"><div style="font:500 12px 'JetBrains Mono',monospace;color:rgba(0,0,0,.35)">01</div><div>Two to four projects you can name publicly, with approved detail and permission to show the interface.</div><div style="font:500 12px 'JetBrains Mono',monospace;color:oklch(0.55 0.16 25)">Work, Home</div></div>
+    <div style="display:grid;grid-template-columns:34px 1fr 110px;gap:16px;padding:16px 24px;border-bottom:1px solid rgba(0,0,0,.07);font:400 14px/1.5 'IBM Plex Sans',sans-serif"><div style="font:500 12px 'JetBrains Mono',monospace;color:rgba(0,0,0,.35)">02</div><div>Engagement models you actually sell, and the price ranges you're willing to publish.</div><div style="font:500 12px 'JetBrains Mono',monospace;color:oklch(0.55 0.16 25)">Engagement</div></div>
+    <div style="display:grid;grid-template-columns:34px 1fr 110px;gap:16px;padding:16px 24px;border-bottom:1px solid rgba(0,0,0,.07);font:400 14px/1.5 'IBM Plex Sans',sans-serif"><div style="font:500 12px 'JetBrains Mono',monospace;color:rgba(0,0,0,.35)">03</div><div>Your real stack and hosting posture — languages, frameworks, clouds, what you refuse to work in.</div><div style="font:500 12px 'JetBrains Mono',monospace;color:oklch(0.55 0.16 25)">How we build</div></div>
+    <div style="display:grid;grid-template-columns:34px 1fr 110px;gap:16px;padding:16px 24px;border-bottom:1px solid rgba(0,0,0,.07);font:400 14px/1.5 'IBM Plex Sans',sans-serif"><div style="font:500 12px 'JetBrains Mono',monospace;color:rgba(0,0,0,.35)">04</div><div>Team size, locations, and who takes the first sales call.</div><div style="font:500 12px 'JetBrains Mono',monospace;color:oklch(0.55 0.16 25)">About, Contact</div></div>
+    <div style="display:grid;grid-template-columns:34px 1fr 110px;gap:16px;padding:16px 24px;border-bottom:1px solid rgba(0,0,0,.07);font:400 14px/1.5 'IBM Plex Sans',sans-serif"><div style="font:500 12px 'JetBrains Mono',monospace;color:rgba(0,0,0,.35)">05</div><div>Industries where you have genuine depth — these become the Solutions pages.</div><div style="font:500 12px 'JetBrains Mono',monospace;color:rgba(0,0,0,.45)">Solutions</div></div>
+    <div style="display:grid;grid-template-columns:34px 1fr 110px;gap:16px;padding:16px 24px;border-bottom:1px solid rgba(0,0,0,.07);font:400 14px/1.5 'IBM Plex Sans',sans-serif"><div style="font:500 12px 'JetBrains Mono',monospace;color:rgba(0,0,0,.35)">06</div><div>Photography: team, workspace, or nothing. If nothing, the design goes typographic and stays there.</div><div style="font:500 12px 'JetBrains Mono',monospace;color:rgba(0,0,0,.45)">Art direction</div></div>
+    <div style="display:grid;grid-template-columns:34px 1fr 110px;gap:16px;padding:16px 24px;font:400 14px/1.5 'IBM Plex Sans',sans-serif"><div style="font:500 12px 'JetBrains Mono',monospace;color:rgba(0,0,0,.35)">07</div><div>Whether MindStack is an existing brand with assets, or whether the identity is genuinely open.</div><div style="font:500 12px 'JetBrains Mono',monospace;color:rgba(0,0,0,.45)">Identity</div></div>
+  </div>
+</div>
+
+<!-- 08 sequence -->
+<div style="display:grid;grid-template-columns:170px 1fr;gap:44px">
+  <div><div style="font:500 11px/1 'JetBrains Mono',monospace;color:rgba(0,0,0,.4);letter-spacing:.06em">08</div><h2 style="font:600 20px/1.25 'Space Grotesk',sans-serif;letter-spacing:-.02em;margin:12px 0 0">Proposed sequence</h2></div>
+  <div style="display:flex;flex-direction:column;gap:10px">
+    <div style="background:#fff;border:1px solid rgba(0,0,0,.09);border-radius:10px;padding:20px 24px;display:flex;gap:20px;align-items:baseline"><span style="font:500 12px 'JetBrains Mono',monospace;color:oklch(0.5 0.13 250);min-width:56px">DONE</span><div><div style="font:600 14px/1.4 'Space Grotesk',sans-serif">Logo directions ×5</div><div style="font:400 13px/1.6 'IBM Plex Sans',sans-serif;color:rgba(0,0,0,.6);margin-top:3px">Needs rework — they were drawn for an AI-platform story, not a software firm.</div></div></div>
+    <div style="background:#fff;border:1px solid rgba(0,0,0,.09);border-radius:10px;padding:20px 24px;display:flex;gap:20px;align-items:baseline"><span style="font:500 12px 'JetBrains Mono',monospace;color:oklch(0.5 0.13 250);min-width:56px">NOW</span><div><div style="font:600 14px/1.4 'Space Grotesk',sans-serif">This document</div><div style="font:400 13px/1.6 'IBM Plex Sans',sans-serif;color:rgba(0,0,0,.6);margin-top:3px">Agree the sitemap and the two departures before anything gets drawn.</div></div></div>
+    <div style="background:#fff;border:1px solid rgba(0,0,0,.09);border-radius:10px;padding:20px 24px;display:flex;gap:20px;align-items:baseline"><span style="font:500 12px 'JetBrains Mono',monospace;color:rgba(0,0,0,.35);min-width:56px">NEXT</span><div><div style="font:600 14px/1.4 'Space Grotesk',sans-serif">Low-fi wireframes — homepage first, 3 structural approaches</div><div style="font:400 13px/1.6 'IBM Plex Sans',sans-serif;color:rgba(0,0,0,.6);margin-top:3px">Then the remaining pages once a structure is chosen. Desktop, tablet and mobile behaviour noted per section.</div></div></div>
+    <div style="background:#fff;border:1px solid rgba(0,0,0,.09);border-radius:10px;padding:20px 24px;display:flex;gap:20px;align-items:baseline"><span style="font:500 12px 'JetBrains Mono',monospace;color:rgba(0,0,0,.35);min-width:56px">THEN</span><div><div style="font:600 14px/1.4 'Space Grotesk',sans-serif">Identity rework → design system → hi-fi homepage → remaining pages</div><div style="font:400 13px/1.6 'IBM Plex Sans',sans-serif;color:rgba(0,0,0,.6);margin-top:3px">Logo settles alongside the system, once the site's tone is visible. Component library falls out of the hi-fi pages rather than preceding them.</div></div></div>
+  </div>
+</div>
+
+</div>
+</x-dc>
+</body>
+</html>

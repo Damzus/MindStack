@@ -1,0 +1,131 @@
+---
+import Logo from '../ui/Logo.astro';
+import { footerNav, legalNav, conversionCta } from '../../lib/nav';
+---
+
+<footer class="footer">
+  <div class="shell">
+    <div class="cols">
+      <div class="brand">
+        <Logo class="brand-logo" />
+        <p class="brand-line">Software built and run by one team.</p>
+      </div>
+
+      {
+        footerNav.map((group) => (
+          <nav class="col" aria-label={group.heading}>
+            <p class="eyebrow col-heading">{group.heading}</p>
+            {group.links.map((link) => (
+              <a class="col-link" href={link.href}>
+                {link.label}
+              </a>
+            ))}
+          </nav>
+        ))
+      }
+
+      <div class="col">
+        <p class="eyebrow col-heading">Contact</p>
+        <a class="col-link" href={conversionCta.href}>{conversionCta.label}</a>
+        <a class="col-link" href="mailto:saurabnand951@gmail.com">saurabnand951@gmail.com</a>
+        <address class="col-address">Suva, Fiji</address>
+      </div>
+    </div>
+
+    <div class="bar">
+      <span class="col-placeholder">© MINDSTACK</span>
+      <div class="legal">
+        {legalNav.map((link) => <a class="legal-link" href={link.href}>{link.label}</a>)}
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--surface-footer);
+    border-top: 1px solid var(--footer-border);
+    padding-block: clamp(40px, 5vw, 64px);
+    color: var(--footer-text);
+  }
+
+  .cols {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: var(--space-5);
+    margin-bottom: var(--space-6);
+  }
+
+  .brand-logo {
+    color: var(--footer-text);
+    margin-bottom: var(--space-4);
+  }
+
+  .brand-line {
+    margin: 0;
+    max-width: 20em;
+    font-size: 13.5px;
+    line-height: 1.7;
+    color: var(--footer-text-dim);
+  }
+
+  .col {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+  }
+
+  .col-heading {
+    margin: 0 0 var(--space-1);
+    color: var(--footer-text-dim);
+  }
+
+  .col-link {
+    font-size: 14px;
+    color: var(--footer-text);
+    opacity: 0.72;
+    transition: opacity var(--dur-hover) var(--ease);
+  }
+
+  .col-link:hover {
+    color: var(--footer-text);
+    opacity: 1;
+  }
+
+  .col-placeholder {
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    color: var(--footer-text-dim);
+  }
+
+  .col-address {
+    font-style: normal;
+    font-size: 14px;
+    color: var(--footer-text);
+    opacity: 0.72;
+  }
+
+  .bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    justify-content: space-between;
+    border-top: 1px solid var(--footer-border);
+    padding-top: var(--space-4);
+  }
+
+  .legal {
+    display: flex;
+    gap: var(--space-4);
+  }
+
+  .legal-link {
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    color: var(--footer-text-dim);
+  }
+
+  .legal-link:hover {
+    color: var(--footer-text);
+  }
+</style>

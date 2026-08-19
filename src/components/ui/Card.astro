@@ -1,0 +1,64 @@
+---
+interface Props {
+  href?: string;
+  panel?: boolean;
+  elevation?: 'flat' | 'raised' | 'overlay';
+  interactive?: boolean;
+  class?: string;
+}
+
+const {
+  href,
+  panel = false,
+  elevation = 'flat',
+  interactive = false,
+  class: className = '',
+} = Astro.props;
+
+const Tag = href ? 'a' : 'div';
+const classes = [
+  'card',
+  panel ? 'card-panel' : '',
+  `elev-${elevation}`,
+  href || interactive ? 'card-interactive' : '',
+  className,
+]
+  .filter(Boolean)
+  .join(' ');
+---
+
+<Tag class={classes} href={href}>
+  <slot />
+</Tag>
+
+<style>
+  .card {
+    display: block;
+    background: var(--surface-card);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-md);
+    color: inherit;
+  }
+
+  .card-panel {
+    background: var(--surface-panel);
+    border-radius: var(--radius-lg);
+  }
+
+  .elev-raised {
+    box-shadow: var(--elev-raised);
+  }
+
+  .elev-overlay {
+    box-shadow: var(--elev-overlay);
+  }
+
+  .card-interactive {
+    transition: border-color 160ms var(--ease);
+  }
+
+  .card-interactive:hover {
+    border-color: var(--border-hover);
+    color: inherit;
+  }
+</style>

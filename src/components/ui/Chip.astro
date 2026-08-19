@@ -1,0 +1,56 @@
+---
+interface Props {
+  href?: string;
+  selected?: boolean;
+  mono?: boolean;
+  class?: string;
+}
+
+const { href, selected = false, mono = false, class: className = '' } = Astro.props;
+
+const Tag = href ? 'a' : 'span';
+const classes = ['chip', selected ? 'chip-selected' : '', mono ? 'chip-mono' : '', className]
+  .filter(Boolean)
+  .join(' ');
+---
+
+<Tag class={classes} href={href} aria-current={href && selected ? 'true' : undefined}>
+  <slot />
+</Tag>
+
+<style>
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    height: 34px;
+    padding: 0 14px;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-pill);
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 13px;
+    color: var(--text-secondary);
+    transition: border-color var(--dur-hover) var(--ease);
+  }
+
+  a.chip:hover {
+    border-color: var(--border-hover);
+    color: var(--text-primary);
+  }
+
+  .chip-mono {
+    font-family: var(--font-mono);
+    font-weight: 400;
+    font-size: 12.5px;
+  }
+
+  .chip-selected {
+    background: var(--text-primary);
+    border-color: var(--text-primary);
+    color: var(--bg);
+  }
+
+  a.chip-selected:hover {
+    color: var(--bg);
+  }
+</style>

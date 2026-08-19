@@ -1,0 +1,72 @@
+---
+---
+
+<div class="atmosphere" aria-hidden="true">
+  <div class="glow"></div>
+  <div class="grid-fine"></div>
+  <div class="grid-wide"></div>
+  <div class="scan"></div>
+</div>
+
+<style>
+  .atmosphere {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+    opacity: var(--atmosphere-opacity);
+    contain: layout paint;
+  }
+
+  .glow {
+    position: absolute;
+    inset: 0;
+    background: var(--glow);
+  }
+
+  .grid-fine,
+  .grid-wide {
+    position: absolute;
+    inset: -40px 0 -40px 0;
+    will-change: transform;
+  }
+
+  .grid-fine {
+    background-image: linear-gradient(var(--grid-fine) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-fine) 1px, transparent 1px);
+    background-size: 34px 34px;
+    animation: ms-drift 9s linear infinite;
+    mask-image: linear-gradient(180deg, #000 0%, transparent 78%);
+  }
+
+  .grid-wide {
+    background-image: linear-gradient(90deg, var(--grid-wide) 1px, transparent 1px);
+    background-size: 52px 100%;
+    animation: ms-drift 11s linear infinite;
+    mask-image: linear-gradient(180deg, transparent 40%, #000 100%);
+  }
+
+  .scan {
+    --scan-distance: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--scan-gradient);
+    animation: ms-scan 9s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    will-change: transform;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .scan {
+      display: none;
+    }
+
+    .grid-fine,
+    .grid-wide {
+      animation: none;
+    }
+  }
+</style>

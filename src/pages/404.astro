@@ -1,0 +1,31 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHeader from '../components/layout/PageHeader.astro';
+import Button from '../components/ui/Button.astro';
+---
+
+<Base title="Not found — MindStack" description="That page does not exist." quiet>
+  <PageHeader
+    eyebrow="404"
+    title="That page doesn't exist."
+    lead="The link may be out of date, or the page may not be written yet."
+  />
+  <section class="section-tight">
+    <div class="shell actions">
+      <Button href="/">Back to home</Button>
+      <Button href="/work" variant="ghost">See the work</Button>
+      <Button href="/contact" variant="ghost">Talk to sales</Button>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .section-tight {
+    padding-bottom: var(--section-y);
+  }
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+  }
+</style>

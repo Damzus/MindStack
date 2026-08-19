@@ -1,0 +1,49 @@
+---
+interface Props {
+  size?: number;
+  wordmark?: boolean;
+  href?: string | null;
+  class?: string;
+}
+
+const { size = 21, wordmark = true, href = '/', class: className = '' } = Astro.props;
+
+const Tag = href ? 'a' : 'span';
+---
+
+<Tag class={`logo ${className}`} href={href ?? undefined}>
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 46 46"
+    role="img"
+    aria-label={wordmark ? 'MindStack' : 'MindStack home'}
+  >
+    <rect x="4" y="6" width="38" height="8" rx="2" fill="currentColor"></rect>
+    <rect x="4" y="19" width="26" height="8" rx="2" fill="currentColor"></rect>
+    <rect x="4" y="32" width="14" height="8" rx="2" fill="var(--accent)"></rect>
+  </svg>
+  {wordmark && <span class="logo-word" aria-hidden="true">MindStack</span>}
+</Tag>
+
+<style>
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .logo:hover {
+    color: inherit;
+  }
+
+  .logo-word {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 15.5px;
+    line-height: 1;
+    letter-spacing: -0.015em;
+  }
+</style>

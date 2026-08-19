@@ -1,0 +1,212 @@
+---
+const layers = [
+  {
+    name: 'Interface',
+    meta: 'web · mobile',
+    kind: 'blocks',
+    count: 3,
+    delay: '0s',
+  },
+  {
+    name: 'Application',
+    meta: 'api · workers',
+    kind: 'equaliser',
+    count: 8,
+    delay: '0.5s',
+  },
+  {
+    name: 'Infrastructure',
+    meta: 'on call',
+    kind: 'nodes',
+    count: 6,
+    delay: '1s',
+    live: true,
+  },
+];
+---
+
+<div class="stack u-hairline" data-anim-scope>
+  <div class="stack-grid" aria-hidden="true"></div>
+
+  <div class="stack-inner">
+    {
+      layers.map((layer, index) => (
+        <>
+          <div class="layer" style={`animation-delay: ${layer.delay}`}>
+            <div class="layer-head">
+              <span class="layer-name">{layer.name}</span>
+              <span class="layer-meta">
+                {layer.live && <span class="live-dot" />}
+                {layer.meta}
+              </span>
+            </div>
+
+            {layer.kind === 'equaliser' ? (
+              <div class="eq">
+                {Array.from({ length: layer.count }).map((_, bar) => (
+                  <span class="eq-bar" style={`animation-delay: ${bar * 0.15}s`} />
+                ))}
+              </div>
+            ) : (
+              <div class={`cells cells-${layer.kind}`}>
+                {Array.from({ length: layer.count }).map(() => (
+                  <span class="cell" />
+                ))}
+              </div>
+            )}
+          </div>
+
+          {index < layers.length - 1 && (
+            <div class="rail" aria-hidden="true">
+              <span class="rail-line" />
+              <span class="rail-pulse" style={`animation-delay: ${index * 1.1}s`} />
+            </div>
+          )}
+        </>
+      ))
+    }
+  </div>
+
+  <p class="stack-caption">Motion graphic · replace layer content with real client UI</p>
+</div>
+
+<style>
+  .stack {
+    position: relative;
+    padding: 22px;
+    background: var(--surface-panel);
+    border: 1px solid var(--border-default);
+    border-radius: 18px;
+    box-shadow: var(--elev-showpiece);
+    overflow: hidden;
+  }
+
+  .stack-grid {
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(var(--grid-fine) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-fine) 1px, transparent 1px);
+    background-size: 34px 34px;
+    animation: ms-drift 9s linear infinite;
+    mask-image: radial-gradient(120% 90% at 50% 0%, #000, transparent 75%);
+    pointer-events: none;
+  }
+
+  .stack-inner {
+    position: relative;
+  }
+
+  .layer {
+    padding: 16px 18px;
+    border: 1px solid var(--border-strong);
+    border-radius: 12px;
+    background: var(--surface-layer);
+    animation: ms-orbit 6s ease-in-out infinite;
+  }
+
+  .layer-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    margin-bottom: var(--space-3);
+  }
+
+  .layer-name {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .layer-meta {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-tertiary);
+  }
+
+  .live-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--success);
+    animation: ms-pulse 2.4s ease-in-out infinite;
+  }
+
+  .cells {
+    display: grid;
+    gap: 6px;
+  }
+
+  .cells-blocks {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .cells-nodes {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  .cell {
+    height: 22px;
+    border-radius: var(--radius-sm);
+    background: var(--surface-band);
+    border: 1px solid var(--border-subtle);
+  }
+
+  .eq {
+    display: flex;
+    align-items: flex-end;
+    gap: 5px;
+    height: 30px;
+  }
+
+  .eq-bar {
+    flex: 1;
+    height: 100%;
+    border-radius: 2px;
+    background: var(--accent);
+    opacity: 0.6;
+    transform-origin: bottom;
+    animation: ms-eq 1.2s ease-in-out infinite;
+  }
+
+  .rail {
+    position: relative;
+    height: 22px;
+  }
+
+  .rail-line {
+    position: absolute;
+    top: 10px;
+    left: 12%;
+    width: 76%;
+    height: 1px;
+    background: var(--border-strong);
+  }
+
+  .rail-pulse {
+    position: absolute;
+    top: 7px;
+    left: 12%;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 12px var(--accent);
+    animation: ms-travel 3.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .stack-caption {
+    position: relative;
+    margin: var(--space-4) 0 0;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+  }
+</style>

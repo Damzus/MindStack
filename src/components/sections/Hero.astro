@@ -1,0 +1,201 @@
+---
+import Button from '../ui/Button.astro';
+import StackShowpiece from './StackShowpiece.astro';
+import { conversionCta } from '../../lib/nav';
+
+const cycle = [
+  'scoping architecture',
+  'provisioning environments',
+  'running the test suite',
+  'deploying to production',
+  'watching the dashboards',
+];
+---
+
+<section class="hero" id="top">
+  <div class="shell hero-grid">
+    <div class="hero-copy">
+      <p class="pill rise rise-1">
+        <span class="pill-dot" aria-hidden="true"></span>
+        Build · Ship · Operate
+      </p>
+
+      <h1 class="hero-title rise rise-2">Build it properly, then<br />keep it running.</h1>
+
+      <p class="hero-lead rise rise-3">
+        MindStack designs and builds websites and applications for businesses, and operates the
+        cloud infrastructure underneath them. One team from first scope to on-call.
+      </p>
+
+      <div class="hero-actions rise rise-4">
+        <Button href={conversionCta.href} size="lg">{conversionCta.label}</Button>
+        <Button href="/work" variant="ghost" size="lg">See the work</Button>
+      </div>
+
+      <p class="terminal rise rise-4" data-anim-scope>
+        <span class="terminal-prompt" aria-hidden="true">$</span>
+        <span class="terminal-rail" aria-hidden="true">
+          {
+            cycle.map((line, index) => (
+              <span class="terminal-line" style={`animation-delay: ${index * 2.5}s`}>
+                {line}
+              </span>
+            ))
+          }
+        </span>
+        <span class="caret" aria-hidden="true"></span>
+        <span class="sr-only">Examples of the work: {cycle.join(', ')}</span>
+      </p>
+    </div>
+
+    <div class="hero-figure rise rise-3">
+      <StackShowpiece />
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding-block: clamp(48px, 7vw, 96px) clamp(40px, 5vw, 72px);
+  }
+
+  .hero-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: clamp(32px, 5vw, 64px);
+    align-items: center;
+  }
+
+  .hero-copy {
+    flex: 1 1 420px;
+    min-width: min(100%, 340px);
+  }
+
+  .hero-figure {
+    flex: 1 1 440px;
+    min-width: min(100%, 320px);
+  }
+
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    height: 32px;
+    margin: 0 0 26px;
+    padding: 0 14px;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-pill);
+    background: var(--surface-pill);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+  }
+
+  .pill-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: ms-pulse 2.4s ease-in-out infinite;
+  }
+
+  .hero-title {
+    margin: 0 0 var(--space-4);
+    max-width: 15em;
+    font-size: var(--size-display);
+    line-height: var(--leading-display);
+    letter-spacing: var(--tracking-display);
+  }
+
+  .hero-lead {
+    margin: 0 0 var(--space-5);
+    max-width: 30em;
+    font-size: var(--size-lead);
+    line-height: var(--leading-lead);
+    color: var(--text-secondary);
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+  }
+
+  .terminal {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: fit-content;
+    height: 34px;
+    margin: 26px 0 0;
+    padding: 0 14px;
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-md);
+    background: var(--surface-pill);
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    color: var(--text-secondary);
+  }
+
+  .terminal-prompt {
+    color: var(--accent);
+  }
+
+  .terminal-rail {
+    position: relative;
+    display: block;
+    width: 196px;
+    height: 16px;
+    line-height: 16px;
+  }
+
+  .terminal-line {
+    position: absolute;
+    left: 0;
+    top: 0;
+    white-space: nowrap;
+    opacity: 0;
+    animation: ms-cycle 12.5s linear infinite;
+  }
+
+  .caret {
+    width: 7px;
+    height: 14px;
+    background: var(--accent);
+    animation: ms-caret 1.1s steps(1) infinite;
+  }
+
+  .rise {
+    animation: ms-rise 600ms var(--ease) both;
+  }
+
+  .rise-1 {
+    animation-name: ms-fade;
+    animation-duration: 500ms;
+  }
+
+  .rise-2 {
+    animation-delay: 80ms;
+  }
+
+  .rise-3 {
+    animation-delay: 160ms;
+  }
+
+  .rise-4 {
+    animation-delay: 240ms;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+</style>

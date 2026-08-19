@@ -1,0 +1,73 @@
+---
+import Button from '../ui/Button.astro';
+import { conversionCta } from '../../lib/nav';
+---
+
+<section class="cta" id="contact">
+  <div class="shell cta-inner">
+    <div class="cta-copy">
+      <h2 class="cta-title">Tell us what's in the way.</h2>
+      <p class="cta-lead">
+        A first call is 30 minutes with an engineer, not a salesperson. You'll leave it with an
+        opinion, whether or not you work with us.
+      </p>
+    </div>
+    <div class="cta-action">
+      <Button href={conversionCta.href} size="lg">{conversionCta.label}</Button>
+      <p class="cta-meta">First call with Waisale Bunoa<br />Response time TBC</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta {
+    background: var(--surface-footer);
+    color: var(--footer-text);
+    padding-block: clamp(64px, 8vw, 112px);
+  }
+
+  .cta-inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: clamp(32px, 5vw, 72px);
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+
+  .cta-copy {
+    flex: 1 1 380px;
+  }
+
+  .cta-title {
+    margin-bottom: 18px;
+    max-width: 16em;
+    font-size: clamp(30px, 4vw, 50px);
+    line-height: 1.06;
+    letter-spacing: -0.034em;
+  }
+
+  .cta-lead {
+    margin: 0;
+    max-width: 28em;
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--footer-text-dim);
+  }
+
+  .cta-action {
+    flex: 0 1 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .cta-meta {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    line-height: 1.7;
+    text-transform: uppercase;
+    color: var(--footer-text-dim);
+  }
+</style>

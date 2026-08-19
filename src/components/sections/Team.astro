@@ -1,0 +1,165 @@
+---
+import { Image } from 'astro:assets';
+import SectionHeader from './SectionHeader.astro';
+import saurab from '../../assets/team/saurab-nand.jpg';
+import roshnil from '../../assets/team/roshnil-chand.jpg';
+import waisale from '../../assets/team/waisale-bunoa.jpg';
+
+const people = [
+  {
+    name: 'Saurab Nand',
+    role: 'Software developer · DevOps & cloud',
+    bio: 'Builds the software and the infrastructure it runs on — pipelines, provisioning and cloud architecture.',
+    linkedin: 'https://www.linkedin.com/in/saurab-nand-889501205/',
+    portrait: saurab,
+  },
+  {
+    name: 'Roshnil Chand',
+    role: 'Software developer · AI & automation',
+    bio: 'Builds application logic and the automation around it, including AI-assisted workflows.',
+    linkedin: 'https://www.linkedin.com/in/roshnil-chand-77ba4729b/',
+    portrait: roshnil,
+  },
+  {
+    name: 'Waisale Bunoa',
+    role: 'Project management · business analysis',
+    bio: 'Takes the first call, writes the scope, stays accountable for the plan. Confirm wording.',
+    linkedin: 'https://www.linkedin.com/in/waisale-bunoa-20252920b/',
+    portrait: waisale,
+  },
+];
+---
+
+<section class="section" id="team">
+  <div class="shell">
+    <SectionHeader
+      eyebrow="Who you'll work with"
+      title="A small team. The people who scope it are the people who build it."
+      narrow
+    />
+
+    <div class="grid">
+      {
+        people.map((person) => (
+          <article class="member" data-reveal>
+            <div class="portrait u-sheen" data-anim-scope>
+              <Image
+                src={person.portrait}
+                alt={`${person.name}, ${person.role}`}
+                width={400}
+                height={400}
+                widths={[200, 400]}
+                sizes="(min-width: 900px) 220px, 45vw"
+                loading="lazy"
+                fetchpriority="low"
+                decoding="async"
+              />
+            </div>
+            <div class="member-body">
+              <h3 class="member-name">{person.name}</h3>
+              <p class="member-role">{person.role}</p>
+              <p class="member-bio">{person.bio}</p>
+              <a
+                class="member-link"
+                href={person.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                LinkedIn →<span class="sr-only"> profile for {person.name}</span>
+              </a>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+
+    <p class="note">Still needed: Waisale's exact title.</p>
+  </div>
+</section>
+
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--space-3);
+  }
+
+  .member {
+    display: flex;
+    flex-direction: column;
+    background: var(--surface-card);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: border-color 160ms var(--ease);
+  }
+
+  .member:hover {
+    border-color: var(--border-hover);
+  }
+
+  .portrait {
+    aspect-ratio: 1;
+    background: var(--surface-band);
+  }
+
+  .portrait :global(img) {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .member-body {
+    padding: var(--space-4);
+  }
+
+  .member-name {
+    margin-bottom: 6px;
+    font-size: 18px;
+    line-height: 1.3;
+    letter-spacing: -0.018em;
+  }
+
+  .member-role {
+    margin: 0 0 var(--space-3);
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent-contrast);
+  }
+
+  .member-bio {
+    margin: 0 0 var(--space-4);
+    font-size: 14px;
+    color: var(--text-secondary);
+  }
+
+  .member-link {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .note {
+    margin: var(--space-4) 0 0;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+</style>

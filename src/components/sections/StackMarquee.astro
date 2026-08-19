@@ -1,0 +1,79 @@
+---
+const stack = [
+  'TypeScript',
+  'React',
+  'Node',
+  'Postgres',
+  'Cosmos DB',
+  'Terraform',
+  'Kubernetes',
+  'AWS',
+  'Azure',
+  'Observability',
+  'CI/CD',
+];
+
+const track = [...stack, ...stack];
+---
+
+<div class="strip u-sweep" data-anim-scope>
+  <div class="viewport">
+    <div class="track">
+      {track.map((item) => <span class="item" aria-hidden="true">{item}</span>)}
+    </div>
+  </div>
+  <p class="sr-only">Our stack: {stack.join(', ')}.</p>
+</div>
+
+<style>
+  .strip {
+    position: relative;
+    background: var(--surface-strip);
+    border-top: 1px solid var(--border-subtle);
+    border-bottom: 1px solid var(--border-subtle);
+    padding-block: 16px;
+  }
+
+  .viewport {
+    overflow: hidden;
+    mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+  }
+
+  .track {
+    display: flex;
+    width: max-content;
+    gap: clamp(28px, 5vw, 64px);
+    padding-inline: clamp(28px, 5vw, 64px);
+    animation: ms-marquee 28s linear infinite;
+  }
+
+  .item {
+    flex: none;
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 12.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    white-space: nowrap;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .track {
+      animation: none;
+      flex-wrap: wrap;
+      width: auto;
+    }
+  }
+</style>

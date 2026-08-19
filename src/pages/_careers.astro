@@ -1,0 +1,27 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHeader from '../components/layout/PageHeader.astro';
+import Pending from '../components/sections/Pending.astro';
+import CtaBand from '../components/sections/CtaBand.astro';
+---
+
+<Base
+  title="Careers — MindStack"
+  description="Working at MindStack. The calibre of the team is itself a trust signal."
+>
+  <PageHeader
+    eyebrow="Careers"
+    title="Work here."
+    lead="This page reads to clients as much as to candidates — the calibre of the team is itself a trust signal."
+  />
+  <Pending
+    needed={[
+      'Open roles, or an explicit statement that there are none right now',
+      'How you actually hire — stages, timeline, who a candidate meets',
+      'Location and remote policy',
+      'What you pay, or the band you are willing to publish',
+      'What is genuinely different about working here',
+    ]}
+  />
+  <CtaBand />
+</Base>

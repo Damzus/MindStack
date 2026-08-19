@@ -1,0 +1,157 @@
+---
+import SectionHeader from './SectionHeader.astro';
+
+const stages = [
+  {
+    index: '01 · Scope',
+    name: 'Paid discovery',
+    body: 'Ends in an architecture, a plan and a number. Yours to take elsewhere.',
+  },
+  {
+    index: '02 · Build',
+    name: 'Two-week increments',
+    body: 'In your repository, in your cloud account, reviewable from day one.',
+  },
+  {
+    index: '03 · Ship',
+    name: 'Staged release',
+    body: 'Rollback ready, monitoring wired before launch, runbook written by the builders.',
+  },
+  {
+    index: '04 · Run',
+    name: 'On call',
+    body: 'We operate it, or train your team to. Handover is a date, not a hope.',
+  },
+];
+---
+
+<section class="section" id="how-we-build">
+  <div class="shell">
+    <SectionHeader eyebrow="How we build" title="One pipeline, running continuously." narrow />
+
+    <div class="rail" aria-hidden="true" data-anim-scope>
+      <span class="rail-line"></span>
+      <span class="rail-pulse"></span>
+      <span class="rail-pulse rail-pulse-b"></span>
+    </div>
+
+    <ol class="stages">
+      {
+        stages.map((stage) => (
+          <li class="stage" data-reveal>
+            <span class="stage-index">{stage.index}</span>
+            <h3 class="stage-name">{stage.name}</h3>
+            <p class="stage-body">{stage.body}</p>
+          </li>
+        ))
+      }
+    </ol>
+
+    <p class="note">
+      Placeholder process — replace with your real environments and on-call arrangement
+    </p>
+  </div>
+</section>
+
+<style>
+  .rail {
+    position: relative;
+    height: 14px;
+    margin-bottom: var(--space-2);
+  }
+
+  .rail-line {
+    position: absolute;
+    top: 6px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--border-strong) 12%,
+      var(--border-strong) 88%,
+      transparent
+    );
+  }
+
+  .rail-pulse {
+    position: absolute;
+    top: 3px;
+    left: 0;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 12px var(--accent);
+    animation: ms-travel 3.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .rail-pulse-b {
+    animation-delay: 1.1s;
+    opacity: 0.55;
+  }
+
+  .stages {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    background: var(--surface-card);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+
+  .stage {
+    padding: clamp(24px, 2.6vw, 32px);
+    border-right: 1px solid var(--border-subtle);
+  }
+
+  .stage:last-child {
+    border-right: none;
+  }
+
+  .stage-index {
+    display: block;
+    margin-bottom: var(--space-4);
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 11px;
+    color: var(--accent-contrast);
+  }
+
+  .stage-name {
+    margin-bottom: 10px;
+    font-size: 18px;
+    line-height: 1.3;
+    letter-spacing: -0.015em;
+  }
+
+  .stage-body {
+    margin: 0;
+    font-size: 14.5px;
+    color: var(--text-secondary);
+  }
+
+  .note {
+    margin: var(--space-4) 0 0;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+  }
+
+  @media (max-width: 900px) {
+    .stage {
+      border-right: none;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .stage:last-child {
+      border-bottom: none;
+    }
+  }
+</style>

@@ -1,0 +1,21 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHeader from '../components/layout/PageHeader.astro';
+import Engagement from '../components/sections/Engagement.astro';
+import Answers from '../components/sections/Answers.astro';
+import CtaBand from '../components/sections/CtaBand.astro';
+---
+
+<Base
+  title="Engagement — MindStack"
+  description="Three ways to work with us, ranges published. Engagement models, what is included, and what moves the number."
+>
+  <PageHeader
+    eyebrow="Engagement"
+    title="How we work together."
+    lead="Ranges, not a quote. A firm selling projects cannot publish a price table without losing the deals worth having — but silence on money loses trust, so here are the models and the bands."
+  />
+  <Engagement />
+  <Answers />
+  <CtaBand />
+</Base>

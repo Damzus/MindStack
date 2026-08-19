@@ -1,0 +1,33 @@
+{
+  "name": "mindstack-site",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "capture": "node scripts/capture-work.mjs"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^7.0.6",
+    "@astrojs/react": "^6.0.3",
+    "@astrojs/sitemap": "^3.7.3",
+    "@astrojs/vercel": "^11.0.6",
+    "@fontsource/ibm-plex-sans": "^5.1.1",
+    "@fontsource/jetbrains-mono": "^5.1.2",
+    "@fontsource/space-grotesk": "^5.1.1",
+    "astro": "^7.2.3",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "resend": "^6.20.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@types/react": "^19.0.8",
+    "@types/react-dom": "^19.0.3",
+    "playwright": "^1.62.1",
+    "typescript": "^5.7.3"
+  }
+}

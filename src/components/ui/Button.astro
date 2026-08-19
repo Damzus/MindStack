@@ -1,0 +1,112 @@
+---
+interface Props {
+  variant?: 'primary' | 'ghost' | 'text';
+  size?: 'md' | 'lg';
+  href?: string;
+  type?: 'button' | 'submit';
+  disabled?: boolean;
+  fullWidth?: boolean;
+  class?: string;
+}
+
+const {
+  variant = 'primary',
+  size = 'md',
+  href,
+  type = 'button',
+  disabled = false,
+  fullWidth = false,
+  class: className = '',
+} = Astro.props;
+
+const Tag = href ? 'a' : 'button';
+const classes = ['btn', `btn-${variant}`, `btn-${size}`, fullWidth ? 'btn-full' : '', className]
+  .filter(Boolean)
+  .join(' ');
+---
+
+<Tag
+  class={classes}
+  href={href}
+  type={href ? undefined : type}
+  disabled={href ? undefined : disabled}
+  aria-disabled={href && disabled ? 'true' : undefined}
+>
+  <slot />
+</Tag>
+
+<style>
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    font-family: var(--font-display);
+    font-weight: 500;
+    text-align: center;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition:
+      background var(--dur-hover) var(--ease),
+      border-color var(--dur-hover) var(--ease),
+      color var(--dur-hover) var(--ease);
+  }
+
+  .btn-md {
+    min-height: var(--tap-min);
+    padding: 0 22px;
+    font-size: 15px;
+  }
+
+  .btn-lg {
+    min-height: 52px;
+    padding: 0 28px;
+    font-size: 16.5px;
+  }
+
+  .btn-full {
+    width: 100%;
+  }
+
+  .btn-primary {
+    border: 1px solid transparent;
+    background: var(--accent);
+    color: var(--text-on-accent);
+  }
+
+  .btn-primary:hover {
+    background: var(--accent-hover);
+    color: var(--text-on-accent);
+  }
+
+  .btn-ghost {
+    border: 1px solid var(--border-strong);
+    background: transparent;
+    color: var(--text-primary);
+  }
+
+  .btn-ghost:hover {
+    border-color: var(--border-hover);
+    color: var(--text-primary);
+  }
+
+  .btn-text {
+    min-height: var(--tap-min);
+    padding: 0 var(--space-1);
+    border: none;
+    background: none;
+    color: var(--accent-contrast);
+  }
+
+  .btn-text:hover {
+    color: var(--accent-hover);
+    text-decoration: underline;
+  }
+
+  .btn:disabled,
+  .btn[aria-disabled='true'] {
+    opacity: 0.45;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+</style>

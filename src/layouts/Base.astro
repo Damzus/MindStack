@@ -1,0 +1,77 @@
+---
+import '@fontsource/space-grotesk/latin-400.css';
+import '@fontsource/space-grotesk/latin-500.css';
+import '@fontsource/space-grotesk/latin-600.css';
+import '@fontsource/space-grotesk/latin-700.css';
+import '@fontsource/ibm-plex-sans/latin-400.css';
+import '@fontsource/ibm-plex-sans/latin-500.css';
+import '@fontsource/ibm-plex-sans/latin-600.css';
+import '@fontsource/ibm-plex-sans/latin-400-italic.css';
+import '@fontsource/jetbrains-mono/latin-400.css';
+import '@fontsource/jetbrains-mono/latin-500.css';
+import '../styles/tokens.css';
+import '../styles/motion.css';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+import Atmosphere from '../components/layout/Atmosphere.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  quiet?: boolean;
+}
+
+const { title, description, quiet = false } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script is:inline>
+      (function () {
+        var root = document.documentElement;
+        var stored = null;
+        try {
+          stored = localStorage.getItem('ms-theme');
+        } catch (err) {
+          stored = null;
+        }
+        var query = window.matchMedia('(prefers-color-scheme: dark)');
+        root.dataset.theme = stored || (query.matches ? 'dark' : 'light');
+        if (!stored) {
+          query.addEventListener('change', function (event) {
+            try {
+              if (localStorage.getItem('ms-theme')) return;
+            } catch (err) {
+              /* storage unavailable, keep following the system */
+            }
+            root.dataset.theme = event.matches ? 'dark' : 'light';
+          });
+        }
+      })();
+    </script>
+  </head>
+  <body data-quiet={quiet ? '' : undefined}>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <Atmosphere />
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+    <script>
+      import '../scripts/reveal';
+    </script>
+  </body>
+</html>

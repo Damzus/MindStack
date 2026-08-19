@@ -1,0 +1,21 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHeader from '../components/layout/PageHeader.astro';
+import Pipeline from '../components/sections/Pipeline.astro';
+import Answers from '../components/sections/Answers.astro';
+import CtaBand from '../components/sections/CtaBand.astro';
+---
+
+<Base
+  title="How we build — MindStack"
+  description="One pipeline, running continuously. Scope, build, ship, run — you own the output at every stage."
+>
+  <PageHeader
+    eyebrow="How we build"
+    title="One pipeline, running continuously."
+    lead="You own the repository, the cloud account and the output at every stage. Handover is a date in the plan, not a hope."
+  />
+  <Pipeline />
+  <Answers />
+  <CtaBand />
+</Base>

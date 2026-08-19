@@ -1,0 +1,20 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHeader from '../components/layout/PageHeader.astro';
+import Pending from '../components/sections/Pending.astro';
+---
+
+<Base
+  title="Terms — MindStack"
+  description="Terms information for MindStack."
+  quiet
+>
+  <PageHeader eyebrow="Legal" title="Terms" />
+  <Pending
+    needed={[
+      'Registered entity name and jurisdiction',
+      'Reviewed wording — legal pages should not be drafted by a developer or a model',
+      'Contact address for enquiries under this policy',
+    ]}
+  />
+</Base>

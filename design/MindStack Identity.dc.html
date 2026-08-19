@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics><meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans:wght@400;500;600&family=Archivo:wght@400;600;800&family=JetBrains+Mono:wght@400;500;700&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#f1efec;font-family:system-ui,-apple-system,sans-serif}
+a{color:#2a78d6}a:hover{color:#1a5aa8}
+.dv-turn{padding:44px 48px 36px;border-bottom:1px solid rgba(0,0,0,.08);scroll-margin-top:16px}
+.dv-thd{display:flex;align-items:baseline;gap:10px;margin:0 0 6px}
+.dv-tid{font:600 10px ui-monospace,Menlo,monospace;padding:3px 7px;background:#1a1a1a;color:#fff;border-radius:4px;text-decoration:none}
+.dv-tname{font:600 13px/1.2 system-ui,sans-serif;color:#1a1a1a}
+.dv-tsub{margin:0 0 24px;font:400 12px/1.6 system-ui,sans-serif;color:rgba(0,0,0,.5);max-width:760px}
+.dv-opts{display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start}
+.dv-opt{flex:none;display:flex;flex-direction:column;gap:9px;scroll-margin-top:16px}
+.dv-oid{font:600 10.5px ui-monospace,Menlo,monospace;padding:3px 7px;background:rgba(0,0,0,.08);color:#1a1a1a;border-radius:5px;text-decoration:none}
+.dv-olabel{display:flex;align-items:baseline;gap:8px;font:400 11px/1.3 system-ui,sans-serif;color:rgba(0,0,0,.55)}
+.dv-card{max-width:100%;background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,.06);overflow:hidden}
+.dv-opt:target .dv-oid{background:#2a78d6;color:#fff}
+.dv-next{margin:26px 0 0;font:12px/1.6 system-ui,sans-serif;color:rgba(0,0,0,.5)}
+@keyframes lg-draw{0%{stroke-dashoffset:104}45%{stroke-dashoffset:0}100%{stroke-dashoffset:0}}
+@keyframes lg-pop{0%,10%{transform:scale(0);opacity:0}55%{transform:scale(1.3);opacity:1}70%,100%{transform:scale(1);opacity:1}}
+@keyframes lg-core{0%,45%{transform:scale(0);opacity:0}70%{transform:scale(1.2);opacity:1}85%,100%{transform:scale(1);opacity:1}}
+@keyframes lg-ghost{0%,60%{opacity:0;transform:translateY(6px)}85%,100%{opacity:.16;transform:translateY(0)}}
+@keyframes lg-fold{0%,12%{transform:translateY(-7px) scaleY(1);opacity:1}52%{transform:translateY(1px) scaleY(.42);opacity:1}78%,100%{transform:translateY(0) scaleY(1);opacity:1}}
+@keyframes lg-seam{0%,100%{opacity:.2;transform:scale(.85)}25%{opacity:1;transform:scale(1.15)}55%{opacity:.2;transform:scale(.85)}}
+@keyframes lg-orbit{to{transform:rotate(360deg)}}
+@keyframes lg-beat{0%,100%{transform:scale(1)}50%{transform:scale(1.18)}}
+@media (prefers-reduced-motion: reduce){.dv-card svg,.dv-card svg *,.dv-card svg g{animation:none}}
+</style></helmet>
+
+<section class="dv-turn" id="t3">
+<div class="dv-thd"><a class="dv-tid" href="#t3">3</a><span class="dv-tname">Motion marks — four animated behaviours</span></div>
+<p class="dv-tsub">All four are live and looping here so you can judge them; in production each fires <em>once</em>, in the place named on the card. A logo that loops forever on a marketing page reads as a loading state. Every one degrades to its final frame under <code style="font:400 11.5px 'JetBrains Mono',monospace">prefers-reduced-motion</code>, and each is built from the same geometry as <a class="dv-oid" href="#2a">2a</a> and <a class="dv-oid" href="#2c">2c</a>, so nothing new has to be drawn.</p>
+
+<div class="dv-opts">
+
+<div class="dv-opt" id="3a">
+<div class="dv-olabel"><a class="dv-oid" href="#3a">3a</a>Assemble — the plane draws itself</div>
+<div class="dv-card" style="width:340px">
+  <div style="padding:38px 34px 30px;display:flex;align-items:center;gap:16px">
+    <svg width="52" height="52" viewBox="0 0 48 48" aria-label="MindStack assembling">
+      <path d="M24 3 L45 15 L24 27 L3 15 Z" fill="none" stroke="#131517" stroke-width="2.6" stroke-linejoin="round" stroke-dasharray="104" style="animation:lg-draw 3.6s cubic-bezier(.22,.61,.36,1) infinite"></path>
+      <circle cx="24" cy="3" r="2.4" fill="#131517" style="transform-box:fill-box;transform-origin:center;animation:lg-pop 3.6s cubic-bezier(.22,.61,.36,1) infinite"></circle>
+      <circle cx="45" cy="15" r="2.4" fill="#131517" style="transform-box:fill-box;transform-origin:center;animation:lg-pop 3.6s cubic-bezier(.22,.61,.36,1) .1s infinite"></circle>
+      <circle cx="3" cy="15" r="2.4" fill="#131517" style="transform-box:fill-box;transform-origin:center;animation:lg-pop 3.6s cubic-bezier(.22,.61,.36,1) .2s infinite"></circle>
+      <path d="M24 12 L30 15 L24 18 L18 15 Z" fill="oklch(0.6 0.14 200)" style="transform-box:fill-box;transform-origin:center;animation:lg-core 3.6s cubic-bezier(.22,.61,.36,1) infinite"></path>
+      <path d="M24 25 L45 37 L24 45 L3 37 Z" fill="#131517" style="animation:lg-ghost 3.6s cubic-bezier(.22,.61,.36,1) infinite"></path>
+    </svg>
+    <span style="font:600 23px/1 'Space Grotesk',sans-serif;letter-spacing:-.03em;color:#131517">MindStack</span>
+  </div>
+  <div style="background:#131517;padding:20px 34px;display:flex;align-items:center;gap:16px">
+    <svg width="34" height="34" viewBox="0 0 48 48">
+      <path d="M24 3 L45 15 L24 27 L3 15 Z" fill="none" stroke="#fff" stroke-width="2.6" stroke-linejoin="round"></path>
+      <path d="M24 12 L30 15 L24 18 L18 15 Z" fill="oklch(0.78 0.14 200)" style="transform-box:fill-box;transform-origin:center;animation:lg-core 3.6s cubic-bezier(.22,.61,.36,1) infinite"></path>
+      <path d="M24 25 L45 37 L24 45 L3 37 Z" fill="#fff" style="animation:lg-ghost 3.6s cubic-bezier(.22,.61,.36,1) infinite"></path>
+    </svg>
+    <span style="font:400 11px/1.5 'JetBrains Mono',monospace;color:rgba(255,255,255,.5)">ORDER: EDGE → NODES → CORE → LAYER<br>1100ms TOTAL</span>
+  </div>
+  <div style="padding:18px 34px 24px;border-top:1px solid rgba(0,0,0,.07);font:400 12px/1.65 'Space Grotesk',sans-serif;color:rgba(0,0,0,.62)">
+    <strong style="color:#131517;font-weight:600">Use on first page load only</strong>, once per session. The strongest storytelling of the four: structure first, then the parts, then the layer underneath.
+  </div>
+</div>
+</div>
+
+<div class="dv-opt" id="3b">
+<div class="dv-olabel"><a class="dv-oid" href="#3b">3b</a>Fold — the top plane folds onto the base</div>
+<div class="dv-card" style="width:340px">
+  <div style="padding:38px 34px 30px;display:flex;align-items:center;gap:16px">
+    <svg width="52" height="52" viewBox="0 0 48 48" aria-label="MindStack folding">
+      <path d="M24 3 L45 14 L24 24 L3 14 Z" fill="#131517" style="transform-box:fill-box;transform-origin:center bottom;animation:lg-fold 3.2s cubic-bezier(.34,1.3,.5,1) infinite"></path>
+      <circle cx="14" cy="27" r="2.6" fill="oklch(0.6 0.14 200)" style="transform-box:fill-box;transform-origin:center;animation:lg-seam 3.2s ease-in-out .1s infinite"></circle>
+      <circle cx="24" cy="27" r="2.6" fill="oklch(0.6 0.14 200)" style="transform-box:fill-box;transform-origin:center;animation:lg-seam 3.2s ease-in-out .2s infinite"></circle>
+      <circle cx="34" cy="27" r="2.6" fill="oklch(0.6 0.14 200)" style="transform-box:fill-box;transform-origin:center;animation:lg-seam 3.2s ease-in-out .3s infinite"></circle>
+      <path d="M24 31 L45 42 L24 46 L3 42 Z" fill="#131517"></path>
+    </svg>
+    <span style="font:600 23px/1 'Space Grotesk',sans-serif;letter-spacing:-.03em;color:#131517">MindStack</span>
+  </div>
+  <div style="background:#131517;padding:20px 34px;display:flex;align-items:center;gap:16px">
+    <svg width="34" height="34" viewBox="0 0 48 48">
+      <path d="M24 3 L45 14 L24 24 L3 14 Z" fill="#fff" style="transform-box:fill-box;transform-origin:center bottom;animation:lg-fold 3.2s cubic-bezier(.34,1.3,.5,1) infinite"></path>
+      <circle cx="14" cy="27" r="2.6" fill="oklch(0.78 0.14 200)" style="transform-box:fill-box;transform-origin:center;animation:lg-seam 3.2s ease-in-out .1s infinite"></circle>
+      <circle cx="24" cy="27" r="2.6" fill="oklch(0.78 0.14 200)" style="transform-box:fill-box;transform-origin:center;animation:lg-seam 3.2s ease-in-out .2s infinite"></circle>
+      <circle cx="34" cy="27" r="2.6" fill="oklch(0.78 0.14 200)" style="transform-box:fill-box;transform-origin:center;animation:lg-seam 3.2s ease-in-out .3s infinite"></circle>
+      <path d="M24 31 L45 42 L24 46 L3 42 Z" fill="#fff"></path>
+    </svg>
+    <span style="font:400 11px/1.5 'JetBrains Mono',monospace;color:rgba(255,255,255,.5)">COMPRESS → SETTLE → SEAM LIGHTS<br>620ms, ONE OVERSHOOT</span>
+  </div>
+  <div style="padding:18px 34px 24px;border-top:1px solid rgba(0,0,0,.07);font:400 12px/1.65 'Space Grotesk',sans-serif;color:rgba(0,0,0,.62)">
+    <strong style="color:#131517;font-weight:600">Use on nav hover and page transitions.</strong> Short, physical, and it acts out the name. The one I'd put in the header.
+  </div>
+</div>
+</div>
+
+<div class="dv-opt" id="3c">
+<div class="dv-olabel"><a class="dv-oid" href="#3c">3c</a>Relay — seam nodes carry the signal</div>
+<div class="dv-card" style="width:340px">
+  <div style="padding:38px 34px 30px;display:flex;align-items:center;gap:16px">
+    <svg width="52" height="52" viewBox="0 0 48 48" aria-label="MindStack relaying">
+      <path d="M24 3 L45 14 L24 24 L3 14 Z" fill="#131517"></path>
+      <circle cx="10" cy="27.5" r="2.3" fill="oklch(0.6 0.14 200)" style="transform-box:fill-box;transform-origin:center;animation:lg-seam 1.8s ease-in-out infinite"></circle>
+      <circle cx="19.3" cy="27.5" r="2.3" fill="oklch(0.6 0.14 200)" style="transform-box:fill-box;transform-origin:center;animation:lg-seam 1.8s ease-in-out .18s infinite"></circle>
+      <circle cx="28.7" cy="27.5" r="2.3" fill="oklch(0.6 0.14 200)" style="transform-box:fill-box;transform-origin:center;animation:lg-seam 1.8s ease-in-out .36s infinite"></circle>
+      <circle cx="38" cy="27.5" r="2.3" fill="oklch(0.6 0.14 200)" style="transform-box:fill-box;transform-origin:center;animation:lg-seam 1.8s ease-in-out .54s infinite"></circle>
+      <path d="M24 31 L45 42 L24 46 L3 42 Z" fill="#131517"></path>
+    </svg>
+    <span style="font:700 20px/1 'JetBrains Mono',monospace;letter-spacing:-.055em;color:#131517">mindstack</span>
+  </div>
+  <div style="background:#131517;padding:20px 34px;display:flex;align-items:center;gap:16px">
+    <svg width="34" height="34" viewBox="0 0 48 48">
+      <path d="M24 3 L45 14 L24 24 L3 14 Z" fill="#fff"></path>
+      <circle cx="10" cy="27.5" r="2.3" fill="oklch(0.78 0.14 200)" style="transform-box:fill-box;transform-origin:center;animation:lg-seam 1.8s ease-in-out infinite"></circle>
+      <circle cx="19.3" cy="27.5" r="2.3" fill="oklch(0.78 0.14 200)" style="transform-box:fill-box;transform-origin:center;animation:lg-seam 1.8s ease-in-out .18s infinite"></circle>
+      <circle cx="28.7" cy="27.5" r="2.3" fill="oklch(0.78 0.14 200)" style="transform-box:fill-box;transform-origin:center;animation:lg-seam 1.8s ease-in-out .36s infinite"></circle>
+      <circle cx="38" cy="27.5" r="2.3" fill="oklch(0.78 0.14 200)" style="transform-box:fill-box;transform-origin:center;animation:lg-seam 1.8s ease-in-out .54s infinite"></circle>
+      <path d="M24 31 L45 42 L24 46 L3 42 Z" fill="#fff"></path>
+    </svg>
+    <span style="font:400 11px/1.5 'JetBrains Mono',monospace;color:rgba(255,255,255,.5)">LEFT → RIGHT RELAY, 1800ms LOOP<br>THE ONE THAT MAY LOOP</span>
+  </div>
+  <div style="padding:18px 34px 24px;border-top:1px solid rgba(0,0,0,.07);font:400 12px/1.65 'JetBrains Mono',monospace;color:rgba(0,0,0,.6)">
+    <strong style="color:#131517;font-weight:700">Use as the loading and deploying state</strong> — in the app, on form submit, wherever something is in flight. Reads as data moving between layers.
+  </div>
+</div>
+</div>
+
+<div class="dv-opt" id="3d">
+<div class="dv-olabel"><a class="dv-oid" href="#3d">3d</a>Orbit — lattice turns around a fixed core</div>
+<div class="dv-card" style="width:340px">
+  <div style="padding:38px 34px 30px;display:flex;align-items:center;gap:16px">
+    <svg width="52" height="52" viewBox="0 0 48 48" aria-label="MindStack orbiting">
+      <g style="transform-box:fill-box;transform-origin:center;animation:lg-orbit 7s linear infinite">
+        <circle cx="24" cy="6" r="2.6" fill="#131517"></circle>
+        <circle cx="36.7" cy="15.2" r="2.6" fill="#131517"></circle>
+        <circle cx="31.9" cy="30.3" r="2.6" fill="#131517"></circle>
+        <circle cx="16.1" cy="30.3" r="2.6" fill="#131517"></circle>
+        <circle cx="11.3" cy="15.2" r="2.6" fill="#131517"></circle>
+      </g>
+      <path d="M24 14 L31 19 L24 24 L17 19 Z" fill="oklch(0.6 0.14 200)" style="transform-box:fill-box;transform-origin:center;animation:lg-beat 2.4s ease-in-out infinite"></path>
+      <path d="M24 32 L43 41 L24 45 L5 41 Z" fill="#131517" opacity=".16"></path>
+    </svg>
+    <span style="font:800 22px/1 'Manrope',sans-serif;letter-spacing:-.032em;color:#131517">MindStack</span>
+  </div>
+  <div style="background:#131517;padding:20px 34px;display:flex;align-items:center;gap:16px">
+    <svg width="34" height="34" viewBox="0 0 48 48">
+      <g style="transform-box:fill-box;transform-origin:center;animation:lg-orbit 7s linear infinite">
+        <circle cx="24" cy="6" r="2.6" fill="#fff"></circle><circle cx="36.7" cy="15.2" r="2.6" fill="#fff"></circle><circle cx="31.9" cy="30.3" r="2.6" fill="#fff"></circle><circle cx="16.1" cy="30.3" r="2.6" fill="#fff"></circle><circle cx="11.3" cy="15.2" r="2.6" fill="#fff"></circle>
+      </g>
+      <path d="M24 14 L31 19 L24 24 L17 19 Z" fill="oklch(0.78 0.14 200)" style="transform-box:fill-box;transform-origin:center;animation:lg-beat 2.4s ease-in-out infinite"></path>
+      <path d="M24 32 L43 41 L24 45 L5 41 Z" fill="#fff" opacity=".22"></path>
+    </svg>
+    <span style="font:400 11px/1.5 'JetBrains Mono',monospace;color:rgba(255,255,255,.5)">7s ROTATION · CORE BEATS AT 2.4s<br>AMBIENT, VERY SLOW</span>
+  </div>
+  <div style="padding:18px 34px 24px;border-top:1px solid rgba(0,0,0,.07);font:400 12px/1.65 'Manrope',sans-serif;color:rgba(0,0,0,.62)">
+    <strong style="color:#131517;font-weight:700">Use large only</strong> — a footer or a full-screen menu. Charming at 120px, illegible in a 20px header, and the rotation breaks the isometric read.
+  </div>
+</div>
+</div>
+
+</div>
+<p class="dv-next">Try next: "<a class="dv-oid" href="#3b">3b</a> in the header, <a class="dv-oid" href="#3a">3a</a> on load" · "make <a class="dv-oid" href="#3a">3a</a> slower and drop the ghost layer" · "put the chosen mark through the homepage"</p>
+</section>
+
+<section class="dv-turn" id="t2">
+<div class="dv-thd"><a class="dv-tid" href="#t2">2</a><span class="dv-tname">Fold × Kernel hybrids</span></div>
+<p class="dv-tsub">Three ways to marry <a class="dv-oid" href="#1e">1e</a>'s two planes with <a class="dv-oid" href="#1d">1d</a>'s dot grid. The shared logic: the plane is the structure MindStack builds, the nodes are the systems it connects, and the seam is where the two layers meet. All built from circles and four-point polygons, so they hold at 16px and in one colour.</p>
+
+<div class="dv-opts">
+
+<div class="dv-opt" id="2a">
+<div class="dv-olabel"><a class="dv-oid" href="#2a">2a</a>Node Fold — outlined plane, solid core, folded layer</div>
+<div class="dv-card" style="width:440px">
+  <div style="padding:44px 40px 34px;display:flex;align-items:center;gap:17px">
+    <svg width="48" height="48" viewBox="0 0 48 48" aria-label="MindStack symbol">
+      <path d="M24 3 L45 15 L24 27 L3 15 Z" fill="none" stroke="#131517" stroke-width="2.6" stroke-linejoin="round"></path>
+      <path d="M24 12 L30 15 L24 18 L18 15 Z" fill="oklch(0.6 0.14 200)"></path>
+      <circle cx="24" cy="3" r="2.4" fill="#131517"></circle>
+      <circle cx="45" cy="15" r="2.4" fill="#131517"></circle>
+      <circle cx="3" cy="15" r="2.4" fill="#131517"></circle>
+      <path d="M24 25 L45 37 L24 45 L3 37 Z" fill="#131517" opacity="0.16"></path>
+      <circle cx="24" cy="45" r="2.4" fill="oklch(0.6 0.14 200)"></circle>
+    </svg>
+    <span style="font:600 29px/1 'Space Grotesk',sans-serif;letter-spacing:-.03em;color:#131517">MindStack</span>
+  </div>
+  <div style="display:flex;background:#131517;padding:24px 40px;align-items:center;gap:24px">
+    <svg width="34" height="34" viewBox="0 0 48 48">
+      <path d="M24 3 L45 15 L24 27 L3 15 Z" fill="none" stroke="#fff" stroke-width="2.6" stroke-linejoin="round"></path>
+      <path d="M24 12 L30 15 L24 18 L18 15 Z" fill="oklch(0.78 0.14 200)"></path>
+      <circle cx="24" cy="3" r="2.4" fill="#fff"></circle><circle cx="45" cy="15" r="2.4" fill="#fff"></circle><circle cx="3" cy="15" r="2.4" fill="#fff"></circle>
+      <path d="M24 25 L45 37 L24 45 L3 37 Z" fill="#fff" opacity="0.28"></path>
+      <circle cx="24" cy="45" r="2.4" fill="oklch(0.78 0.14 200)"></circle>
+    </svg>
+    <span style="font:500 14px/1 'Space Grotesk',sans-serif;color:rgba(255,255,255,.55)">reversed</span>
+    <div style="margin-left:auto;display:flex;gap:12px;align-items:flex-end">
+      <div style="width:34px;height:34px;border-radius:8px;background:oklch(0.6 0.14 200);display:grid;place-items:center">
+        <svg width="22" height="22" viewBox="0 0 48 48"><path d="M24 6 L43 17 L24 28 L5 17 Z" fill="none" stroke="#fff" stroke-width="3" stroke-linejoin="round"></path><path d="M24 14 L30 17 L24 20 L18 17 Z" fill="#fff"></path><path d="M24 28 L43 39 L24 44 L5 39 Z" fill="#fff" opacity=".45"></path></svg>
+      </div>
+      <div style="width:16px;height:16px;border-radius:4px;background:oklch(0.6 0.14 200);display:grid;place-items:center">
+        <svg width="12" height="12" viewBox="0 0 48 48"><path d="M24 8 L42 18 L24 28 L6 18 Z" fill="#fff"></path><path d="M24 30 L42 40 L24 46 L6 40 Z" fill="#fff" opacity=".5"></path></svg>
+      </div>
+    </div>
+  </div>
+  <div style="padding:20px 40px 26px;border-top:1px solid rgba(0,0,0,.07);font:400 12px/1.65 'Space Grotesk',sans-serif;color:rgba(0,0,0,.62)">
+    <div><strong style="color:#131517;font-weight:600">How it combines them</strong> — the Fold silhouette, with Kernel's node dots pinned to the plane's three visible vertices and its solid core at the centre. The lower plane is a ghost, so the mark reads as one object rather than two.</div>
+    <div style="margin-top:8px"><strong style="color:#131517;font-weight:600">Best at</strong> — 24px and up; the strongest and most distinctive of the three.</div>
+    <div style="margin-top:4px"><strong style="color:#131517;font-weight:600">Watch</strong> — at 16px the vertex dots merge into the outline, so the favicon drops to two solid planes (shown right).</div>
+  </div>
+</div>
+</div>
+
+<div class="dv-opt" id="2b">
+<div class="dv-olabel"><a class="dv-oid" href="#2b">2b</a>Lattice — the plane drawn entirely from nodes</div>
+<div class="dv-card" style="width:440px">
+  <div style="padding:44px 40px 34px;display:flex;align-items:center;gap:17px">
+    <svg width="48" height="48" viewBox="0 0 48 48" aria-label="MindStack symbol">
+      <circle cx="24" cy="5" r="2.7" fill="#131517"></circle>
+      <circle cx="14" cy="11" r="2.7" fill="#131517"></circle><circle cx="34" cy="11" r="2.7" fill="#131517"></circle>
+      <circle cx="4" cy="17" r="2.7" fill="#131517"></circle><circle cx="44" cy="17" r="2.7" fill="#131517"></circle>
+      <path d="M24 12 L31 17 L24 22 L17 17 Z" fill="oklch(0.6 0.14 200)"></path>
+      <circle cx="14" cy="23" r="2.7" fill="#131517"></circle><circle cx="34" cy="23" r="2.7" fill="#131517"></circle>
+      <circle cx="24" cy="29" r="2.7" fill="#131517"></circle>
+      <path d="M24 33 L44 43 L24 45 L4 43 Z" fill="oklch(0.6 0.14 200)" opacity="0.45"></path>
+    </svg>
+    <span style="font:800 27px/1 'Manrope',sans-serif;letter-spacing:-.032em;color:#131517">MindStack</span>
+  </div>
+  <div style="display:flex;background:#131517;padding:24px 40px;align-items:center;gap:24px">
+    <svg width="34" height="34" viewBox="0 0 48 48">
+      <circle cx="24" cy="5" r="2.7" fill="#fff"></circle><circle cx="14" cy="11" r="2.7" fill="#fff"></circle><circle cx="34" cy="11" r="2.7" fill="#fff"></circle><circle cx="4" cy="17" r="2.7" fill="#fff"></circle><circle cx="44" cy="17" r="2.7" fill="#fff"></circle>
+      <path d="M24 12 L31 17 L24 22 L17 17 Z" fill="oklch(0.78 0.14 200)"></path>
+      <circle cx="14" cy="23" r="2.7" fill="#fff"></circle><circle cx="34" cy="23" r="2.7" fill="#fff"></circle><circle cx="24" cy="29" r="2.7" fill="#fff"></circle>
+      <path d="M24 33 L44 43 L24 45 L4 43 Z" fill="oklch(0.78 0.14 200)" opacity="0.5"></path>
+    </svg>
+    <span style="font:500 14px/1 'Manrope',sans-serif;color:rgba(255,255,255,.55)">reversed</span>
+    <div style="margin-left:auto;display:flex;gap:12px;align-items:flex-end">
+      <div style="width:34px;height:34px;border-radius:8px;background:oklch(0.6 0.14 200);display:grid;place-items:center">
+        <svg width="22" height="22" viewBox="0 0 48 48"><circle cx="24" cy="7" r="3.4" fill="#fff"></circle><circle cx="8" cy="17" r="3.4" fill="#fff"></circle><circle cx="40" cy="17" r="3.4" fill="#fff"></circle><path d="M24 13 L32 18 L24 23 L16 18 Z" fill="#fff"></path><circle cx="24" cy="29" r="3.4" fill="#fff"></circle><path d="M24 34 L42 43 L24 46 L6 43 Z" fill="#fff" opacity=".5"></path></svg>
+      </div>
+      <div style="width:16px;height:16px;border-radius:4px;background:oklch(0.6 0.14 200);display:grid;place-items:center">
+        <svg width="12" height="12" viewBox="0 0 48 48"><path d="M24 10 L36 19 L24 28 L12 19 Z" fill="#fff"></path><path d="M24 32 L40 42 L24 46 L8 42 Z" fill="#fff" opacity=".55"></path></svg>
+      </div>
+    </div>
+  </div>
+  <div style="padding:20px 40px 26px;border-top:1px solid rgba(0,0,0,.07);font:400 12px/1.65 'Manrope',sans-serif;color:rgba(0,0,0,.62)">
+    <div><strong style="color:#131517;font-weight:700">How it combines them</strong> — Kernel's grid re-plotted onto Fold's isometric geometry: the dots trace the plane's edge rather than sitting in a square, with the solid core at the centre and the second plane implied beneath.</div>
+    <div style="margin-top:8px"><strong style="color:#131517;font-weight:700">Best at</strong> — large sizes and animation; the dots are a natural staggered build-on.</div>
+    <div style="margin-top:4px"><strong style="color:#131517;font-weight:700">Watch</strong> — the busiest of the three. Needs the simplified favicon below 24px.</div>
+  </div>
+</div>
+</div>
+
+<div class="dv-opt" id="2c">
+<div class="dv-olabel"><a class="dv-oid" href="#2c">2c</a>Seam — two solid planes, nodes in the join</div>
+<div class="dv-card" style="width:440px">
+  <div style="padding:44px 40px 34px;display:flex;align-items:center;gap:17px">
+    <svg width="48" height="48" viewBox="0 0 48 48" aria-label="MindStack symbol">
+      <path d="M24 3 L45 14 L24 24 L3 14 Z" fill="#131517"></path>
+      <circle cx="14" cy="27" r="2.6" fill="oklch(0.6 0.14 200)"></circle><circle cx="24" cy="27" r="2.6" fill="oklch(0.6 0.14 200)"></circle><circle cx="34" cy="27" r="2.6" fill="oklch(0.6 0.14 200)"></circle>
+      <path d="M24 31 L45 42 L24 46 L3 42 Z" fill="#131517"></path>
+    </svg>
+    <span style="font:700 24px/1 'JetBrains Mono',monospace;letter-spacing:-.055em;color:#131517">mindstack</span>
+  </div>
+  <div style="display:flex;background:#131517;padding:24px 40px;align-items:center;gap:24px">
+    <svg width="34" height="34" viewBox="0 0 48 48">
+      <path d="M24 3 L45 14 L24 24 L3 14 Z" fill="#fff"></path>
+      <circle cx="14" cy="27" r="2.6" fill="oklch(0.78 0.14 200)"></circle><circle cx="24" cy="27" r="2.6" fill="oklch(0.78 0.14 200)"></circle><circle cx="34" cy="27" r="2.6" fill="oklch(0.78 0.14 200)"></circle>
+      <path d="M24 31 L45 42 L24 46 L3 42 Z" fill="#fff"></path>
+    </svg>
+    <span style="font:400 13px/1 'JetBrains Mono',monospace;color:rgba(255,255,255,.5)">reversed</span>
+    <div style="margin-left:auto;display:flex;gap:12px;align-items:flex-end">
+      <div style="width:34px;height:34px;border-radius:8px;background:oklch(0.6 0.14 200);display:grid;place-items:center">
+        <svg width="22" height="22" viewBox="0 0 48 48"><path d="M24 5 L44 16 L24 26 L4 16 Z" fill="#fff"></path><circle cx="14" cy="30" r="3" fill="#fff" opacity=".6"></circle><circle cx="24" cy="30" r="3" fill="#fff" opacity=".6"></circle><circle cx="34" cy="30" r="3" fill="#fff" opacity=".6"></circle><path d="M24 34 L44 44 L24 47 L4 44 Z" fill="#fff"></path></svg>
+      </div>
+      <div style="width:16px;height:16px;border-radius:4px;background:oklch(0.6 0.14 200);display:grid;place-items:center">
+        <svg width="12" height="12" viewBox="0 0 48 48"><path d="M24 6 L44 17 L24 27 L4 17 Z" fill="#fff"></path><path d="M24 33 L44 43 L24 47 L4 43 Z" fill="#fff" opacity=".6"></path></svg>
+      </div>
+    </div>
+  </div>
+  <div style="padding:20px 40px 26px;border-top:1px solid rgba(0,0,0,.07);font:400 12px/1.6 'JetBrains Mono',monospace;color:rgba(0,0,0,.6)">
+    <div><strong style="color:#131517;font-weight:700">How it combines them</strong> — Fold reduced to two solid planes, with Kernel's nodes living in the seam: the systems being connected sit between the layers.</div>
+    <div style="margin-top:8px"><strong style="color:#131517;font-weight:700">Best at</strong> — every size. Simplest silhouette, survives 16px unchanged, one-colour safe.</div>
+    <div style="margin-top:4px"><strong style="color:#131517;font-weight:700">Watch</strong> — closest to Fold as-was; the Kernel contribution is subtle.</div>
+  </div>
+</div>
+</div>
+
+</div>
+<p class="dv-next">Try next: "go with <a class="dv-oid" href="#2a">2a</a> and put it through the design system and homepage" · "<a class="dv-oid" href="#2c">2c</a> but with <a class="dv-oid" href="#2a">2a</a>'s wordmark" · "show <a class="dv-oid" href="#2a">2a</a> animating"</p>
+</section>
+
+<section class="dv-turn" id="t1">
+<div class="dv-thd"><a class="dv-tid" href="#t1">1</a><span class="dv-tname">MindStack — five logo &amp; identity directions</span></div>
+<p class="dv-tsub">Working assumption (unconfirmed): MindStack is a platform for building and running AI agents on a company's own knowledge and systems. Every mark below is built from plain geometry so it survives at 16px and in one colour. Nothing here is illustrative — I can't generate imagery.</p>
+
+<div class="dv-opts">
+
+<div class="dv-opt" id="1a">
+<div class="dv-olabel"><a class="dv-oid" href="#1a">1a</a>Ledger — stacked layers, weighted</div>
+<div class="dv-card" style="width:440px">
+  <div style="padding:44px 40px 36px;display:flex;align-items:center;gap:18px">
+    <svg width="46" height="46" viewBox="0 0 46 46" aria-label="MindStack symbol"><rect x="4" y="6" width="38" height="8" rx="2" fill="#141618"></rect><rect x="4" y="19" width="26" height="8" rx="2" fill="#141618"></rect><rect x="4" y="32" width="14" height="8" rx="2" fill="oklch(0.62 0.17 250)"></rect></svg>
+    <span style="font:700 30px/1 'Space Grotesk',sans-serif;letter-spacing:-.028em;color:#141618">MindStack</span>
+  </div>
+  <div style="display:flex;background:#141618;padding:26px 40px;align-items:center;gap:26px">
+    <svg width="34" height="34" viewBox="0 0 46 46"><rect x="4" y="6" width="38" height="8" rx="2" fill="#fff"></rect><rect x="4" y="19" width="26" height="8" rx="2" fill="#fff"></rect><rect x="4" y="32" width="14" height="8" rx="2" fill="oklch(0.72 0.17 250)"></rect></svg>
+    <span style="font:500 15px/1 'Space Grotesk',sans-serif;letter-spacing:-.01em;color:rgba(255,255,255,.6)">reversed</span>
+    <div style="margin-left:auto;display:flex;gap:12px;align-items:flex-end">
+      <div style="width:32px;height:32px;border-radius:7px;background:oklch(0.62 0.17 250);display:grid;place-items:center"><svg width="20" height="20" viewBox="0 0 46 46"><rect x="4" y="6" width="38" height="8" rx="2" fill="#fff"></rect><rect x="4" y="19" width="26" height="8" rx="2" fill="#fff"></rect><rect x="4" y="32" width="14" height="8" rx="2" fill="rgba(255,255,255,.5)"></rect></svg></div>
+      <div style="width:16px;height:16px;border-radius:4px;background:oklch(0.62 0.17 250);display:grid;place-items:center"><svg width="11" height="11" viewBox="0 0 46 46"><rect x="4" y="6" width="38" height="8" rx="2" fill="#fff"></rect><rect x="4" y="19" width="26" height="8" rx="2" fill="#fff"></rect><rect x="4" y="32" width="14" height="8" rx="2" fill="rgba(255,255,255,.55)"></rect></svg></div>
+    </div>
+  </div>
+  <div style="padding:20px 40px 26px;border-top:1px solid rgba(0,0,0,.07);font:400 12px/1.65 'Space Grotesk',sans-serif;color:rgba(0,0,0,.62)">
+    <div><strong style="color:#141618;font-weight:600">Idea</strong> — three bars of decreasing width: raw data, reasoning, answer. The stack read literally, narrowing to a point.</div>
+    <div style="margin-top:8px"><strong style="color:#141618;font-weight:600">Strength</strong> — unmistakable at favicon size; the accent bar gives a natural loading/progress animation.</div>
+    <div style="margin-top:4px"><strong style="color:#141618;font-weight:600">Risk</strong> — bar stacks are common in data branding.</div>
+  </div>
+</div>
+</div>
+
+<div class="dv-opt" id="1b">
+<div class="dv-olabel"><a class="dv-oid" href="#1b">1b</a>Aperture — editorial, nested squares</div>
+<div class="dv-card" style="width:440px">
+  <div style="padding:44px 40px 36px;display:flex;align-items:center;gap:16px">
+    <svg width="44" height="44" viewBox="0 0 44 44" aria-label="MindStack symbol"><rect x="2.5" y="2.5" width="39" height="39" fill="none" stroke="#16181a" stroke-width="3"></rect><rect x="12" y="12" width="20" height="20" fill="oklch(0.55 0.13 155)"></rect></svg>
+    <span style="font:400 34px/1 'Instrument Serif',serif;letter-spacing:-.01em;color:#16181a">MindStack</span>
+  </div>
+  <div style="display:flex;background:#16181a;padding:26px 40px;align-items:center;gap:26px">
+    <svg width="32" height="32" viewBox="0 0 44 44"><rect x="2.5" y="2.5" width="39" height="39" fill="none" stroke="#fff" stroke-width="3"></rect><rect x="12" y="12" width="20" height="20" fill="oklch(0.68 0.13 155)"></rect></svg>
+    <span style="font:400 14px/1 'IBM Plex Sans',sans-serif;color:rgba(255,255,255,.55)">reversed</span>
+    <div style="margin-left:auto;display:flex;gap:12px;align-items:flex-end">
+      <div style="width:32px;height:32px;background:oklch(0.55 0.13 155);display:grid;place-items:center"><svg width="18" height="18" viewBox="0 0 44 44"><rect x="2.5" y="2.5" width="39" height="39" fill="none" stroke="#fff" stroke-width="4"></rect><rect x="14" y="14" width="16" height="16" fill="#fff"></rect></svg></div>
+      <div style="width:16px;height:16px;background:oklch(0.55 0.13 155);display:grid;place-items:center"><svg width="10" height="10" viewBox="0 0 44 44"><rect x="14" y="14" width="16" height="16" fill="#fff"></rect></svg></div>
+    </div>
+  </div>
+  <div style="padding:20px 40px 26px;border-top:1px solid rgba(0,0,0,.07);font:400 12px/1.65 'IBM Plex Sans',sans-serif;color:rgba(0,0,0,.62)">
+    <div><strong style="color:#16181a;font-weight:600">Idea</strong> — a frame with a solid core: the model inside the guardrails. Serif wordmark buys credibility with non-technical buyers.</div>
+    <div style="margin-top:8px"><strong style="color:#16181a;font-weight:600">Strength</strong> — reads as institution, not startup. Very few AI companies use a serif.</div>
+    <div style="margin-top:4px"><strong style="color:#16181a;font-weight:600">Risk</strong> — the square-in-square is abstract; it needs the wordmark to mean anything.</div>
+  </div>
+</div>
+</div>
+
+<div class="dv-opt" id="1c">
+<div class="dv-olabel"><a class="dv-oid" href="#1c">1c</a>Offset M — monogram from four bars</div>
+<div class="dv-card" style="width:440px">
+  <div style="padding:44px 40px 36px;display:flex;align-items:center;gap:16px">
+    <svg width="44" height="44" viewBox="0 0 44 44" aria-label="MindStack symbol"><rect x="4" y="8" width="7" height="28" fill="#101214"></rect><rect x="14" y="8" width="7" height="18" fill="#101214"></rect><rect x="24" y="8" width="7" height="18" fill="#101214"></rect><rect x="34" y="8" width="7" height="28" fill="oklch(0.6 0.19 35)"></rect></svg>
+    <span style="font:800 29px/1 'Archivo',sans-serif;letter-spacing:-.035em;color:#101214">MindStack</span>
+  </div>
+  <div style="display:flex;background:#101214;padding:26px 40px;align-items:center;gap:26px">
+    <svg width="32" height="32" viewBox="0 0 44 44"><rect x="4" y="8" width="7" height="28" fill="#fff"></rect><rect x="14" y="8" width="7" height="18" fill="#fff"></rect><rect x="24" y="8" width="7" height="18" fill="#fff"></rect><rect x="34" y="8" width="7" height="28" fill="oklch(0.68 0.19 35)"></rect></svg>
+    <span style="font:400 14px/1 'Archivo',sans-serif;color:rgba(255,255,255,.55)">reversed</span>
+    <div style="margin-left:auto;display:flex;gap:12px;align-items:flex-end">
+      <div style="width:32px;height:32px;border-radius:8px;background:#fff;display:grid;place-items:center"><svg width="20" height="20" viewBox="0 0 44 44"><rect x="4" y="8" width="7" height="28" fill="#101214"></rect><rect x="14" y="8" width="7" height="18" fill="#101214"></rect><rect x="24" y="8" width="7" height="18" fill="#101214"></rect><rect x="34" y="8" width="7" height="28" fill="oklch(0.6 0.19 35)"></rect></svg></div>
+      <div style="width:16px;height:16px;border-radius:4px;background:#fff;display:grid;place-items:center"><svg width="11" height="11" viewBox="0 0 44 44"><rect x="4" y="8" width="7" height="28" fill="#101214"></rect><rect x="14" y="8" width="7" height="18" fill="#101214"></rect><rect x="24" y="8" width="7" height="18" fill="#101214"></rect><rect x="34" y="8" width="7" height="28" fill="oklch(0.6 0.19 35)"></rect></svg></div>
+    </div>
+  </div>
+  <div style="padding:20px 40px 26px;border-top:1px solid rgba(0,0,0,.07);font:400 12px/1.65 'Archivo',sans-serif;color:rgba(0,0,0,.62)">
+    <div><strong style="color:#101214;font-weight:600">Idea</strong> — an M drawn as four columns of different heights. Monogram and bar chart at once; the last column carries the accent.</div>
+    <div style="margin-top:8px"><strong style="color:#101214;font-weight:600">Strength</strong> — owns the letter M without a literal letterform. Columns animate well on scroll.</div>
+    <div style="margin-top:4px"><strong style="color:#101214;font-weight:600">Risk</strong> — the M is not obvious until pointed out.</div>
+  </div>
+</div>
+</div>
+
+<div class="dv-opt" id="1d">
+<div class="dv-olabel"><a class="dv-oid" href="#1d">1d</a>Kernel — technical, dot grid</div>
+<div class="dv-card" style="width:440px">
+  <div style="padding:44px 40px 36px;display:flex;align-items:center;gap:16px">
+    <svg width="42" height="42" viewBox="0 0 42 42" aria-label="MindStack symbol"><circle cx="8" cy="8" r="3.2" fill="#0f1113"></circle><circle cx="21" cy="8" r="3.2" fill="#0f1113"></circle><circle cx="34" cy="8" r="3.2" fill="#0f1113"></circle><circle cx="8" cy="21" r="3.2" fill="#0f1113"></circle><rect x="16" y="16" width="10" height="10" rx="1" fill="oklch(0.58 0.16 285)"></rect><circle cx="34" cy="21" r="3.2" fill="#0f1113"></circle><circle cx="8" cy="34" r="3.2" fill="#0f1113"></circle><circle cx="21" cy="34" r="3.2" fill="#0f1113"></circle><circle cx="34" cy="34" r="3.2" fill="#0f1113"></circle></svg>
+    <span style="font:700 25px/1 'JetBrains Mono',monospace;letter-spacing:-.05em;color:#0f1113">mindstack</span>
+  </div>
+  <div style="display:flex;background:#0f1113;padding:26px 40px;align-items:center;gap:26px">
+    <svg width="31" height="31" viewBox="0 0 42 42"><circle cx="8" cy="8" r="3.2" fill="#fff"></circle><circle cx="21" cy="8" r="3.2" fill="#fff"></circle><circle cx="34" cy="8" r="3.2" fill="#fff"></circle><circle cx="8" cy="21" r="3.2" fill="#fff"></circle><rect x="16" y="16" width="10" height="10" rx="1" fill="oklch(0.7 0.16 285)"></rect><circle cx="34" cy="21" r="3.2" fill="#fff"></circle><circle cx="8" cy="34" r="3.2" fill="#fff"></circle><circle cx="21" cy="34" r="3.2" fill="#fff"></circle><circle cx="34" cy="34" r="3.2" fill="#fff"></circle></svg>
+    <span style="font:400 13px/1 'JetBrains Mono',monospace;color:rgba(255,255,255,.5)">reversed</span>
+    <div style="margin-left:auto;display:flex;gap:12px;align-items:flex-end">
+      <div style="width:32px;height:32px;border-radius:7px;background:#1c1f22;display:grid;place-items:center"><svg width="20" height="20" viewBox="0 0 42 42"><circle cx="8" cy="8" r="3.6" fill="#fff"></circle><circle cx="34" cy="8" r="3.6" fill="#fff"></circle><rect x="15" y="15" width="12" height="12" rx="1" fill="oklch(0.7 0.16 285)"></rect><circle cx="8" cy="34" r="3.6" fill="#fff"></circle><circle cx="34" cy="34" r="3.6" fill="#fff"></circle></svg></div>
+      <div style="width:16px;height:16px;border-radius:4px;background:#1c1f22;display:grid;place-items:center"><svg width="11" height="11" viewBox="0 0 42 42"><rect x="14" y="14" width="14" height="14" rx="1" fill="oklch(0.7 0.16 285)"></rect></svg></div>
+    </div>
+  </div>
+  <div style="padding:20px 40px 26px;border-top:1px solid rgba(0,0,0,.07);font:400 12px/1.6 'JetBrains Mono',monospace;color:rgba(0,0,0,.6)">
+    <div><strong style="color:#0f1113;font-weight:700">Idea</strong> — eight nodes around one solid centre: scattered context, one place it resolves.</div>
+    <div style="margin-top:8px"><strong style="color:#0f1113;font-weight:700">Strength</strong> — speaks fluently to developers; lowercase mono wordmark signals infra.</div>
+    <div style="margin-top:4px"><strong style="color:#0f1113;font-weight:700">Risk</strong> — dots fill in at 16px; skews too dev for a CIO audience.</div>
+  </div>
+</div>
+</div>
+
+<div class="dv-opt" id="1e">
+<div class="dv-olabel"><a class="dv-oid" href="#1e">1e</a>Fold — two planes, one seam</div>
+<div class="dv-card" style="width:440px">
+  <div style="padding:44px 40px 36px;display:flex;align-items:center;gap:16px">
+    <svg width="44" height="44" viewBox="0 0 44 44" aria-label="MindStack symbol"><path d="M22 3 L41 14 L22 25 L3 14 Z" fill="#131517"></path><path d="M22 19 L41 30 L22 41 L3 30 Z" fill="oklch(0.6 0.15 205)"></path></svg>
+    <span style="font:800 28px/1 'Manrope',sans-serif;letter-spacing:-.03em;color:#131517">MindStack</span>
+  </div>
+  <div style="display:flex;background:#131517;padding:26px 40px;align-items:center;gap:26px">
+    <svg width="32" height="32" viewBox="0 0 44 44"><path d="M22 3 L41 14 L22 25 L3 14 Z" fill="#fff"></path><path d="M22 19 L41 30 L22 41 L3 30 Z" fill="oklch(0.7 0.15 205)"></path></svg>
+    <span style="font:500 14px/1 'Manrope',sans-serif;color:rgba(255,255,255,.55)">reversed</span>
+    <div style="margin-left:auto;display:flex;gap:12px;align-items:flex-end">
+      <div style="width:32px;height:32px;border-radius:9px;background:oklch(0.6 0.15 205);display:grid;place-items:center"><svg width="21" height="21" viewBox="0 0 44 44"><path d="M22 5 L40 15 L22 25 L4 15 Z" fill="#fff"></path><path d="M22 21 L40 31 L22 41 L4 31 Z" fill="rgba(255,255,255,.55)"></path></svg></div>
+      <div style="width:16px;height:16px;border-radius:5px;background:oklch(0.6 0.15 205);display:grid;place-items:center"><svg width="12" height="12" viewBox="0 0 44 44"><path d="M22 6 L40 16 L22 26 L4 16 Z" fill="#fff"></path><path d="M22 24 L40 34 L22 42 L4 34 Z" fill="rgba(255,255,255,.6)"></path></svg></div>
+    </div>
+  </div>
+  <div style="padding:20px 40px 26px;border-top:1px solid rgba(0,0,0,.07);font:400 12px/1.65 'Manrope',sans-serif;color:rgba(0,0,0,.62)">
+    <div><strong style="color:#131517;font-weight:700">Idea</strong> — two isometric planes stacked with a visible seam: your systems and the intelligence layer above them.</div>
+    <div style="margin-top:8px"><strong style="color:#131517;font-weight:700">Strength</strong> — most distinctive silhouette of the five; the seam is a strong hover/scroll device.</div>
+    <div style="margin-top:4px"><strong style="color:#131517;font-weight:700">Risk</strong> — isometric planes are heavily used by cloud and database brands.</div>
+  </div>
+</div>
+</div>
+
+</div>
+<p class="dv-next">Try next: "take <a class="dv-oid" href="#1a">1a</a> forward into the design system" · "keep the <a class="dv-oid" href="#1b">1b</a> serif but use the <a class="dv-oid" href="#1e">1e</a> mark" · "these are too safe, five new directions"</p>
+</section>
+</x-dc>
+</body>
+</html>

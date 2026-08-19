@@ -1,0 +1,326 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHeader from '../components/layout/PageHeader.astro';
+import ContactForm from '../components/islands/ContactForm.tsx';
+
+const trust = [
+  { label: 'Who replies', value: 'Waisale Bunoa — project management and business analysis.' },
+  { label: 'Response time', value: 'Within one business day.' },
+  {
+    label: 'What the first call covers',
+    value: '30 minutes with an engineer. What you are trying to do, what it likely costs, and whether we are the right fit.',
+  },
+  { label: 'Direct email', value: 'saurabnand951@gmail.com' },
+];
+---
+
+<Base
+  title="Talk to sales — MindStack"
+  description="Tell us what's in the way. A first call is 30 minutes with an engineer, not a salesperson."
+  quiet
+>
+  <PageHeader
+    eyebrow="Contact"
+    title="Tell us what's in the way."
+    lead="A first call is 30 minutes with an engineer, not a salesperson. You'll leave it with an opinion, whether or not you work with us."
+  />
+
+  <section class="section-tight">
+    <div class="shell split">
+      <div class="form-col">
+        <ContactForm client:load />
+      </div>
+
+      <aside class="trust">
+        <p class="eyebrow">What happens next</p>
+        <dl class="trust-list">
+          {
+            trust.map((item) => (
+              <div class="trust-row">
+                <dt>{item.label}</dt>
+                <dd>
+                  {item.label === 'Direct email' ? (
+                    <a href={`mailto:${item.value}`}>{item.value}</a>
+                  ) : (
+                    item.value
+                  )}
+                </dd>
+              </div>
+            ))
+          }
+        </dl>
+        <p class="trust-note">No newsletter opt-in. No drip sequence.</p>
+      </aside>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .section-tight {
+    padding-bottom: var(--section-y);
+  }
+
+  .split {
+    display: flex;
+    flex-wrap: wrap-reverse;
+    gap: clamp(32px, 5vw, 64px);
+    align-items: flex-start;
+  }
+
+  .form-col {
+    flex: 1 1 380px;
+  }
+
+  .trust {
+    flex: 1 1 280px;
+    position: sticky;
+    top: calc(var(--header-h) + var(--space-4));
+    padding: var(--space-4);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-lg);
+    background: var(--surface-card);
+  }
+
+  .trust .eyebrow {
+    margin: 0 0 var(--space-4);
+  }
+
+  .trust-list {
+    margin: 0;
+  }
+
+  .trust-row {
+    padding-block: var(--space-3);
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .trust-row:first-child {
+    border-top: none;
+    padding-top: 0;
+  }
+
+  .trust-row dt {
+    margin-bottom: 5px;
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+  }
+
+  .trust-row dd {
+    margin: 0;
+    font-size: 14.5px;
+    color: var(--text-secondary);
+  }
+
+  .trust-note {
+    margin: var(--space-4) 0 0;
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--border-subtle);
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+  }
+
+  @media (max-width: 900px) {
+    .trust {
+      position: static;
+    }
+  }
+</style>
+
+<style is:global>
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .contact-form .field {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .contact-form .field-set {
+    margin: 0;
+    padding: 0;
+    border: none;
+  }
+
+  .contact-form label,
+  .contact-form legend {
+    margin-bottom: var(--space-2);
+    padding: 0;
+  }
+
+  .contact-form .optional {
+    text-transform: none;
+    letter-spacing: 0;
+    color: var(--text-tertiary);
+  }
+
+  .contact-form input,
+  .contact-form select,
+  .contact-form textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 14px;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-sm);
+    background: var(--surface-card);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: 15px;
+    outline: none;
+    transition: border-color var(--dur-hover) var(--ease);
+  }
+
+  .contact-form input,
+  .contact-form select {
+    height: var(--tap-min);
+  }
+
+  .contact-form select {
+    background-color: var(--surface-solid);
+    color-scheme: inherit;
+    appearance: none;
+    background-image: linear-gradient(45deg, transparent 50%, currentColor 50%),
+      linear-gradient(135deg, currentColor 50%, transparent 50%);
+    background-position:
+      calc(100% - 19px) calc(50% + 1px),
+      calc(100% - 14px) calc(50% + 1px);
+    background-size:
+      5px 5px,
+      5px 5px;
+    background-repeat: no-repeat;
+    padding-right: 38px;
+  }
+
+  .contact-form select option {
+    background-color: var(--surface-solid);
+    color: var(--text-primary);
+  }
+
+  .contact-form textarea {
+    padding-block: 12px;
+    line-height: var(--leading-body);
+    resize: vertical;
+  }
+
+  .contact-form input:focus,
+  .contact-form select:focus,
+  .contact-form textarea:focus {
+    border-color: var(--accent);
+  }
+
+  .contact-form .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .contact-form .chip {
+    height: 38px;
+    padding: 0 16px;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-pill);
+    background: transparent;
+    color: var(--text-secondary);
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    transition:
+      border-color var(--dur-hover) var(--ease),
+      background var(--dur-hover) var(--ease),
+      color var(--dur-hover) var(--ease);
+  }
+
+  .contact-form .chip:hover {
+    border-color: var(--border-hover);
+    color: var(--text-primary);
+  }
+
+  .contact-form .chip-on {
+    background: var(--text-primary);
+    border-color: var(--text-primary);
+    color: var(--bg);
+  }
+
+  .contact-form .field-help {
+    margin: 7px 0 0;
+    font-size: 12.5px;
+    color: var(--text-tertiary);
+  }
+
+  .contact-form .field-error,
+  .contact-form .form-error {
+    margin: 7px 0 0;
+    font-size: 13px;
+    color: var(--error);
+  }
+
+  .contact-form .honeypot {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+
+  .contact-form .submit {
+    align-self: flex-start;
+    min-height: var(--tap-min);
+    padding: 0 28px;
+    border: none;
+    border-radius: var(--radius-md);
+    background: var(--accent);
+    color: var(--text-on-accent);
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background var(--dur-hover) var(--ease);
+  }
+
+  .contact-form .submit:hover:not(:disabled) {
+    background: var(--accent-hover);
+  }
+
+  .contact-form .submit:disabled {
+    opacity: 0.55;
+    cursor: progress;
+  }
+
+  .contact-form .form-note {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+  }
+
+  .form-done {
+    padding: var(--space-5);
+    border: 1px solid var(--accent);
+    border-radius: var(--radius-lg);
+    background: var(--surface-card);
+  }
+
+  .form-done-title {
+    margin: 0 0 var(--space-3);
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 20px;
+    letter-spacing: -0.018em;
+  }
+
+  .form-done-body {
+    margin: 0;
+    color: var(--text-secondary);
+  }
+</style>

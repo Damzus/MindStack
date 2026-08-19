@@ -1,0 +1,130 @@
+---
+import SectionHeader from './SectionHeader.astro';
+import { services } from '../../lib/nav';
+
+const detail = [
+  {
+    shape: 'square',
+    body: 'Marketing sites, customer portals and internal tools that are fast, measurable and handed over documented.',
+    scope: ['Discovery · design · build', 'CMS & integrations', 'Performance budgets'],
+  },
+  {
+    shape: 'circle',
+    body: 'Web and mobile applications built to be extended by your own team, with the tests and CI to make that safe.',
+    scope: ['Product design', 'Web & mobile builds', 'Legacy modernisation'],
+  },
+  {
+    shape: 'diamond',
+    body: 'The part most agencies leave behind: provisioning, pipelines, monitoring and someone answerable when it pages.',
+    scope: ['Infrastructure as code', 'CI/CD & observability', 'Managed operation'],
+  },
+];
+
+const cards = services.map((service, index) => ({ ...service, ...detail[index]! }));
+---
+
+<section class="section band" id="services">
+  <div class="shell">
+    <SectionHeader
+      eyebrow="What we do"
+      title="Three services that hand off to each other, not to someone else."
+      narrow
+    />
+
+    <div class="grid">
+      {
+        cards.map((card, index) => (
+          <a class="service u-sheen" href={card.href} data-reveal data-anim-scope>
+            <span
+              class={`glyph glyph-${card.shape}`}
+              style={`animation-delay: ${index * 0.8}s`}
+              aria-hidden="true"
+            />
+            <h3 class="service-name">{card.label}</h3>
+            <p class="service-body">{card.body}</p>
+            <ul class="service-scope">
+              {card.scope.map((line) => (
+                <li>{line}</li>
+              ))}
+            </ul>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .band {
+    background: var(--surface-band);
+    border-top: 1px solid var(--border-subtle);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap: var(--space-3);
+  }
+
+  .service {
+    display: block;
+    padding: clamp(24px, 2.6vw, 32px);
+    background: var(--surface-card);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-lg);
+    color: inherit;
+    transition: border-color 160ms var(--ease);
+  }
+
+  .service:hover {
+    border-color: var(--border-hover);
+    color: inherit;
+  }
+
+  .glyph {
+    display: block;
+    width: 30px;
+    height: 30px;
+    margin-bottom: var(--space-4);
+    border: 1.5px solid var(--accent);
+    animation: ms-iconbeat 4s ease-in-out infinite;
+  }
+
+  .glyph-square {
+    border-radius: 6px;
+  }
+
+  .glyph-circle {
+    border-radius: 50%;
+  }
+
+  .glyph-diamond {
+    transform: rotate(45deg);
+    animation-name: ms-icontilt;
+  }
+
+  .service-name {
+    margin-bottom: 10px;
+    font-size: var(--size-h3);
+    line-height: var(--leading-h3);
+    letter-spacing: -0.018em;
+  }
+
+  .service-body {
+    margin: 0 0 var(--space-4);
+    font-size: 15px;
+    color: var(--text-secondary);
+  }
+
+  .service-scope {
+    margin: 0;
+    padding: var(--space-3) 0 0;
+    list-style: none;
+    border-top: 1px solid var(--border-subtle);
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    line-height: 1.9;
+    color: var(--text-tertiary);
+  }
+</style>

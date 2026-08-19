@@ -1,0 +1,47 @@
+---
+interface Props {
+  needed: string[];
+}
+
+const { needed } = Astro.props;
+---
+
+<section class="section">
+  <div class="shell">
+    <div class="pending">
+      <p class="eyebrow">Not written yet</p>
+      <p class="pending-body">
+        This page is scaffolded but deliberately empty. Fabricated content is worse than an honest
+        gap — these are the inputs needed before it can be written.
+      </p>
+      <ul class="pending-list">
+        {needed.map((item) => <li>{item}</li>)}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .pending {
+    padding: clamp(24px, 3vw, 36px);
+    border: 1px dashed var(--border-strong);
+    border-radius: var(--radius-lg);
+  }
+
+  .eyebrow {
+    margin: 0 0 var(--space-3);
+  }
+
+  .pending-body {
+    margin: 0 0 var(--space-4);
+    max-width: 38em;
+    color: var(--text-secondary);
+  }
+
+  .pending-list {
+    margin: 0;
+    padding-left: 18px;
+    line-height: 1.9;
+    color: var(--text-secondary);
+  }
+</style>
