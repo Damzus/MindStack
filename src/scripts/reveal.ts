@@ -1,14 +1,22 @@
 const REVEAL = '[data-reveal]';
 const GATE = '[data-anim-scope]';
 
+const nativeTimeline = () =>
+  typeof CSS !== 'undefined' &&
+  typeof CSS.supports === 'function' &&
+  CSS.supports('animation-timeline', 'view()');
+
 function initReveals() {
-  const nodes = Array.from(document.querySelectorAll<HTMLElement>(REVEAL));
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce || nativeTimeline() || !('IntersectionObserver' in window)) return;
+
+  const nodes = Array.from(document.querySelectorAll<HTMLElement>(REVEAL)).filter(
+    (node) => node.dataset.revealed === undefined
+  );
   if (!nodes.length) return;
 
-  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduce || !('IntersectionObserver' in window)) return;
-
   for (const node of nodes) {
+    node.dataset.revealed = 'pending';
     node.style.opacity = '0';
     node.style.transform = `translateY(var(--reveal-rise, 14px))`;
     node.style.transition =
@@ -24,6 +32,7 @@ function initReveals() {
         el.style.transitionDelay = `calc(var(--reveal-stagger, 60ms) * ${index})`;
         el.style.opacity = '1';
         el.style.transform = 'none';
+        el.dataset.revealed = 'done';
         observer.unobserve(el);
         index += 1;
       }
@@ -37,12 +46,15 @@ function initReveals() {
 function initAnimGating() {
   if (!('IntersectionObserver' in window)) return;
 
-  const scopes = Array.from(document.querySelectorAll<HTMLElement>(GATE));
+  const scopes = Array.from(document.querySelectorAll<HTMLElement>(GATE)).filter(
+    (scope) => scope.dataset.animGated === undefined
+  );
   if (!scopes.length) return;
 
   const animated = new Map<Element, HTMLElement[]>();
 
   for (const scope of scopes) {
+    scope.dataset.animGated = '';
     const list = [scope, ...Array.from(scope.querySelectorAll<HTMLElement>('*'))].filter(
       (el) => getComputedStyle(el).animationName !== 'none'
     );
@@ -64,5 +76,10 @@ function initAnimGating() {
   for (const scope of scopes) observer.observe(scope);
 }
 
-initReveals();
-initAnimGating();
+function boot() {
+  initReveals();
+  initAnimGating();
+}
+
+boot();
+document.addEventListener('astro:after-swap', boot);

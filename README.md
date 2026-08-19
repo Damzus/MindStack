@@ -12,10 +12,22 @@ The site has exactly one conversion action: **Talk to sales**. Its own speed, ac
 
 | Concern | Choice | Notes |
 |---|---|---|
-| Framework | Astro 7.2 + TypeScript | Zero JS on every page except `/contact` |
+| Framework | Astro 7.2 + TypeScript | No framework runtime outside `/contact` |
 | Interactivity | React 19 island | Exactly one, site-wide: the contact form |
+| Navigation | Astro View Transitions (`ClientRouter`) | 5.6 KB gzipped, on every page |
 | Styling | CSS custom properties + Astro scoped styles | Runtime-swappable theme tokens |
-| Motion | CSS keyframes + `IntersectionObserver` | No animation library |
+| Motion | CSS keyframes + scroll-driven animation | No animation library |
+
+### JS budget, measured
+
+Per-page JavaScript, from the built output:
+
+| Page | External JS | React |
+|---|---|---|
+| every static page | `ClientRouter` — 16 KB raw / **5.6 KB gz** | no |
+| `/contact` | the above + React 19 + the form island | yes (57 KB gz) |
+
+Plus three small inline module scripts on every page — theme toggle, mobile nav, reveal. React is loaded **only** on `/contact`; verify with `grep -l client\\. .vercel/output/static/**/*.html` after a build.
 | Email | Resend | Via an Astro server endpoint |
 | Hosting | Vercel | `@astrojs/vercel` adapter |
 | Fonts | Space Grotesk, IBM Plex Sans, JetBrains Mono | Self-hosted, latin subset |
@@ -143,18 +155,57 @@ Light and dark are both first-class, not an afterthought bolted onto one.
 Two tokens exist specifically to fix rendering bugs, so do not "simplify" them away:
 
 - `--surface-solid` — native `<select>` popups composite onto white in the OS layer, so translucent surfaces made the dark dropdown unreadable. Options need an opaque background.
-- `Logo.astro` uses `color: inherit` — Astro's scoped styles do not cross component boundaries, so the footer could not recolour the wordmark and it rendered invisible against the dark footer.
+- `Logo.astro` uses `color: inherit` — see the scoping trap below.
+
+### Astro scoped styles do not reach a child component's root
+
+This has caused three separate bugs in this repo, so it is worth stating plainly: a class you pass into a component (`<Logo class="brand-logo" />`) **cannot be styled from the parent's scoped `<style>` block.** The rule compiles with the parent's scope attribute, which the child's root element does not carry. It fails silently — no error, no warning, the declaration simply never applies. `:global()` around part of the selector does not rescue it either.
+
+What broke: the footer wordmark rendered invisible (`color` never applied); the footer brand had no bottom spacing for weeks (`margin-bottom` never applied); a wordmark `font-size` override did nothing.
+
+Do instead, in order of preference:
+
+1. **Expose a prop** on the child and let it style itself — `Logo` takes `size`, `orbit`, `wordSize`, `gap` for exactly this reason.
+2. **Style the parent container** you do own (the footer sets `gap` on `.brand`, not margin on the logo).
+3. Inherit through a CSS property — `color: inherit` on the child root.
+
+Verify by computed style, not by reading the CSS. `getComputedStyle(el).marginBottom === '0px'` is how the dead rule was finally caught.
 
 ---
 
 ## Motion
 
-Keyframes live in `motion.css`; `src/scripts/reveal.ts` drives reveal-on-scroll.
+Keyframes live in `motion.css`.
+
+**Reveals run on the compositor where the browser allows it.** Under `@supports (animation-timeline: view())` the reveal is pure CSS driven by the scroll timeline, off the main thread. `src/scripts/reveal.ts` detects that support and *stands down*; it only takes over as an `IntersectionObserver` fallback in older browsers. Both paths must be kept working — if you change one, check the other.
 
 - Offscreen animations are paused via `data-anim-scope` gating rather than left running.
-- `prefers-reduced-motion: reduce` collapses durations to 1ms globally.
+- `prefers-reduced-motion: reduce` collapses durations to 1ms globally, and the logo orbit, diagram flow and reveals opt out explicitly.
 - Pages using the `quiet` layout flag (`/contact`) disable animation entirely — nothing should move while someone is filling in a form.
 - **The hidden state is set from JavaScript, never in CSS.** If JS fails or a crawler visits, all content stays visible.
+
+Regression to watch for: a broken `animation-range` can leave `[data-reveal]` content stuck at `opacity: 0` — invisible but present, so the build and HTTP status stay green. Sweep every route and assert nothing onscreen is transparent after scrolling.
+
+### The mark
+
+`Logo.astro` is the identity's orbiting mark: five satellites rotating around a beating accent core, with a ghost reflection beneath. It is animated, and the timing differs by placement to match the hi-fi design:
+
+| Placement | `size` | `orbit` | `beat` |
+|---|---|---|---|
+| Header | 23 | `16` (slow) | no |
+| Footer | 46 | `9` (faster) | yes |
+
+Props: `size`, `orbit` (seconds), `beat`, `wordmark`, `wordSize`, `gap`, `href`, `class`.
+
+The header instance is `transition:persist`ed, so the orbit runs continuously across navigation instead of snapping back to zero on every page change.
+
+### View Transitions
+
+`ClientRouter` is enabled in `Base.astro`. Three things it forces, all already handled — **do not regress them**:
+
+1. **Theme must be reapplied on `astro:after-swap`.** Astro replaces `<html>`'s attributes from the incoming document, which drops the JS-set `data-theme`. The inline head script rebinds it.
+2. **Client scripts must not bind to elements by id at module scope.** Module scripts execute once; swapped-in DOM has no listeners. The theme toggle and mobile nav therefore use delegated `document`-level listeners. Binding `getElementById(...).addEventListener(...)` will appear to work on first load and silently die after the first client-side navigation.
+3. **`reveal.ts` re-runs on `astro:after-swap`** and is idempotent via `data-revealed` / `data-anim-gated` markers.
 
 ---
 

@@ -6,8 +6,8 @@ import { footerNav, legalNav, conversionCta } from '../../lib/nav';
 <footer class="footer">
   <div class="shell">
     <div class="cols">
-      <div class="brand">
-        <Logo class="brand-logo" />
+      <div class="brand" data-anim-scope>
+        <Logo size={46} orbit={9} beat wordSize={17} gap={13} />
         <p class="brand-line">Software built and run by one team.</p>
       </div>
 
@@ -56,9 +56,11 @@ import { footerNav, legalNav, conversionCta } from '../../lib/nav';
     margin-bottom: var(--space-6);
   }
 
-  .brand-logo {
-    color: var(--footer-text);
-    margin-bottom: var(--space-4);
+  .brand {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
   }
 
   .brand-line {

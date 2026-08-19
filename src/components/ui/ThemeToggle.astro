@@ -46,8 +46,10 @@
 </style>
 
 <script>
-  const button = document.getElementById('ms-theme');
-  button?.addEventListener('click', () => {
+  document.addEventListener('click', (event) => {
+    const target = event.target as HTMLElement | null;
+    if (!target?.closest('#ms-theme')) return;
+
     const root = document.documentElement;
     const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
     root.dataset.theme = next;

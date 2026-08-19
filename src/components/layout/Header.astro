@@ -10,7 +10,7 @@ const isCurrent = (href: string) => path === href || path.startsWith(`${href}/`)
 
 <header class="header">
   <div class="shell header-inner">
-    <Logo />
+    <Logo transition:persist transition:name="ms-mark" />
 
     <nav class="nav-desktop" aria-label="Primary">
       {
@@ -185,53 +185,66 @@ const isCurrent = (href: string) => path === href || path.startsWith(`${href}/`)
 </style>
 
 <script>
-  const trigger = document.getElementById('ms-nav-trigger');
-  const sheet = document.getElementById('ms-nav-sheet');
+  const getTrigger = () => document.getElementById('ms-nav-trigger');
+  const getSheet = () => document.getElementById('ms-nav-sheet');
 
-  if (trigger && sheet) {
-    const focusable = () =>
-      Array.from(sheet.querySelectorAll<HTMLElement>('a[href], button:not([disabled])'));
+  const focusable = (sheet: HTMLElement) =>
+    Array.from(sheet.querySelectorAll<HTMLElement>('a[href], button:not([disabled])'));
 
-    const setOpen = (open: boolean) => {
-      sheet.hidden = !open;
-      trigger.setAttribute('aria-expanded', String(open));
-      trigger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-      document.body.style.overflow = open ? 'hidden' : '';
-      if (open) focusable()[0]?.focus();
-      else trigger.focus();
-    };
+  const setOpen = (open: boolean) => {
+    const trigger = getTrigger();
+    const sheet = getSheet();
+    if (!trigger || !sheet) return;
 
-    trigger.addEventListener('click', () => setOpen(sheet.hidden));
+    sheet.hidden = !open;
+    trigger.setAttribute('aria-expanded', String(open));
+    trigger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    document.body.style.overflow = open ? 'hidden' : '';
+    if (open) focusable(sheet)[0]?.focus();
+    else trigger.focus();
+  };
 
-    document.addEventListener('keydown', (event) => {
-      if (sheet.hidden) return;
+  document.addEventListener('click', (event) => {
+    const target = event.target as HTMLElement | null;
+    if (!target?.closest('#ms-nav-trigger')) return;
+    const sheet = getSheet();
+    if (sheet) setOpen(sheet.hidden);
+  });
 
-      if (event.key === 'Escape') {
-        setOpen(false);
-        return;
-      }
+  document.addEventListener('keydown', (event) => {
+    const sheet = getSheet();
+    if (!sheet || sheet.hidden) return;
 
-      if (event.key !== 'Tab') return;
+    if (event.key === 'Escape') {
+      setOpen(false);
+      return;
+    }
 
-      const items = focusable();
-      if (!items.length) return;
+    if (event.key !== 'Tab') return;
 
-      const first = items[0]!;
-      const last = items[items.length - 1]!;
-      const active = document.activeElement;
+    const items = focusable(sheet);
+    if (!items.length) return;
 
-      if (event.shiftKey && active === first) {
-        event.preventDefault();
-        last.focus();
-      } else if (!event.shiftKey && active === last) {
-        event.preventDefault();
-        first.focus();
-      }
-    });
+    const first = items[0]!;
+    const last = items[items.length - 1]!;
+    const active = document.activeElement;
 
-    const wide = window.matchMedia('(min-width: 900px)');
-    wide.addEventListener('change', (event) => {
-      if (event.matches && !sheet.hidden) setOpen(false);
-    });
-  }
+    if (event.shiftKey && active === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && active === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  });
+
+  const wide = window.matchMedia('(min-width: 900px)');
+  wide.addEventListener('change', (event) => {
+    const sheet = getSheet();
+    if (event.matches && sheet && !sheet.hidden) setOpen(false);
+  });
+
+  document.addEventListener('astro:after-swap', () => {
+    document.body.style.overflow = '';
+  });
 </script>

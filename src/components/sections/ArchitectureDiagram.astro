@@ -21,7 +21,7 @@ const data = [
 ];
 ---
 
-<svg class="arch" viewBox="0 0 320 200" role="img" aria-label="Azure architecture: clients over Front Door, Next.js and admin SPA on App Service, NestJS API and Socket.io gateway, backed by PostgreSQL, Redis and Blob Storage">
+<svg class="arch" viewBox="0 0 320 200" role="img" data-anim-scope aria-label="Azure architecture: clients over Front Door, Next.js and admin SPA on App Service, NestJS API and Socket.io gateway, backed by PostgreSQL, Redis and Blob Storage">
   <g class="rails">
     <line x1="84" y1="32" x2="84" y2="48" />
     <line x1="236" y1="32" x2="236" y2="48" />
@@ -32,6 +32,18 @@ const data = [
     <line x1="84" y1="142" x2="84" y2="158" />
     <line x1="160" y1="142" x2="160" y2="158" />
     <line x1="259" y1="142" x2="259" y2="158" />
+  </g>
+
+  <g class="packets">
+    <circle cx="84" cy="40" r="1.5" style="animation-delay: 0s" />
+    <circle cx="236" cy="40" r="1.5" style="animation-delay: 0.35s" />
+    <circle cx="84" cy="77" r="1.5" style="animation-delay: 0.7s" />
+    <circle cx="236" cy="77" r="1.5" style="animation-delay: 1.05s" />
+    <circle cx="84" cy="113" r="1.5" style="animation-delay: 1.4s" />
+    <circle cx="236" cy="113" r="1.5" style="animation-delay: 1.75s" />
+    <circle cx="84" cy="150" r="1.5" style="animation-delay: 2.1s" />
+    <circle cx="160" cy="150" r="1.5" style="animation-delay: 2.3s" />
+    <circle cx="259" cy="150" r="1.5" style="animation-delay: 2.5s" />
   </g>
 
   {
@@ -83,6 +95,17 @@ const data = [
   .rails line {
     stroke: var(--border-strong);
     stroke-width: 1;
+    stroke-dasharray: 3 5;
+    animation: arch-flow 1.15s linear infinite;
+  }
+
+  .rails line:nth-child(even) {
+    animation-delay: -0.4s;
+  }
+
+  .packets circle {
+    fill: var(--accent);
+    animation: arch-packet 2.8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
 
   .node rect {
@@ -115,5 +138,16 @@ const data = [
 
   .node-data rect {
     fill: var(--surface-band);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .rails line {
+      stroke-dasharray: none;
+      animation: none;
+    }
+
+    .packets {
+      display: none;
+    }
   }
 </style>

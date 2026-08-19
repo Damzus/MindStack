@@ -11,6 +11,7 @@ import '@fontsource/jetbrains-mono/latin-400.css';
 import '@fontsource/jetbrains-mono/latin-500.css';
 import '../styles/tokens.css';
 import '../styles/motion.css';
+import { ClientRouter } from 'astro:transitions';
 import Header from '../components/layout/Header.astro';
 import Footer from '../components/layout/Footer.astro';
 import Atmosphere from '../components/layout/Atmosphere.astro';
@@ -41,26 +42,33 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <script is:inline>
       (function () {
         var root = document.documentElement;
-        var stored = null;
-        try {
-          stored = localStorage.getItem('ms-theme');
-        } catch (err) {
-          stored = null;
-        }
         var query = window.matchMedia('(prefers-color-scheme: dark)');
-        root.dataset.theme = stored || (query.matches ? 'dark' : 'light');
-        if (!stored) {
-          query.addEventListener('change', function (event) {
-            try {
-              if (localStorage.getItem('ms-theme')) return;
-            } catch (err) {
-              /* storage unavailable, keep following the system */
-            }
-            root.dataset.theme = event.matches ? 'dark' : 'light';
+
+        function stored() {
+          try {
+            return localStorage.getItem('ms-theme');
+          } catch (err) {
+            return null;
+          }
+        }
+
+        function apply() {
+          root.dataset.theme = stored() || (query.matches ? 'dark' : 'light');
+        }
+
+        apply();
+
+        if (!window.__msThemeBound) {
+          window.__msThemeBound = true;
+          query.addEventListener('change', function () {
+            if (stored()) return;
+            apply();
           });
+          document.addEventListener('astro:after-swap', apply);
         }
       })();
     </script>
+    <ClientRouter />
   </head>
   <body data-quiet={quiet ? '' : undefined}>
     <a class="skip-link" href="#main">Skip to content</a>

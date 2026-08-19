@@ -251,3 +251,54 @@
   animation: ms-hairline 3.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   pointer-events: none;
 }
+
+@keyframes lg-orbit {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes lg-beat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.16);
+  }
+}
+
+@keyframes arch-flow {
+  to {
+    stroke-dashoffset: -8;
+  }
+}
+
+@keyframes arch-packet {
+  0% {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  18%,
+  72% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    [data-reveal] {
+      animation: ms-rise linear both;
+      animation-timeline: view();
+      animation-range: entry 6% cover 30%;
+    }
+
+    [data-quiet] [data-reveal] {
+      animation: none;
+    }
+  }
+}
