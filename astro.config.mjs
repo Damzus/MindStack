@@ -5,7 +5,7 @@ import sitemap from '@astrojs/sitemap';
 import vercel from '@astrojs/vercel';
 
 export default defineConfig({
-  site: 'https://mindstack.example',
+  site: 'https://www.mindstackdigitial.org',
   adapter: vercel(),
   integrations: [react(), mdx(), sitemap()],
   build: { inlineStylesheets: 'auto' },

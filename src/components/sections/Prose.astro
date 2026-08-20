@@ -1,0 +1,111 @@
+---
+interface Props {
+  updated?: string;
+}
+
+const { updated } = Astro.props;
+---
+
+<section class="prose-section">
+  <div class="shell">
+    <article class="prose">
+      {updated && <p class="eyebrow prose-updated">Last updated {updated}</p>}
+      <slot />
+    </article>
+  </div>
+</section>
+
+<style>
+  .prose-section {
+    padding-block: var(--space-5) var(--section-y);
+  }
+
+  .prose {
+    max-width: 40em;
+  }
+
+  .prose-updated {
+    margin: 0 0 var(--space-6);
+    padding-bottom: var(--space-3);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .prose :global(h2) {
+    margin: var(--space-6) 0 var(--space-3);
+    font-size: var(--size-h3);
+    line-height: var(--leading-h3);
+    letter-spacing: var(--tracking-h3);
+  }
+
+  .prose :global(h2:first-of-type) {
+    margin-top: 0;
+  }
+
+  .prose :global(h3) {
+    margin: var(--space-5) 0 var(--space-2);
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .prose :global(p) {
+    margin: 0 0 var(--space-4);
+    color: var(--text-secondary);
+  }
+
+  .prose :global(strong) {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+
+  .prose :global(ul) {
+    margin: 0 0 var(--space-4);
+    padding-left: 20px;
+  }
+
+  .prose :global(li) {
+    margin-bottom: var(--space-2);
+    line-height: var(--leading-body);
+    color: var(--text-secondary);
+  }
+
+  .prose :global(dl) {
+    margin: 0 0 var(--space-4);
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .prose :global(dt) {
+    margin-top: var(--space-3);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+  }
+
+  .prose :global(dd) {
+    margin: 5px 0 var(--space-3);
+    padding-bottom: var(--space-3);
+    border-bottom: 1px solid var(--border-subtle);
+    color: var(--text-secondary);
+  }
+
+  .prose :global(code) {
+    padding: 1px 5px;
+    border-radius: var(--radius-sm);
+    background: var(--surface-pill);
+    font-family: var(--font-mono);
+    font-size: 0.86em;
+    color: var(--text-primary);
+  }
+
+  .prose :global(a) {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .prose :global(.lead) {
+    font-size: var(--size-lead);
+    line-height: var(--leading-lead);
+    color: var(--text-primary);
+  }
+</style>

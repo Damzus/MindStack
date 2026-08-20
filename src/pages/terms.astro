@@ -1,20 +1,91 @@
 ---
 import Base from '../layouts/Base.astro';
 import PageHeader from '../components/layout/PageHeader.astro';
-import Pending from '../components/sections/Pending.astro';
+import Prose from '../components/sections/Prose.astro';
+import { legal, entityName, entityPlace } from '../lib/legal';
 ---
 
 <Base
   title="Terms — MindStack"
-  description="Terms information for MindStack."
+  description="The terms that apply to using this website, and how they relate to client work."
   quiet
 >
-  <PageHeader eyebrow="Legal" title="Terms" />
-  <Pending
-    needed={[
-      'Registered entity name and jurisdiction',
-      'Reviewed wording — legal pages should not be drafted by a developer or a model',
-      'Contact address for enquiries under this policy',
-    ]}
+  <PageHeader
+    eyebrow="Legal"
+    title="Terms"
+    lead="These terms cover the use of this website. They are not the agreement under which we do client work — that is always a separate, signed document."
   />
+
+  <Prose updated={legal.updated}>
+    <h2>What these terms cover</h2>
+    <p>
+      This website is published by {entityName}, based in {entityPlace}. By using it you accept the
+      terms below. If you do not accept them, please do not use the site.
+    </p>
+    <p>
+      <strong>Nothing on this website is a contract, a quote, or a binding offer.</strong> Project
+      work is governed by a separate agreement — a proposal, statement of work, or services contract
+      signed by both sides. Where anything on this site conflicts with a signed agreement, the signed
+      agreement wins.
+    </p>
+
+    <h2>Using the site</h2>
+    <p>You may read, share and link to anything here. Please do not:</p>
+    <ul>
+      <li>attempt to gain unauthorised access to the site or the systems behind it</li>
+      <li>interfere with its availability for other people</li>
+      <li>submit anything unlawful, or use the contact form to send bulk or automated messages</li>
+      <li>copy substantial parts of the site to present as your own work</li>
+    </ul>
+
+    <h2>Our content</h2>
+    <p>
+      The text, design, layout, code and marks on this site belong to {entityName} unless stated
+      otherwise. Client names, logos and interface screenshots belong to their respective owners and
+      appear here with permission.
+    </p>
+
+    <h2>Accuracy and no warranty</h2>
+    <p>
+      We write this site in good faith and keep it current, but we provide it "as is" and without
+      warranties of any kind. Descriptions of past projects describe what we built for a particular
+      client under particular constraints. They are not a promise of the same outcome, cost or
+      timeline for your situation.
+    </p>
+    <p>
+      Technical opinions on this site are opinions. Please do not treat them as a substitute for
+      advice on your own systems, which we would only give after actually looking at them.
+    </p>
+
+    <h2>Links to other sites</h2>
+    <p>
+      We link to client work and to third-party tools. We do not control those sites and are not
+      responsible for their content, availability or privacy practices.
+    </p>
+
+    <h2>Availability</h2>
+    <p>
+      We aim to keep this site up, but we do not guarantee uninterrupted availability. We may change
+      or remove any part of it, including published project descriptions, without notice.
+    </p>
+
+    <h2>Liability</h2>
+    <p>
+      To the fullest extent permitted by law, {entityName} is not liable for any indirect or
+      consequential loss arising from your use of this website, or from reliance on anything
+      published on it. Nothing here limits liability that cannot be limited by law.
+    </p>
+
+    <h2>Governing law</h2>
+    <p>
+      These terms are governed by the laws of {legal.jurisdiction}, and the courts of{' '}
+      {legal.jurisdiction} have jurisdiction over any dispute arising from them.
+    </p>
+
+    <h2>Changes and contact</h2>
+    <p>
+      We may update these terms; the date at the top shows when they last changed. Questions go to{' '}
+      <a href={`mailto:${legal.contactEmail}`}>{legal.contactEmail}</a>.
+    </p>
+  </Prose>
 </Base>

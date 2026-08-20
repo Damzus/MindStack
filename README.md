@@ -277,8 +277,19 @@ Before shipping a visual change, check it in **both themes**.
 
 Content still marked `TBC` in the source:
 
-- `src/components/sections/Engagement.astro` — `Range TBC` on all three engagement bands.
-- `src/components/sections/CtaBand.astro` — `Response time TBC`. Note `/contact` currently asserts *"Within one business day"*; **these two disagree and must be reconciled.**
+- `src/components/sections/Engagement.astro` — `Range TBC` on all three engagement bands. The last remaining placeholder.
+- `src/lib/legal.ts` — `registeredName` is `null`. The legal pages currently render the trading name "MindStack"; set the registered entity name before launch.
+
+### Legal pages
+
+`/privacy`, `/terms` and `/security` are written and live. Entity details are centralised in [`src/lib/legal.ts`](src/lib/legal.ts) — name, jurisdiction, contact email, last-updated date and the sub-processor list — so they are corrected in one place rather than across three pages.
+
+Two things about them:
+
+- **They have not been reviewed by a lawyer.** They are accurate about what the site does, and written in plain English rather than boilerplate, but a qualified review before launch is still the right call — particularly the liability and governing-law clauses in `/terms`.
+- **The factual claims are verifiable, and were verified.** "No cookies", "no third-party requests", "no storage unless you change the theme" were each confirmed by loading every page in a real browser and inspecting cookies, storage and the network log. If you add analytics, an embed, a font CDN or a chat widget, **those statements become false** and `/privacy` and `/security` must be updated in the same change.
+
+Response time is settled: **one business day**, stated in both places that claim it — `CtaBand.astro` ("Reply within one business day") and the `/contact` trust panel ("Within one business day."). If that commitment ever changes, both must change together; `grep -rn "business day" src/` finds them.
 
 Also outstanding:
 

@@ -1,20 +1,127 @@
 ---
 import Base from '../layouts/Base.astro';
 import PageHeader from '../components/layout/PageHeader.astro';
-import Pending from '../components/sections/Pending.astro';
+import Prose from '../components/sections/Prose.astro';
+import { legal, entityName } from '../lib/legal';
 ---
 
 <Base
   title="Security — MindStack"
-  description="Security information for MindStack."
+  description="How this site is built and run, how we approach security on client work, and how to report a vulnerability."
   quiet
 >
-  <PageHeader eyebrow="Legal" title="Security" />
-  <Pending
-    needed={[
-      'Registered entity name and jurisdiction',
-      'Reviewed wording — legal pages should not be drafted by a developer or a model',
-      'Contact address for enquiries under this policy',
-    ]}
+  <PageHeader
+    eyebrow="Legal"
+    title="Security"
+    lead="How this website is built and run, how we approach security on the systems we operate for clients, and how to tell us if you find something wrong."
   />
+
+  <Prose updated={legal.updated}>
+    <h2>This website</h2>
+    <p>
+      The site is static almost everywhere: pages are rendered at build time and served as files over
+      HTTPS. That removes most of the attack surface a conventional CMS carries, because for the
+      majority of routes there is no server-side code, no database and no admin login to compromise.
+    </p>
+    <ul>
+      <li>
+        <strong>No third-party scripts.</strong> No analytics, tag managers, advertising or social
+        embeds. The site makes no requests to any domain other than its own.
+      </li>
+      <li><strong>No cookies</strong>, and no storage written unless you change the theme.</li>
+      <li>
+        <strong>One server endpoint</strong> — the contact form. Everything else is a static file.
+      </li>
+      <li>TLS is terminated at the edge by our host, with certificates renewed automatically.</li>
+    </ul>
+
+    <h2>The contact form</h2>
+    <p>
+      It is the only place the site accepts input, so it is the part worth describing precisely.
+    </p>
+    <ul>
+      <li>
+        Every field is <strong>validated on the server</strong>, not only in the browser. Client-side
+        checks are a convenience; they are never the control.
+      </li>
+      <li>
+        A hidden honeypot field catches automated submissions. Bots receive an ordinary success
+        response and nothing is sent, so they get no signal to adapt to.
+      </li>
+      <li>
+        <strong>Nothing is stored.</strong> There is no database behind the form. Your message is
+        delivered as email and the site retains no copy.
+      </li>
+      <li>
+        The email credential is <strong>send-only</strong> — it can dispatch a message but cannot
+        read, list or inspect anything. If it leaked, it could not be used to retrieve past
+        enquiries.
+      </li>
+      <li>
+        If the form is misconfigured it fails loudly with an error rather than silently accepting and
+        discarding an enquiry.
+      </li>
+    </ul>
+
+    <h2>Secrets and access</h2>
+    <ul>
+      <li>
+        Credentials are never committed to version control. They are held as environment variables in
+        the hosting platform, and local development files containing them are excluded from git.
+      </li>
+      <li>API keys are scoped to the narrowest permission that does the job.</li>
+      <li>Access to production is limited to the people who need it, and removed when they do not.</li>
+    </ul>
+
+    <h2>How we approach client systems</h2>
+    <p>
+      The same reasoning applies to what we build and operate for clients, adjusted to what each
+      system actually needs:
+    </p>
+    <ul>
+      <li>
+        Infrastructure defined as code and changed through review, so what is running is inspectable
+        and reproducible rather than assembled by hand in a console.
+      </li>
+      <li>
+        Managed platform services in preference to self-administered servers, so patching is handled
+        by the platform rather than depending on someone remembering.
+      </li>
+      <li>TLS everywhere, and a web application firewall at the edge where the design calls for one.</li>
+      <li>Least-privilege identities between services rather than one shared credential.</li>
+      <li>Dependencies updated deliberately, not left to drift for years.</li>
+      <li>
+        Backups with <strong>tested restores</strong> — an untested backup is a guess, not a
+        safeguard.
+      </li>
+      <li>Logging and alerting that a human actually receives, because we operate what we build.</li>
+    </ul>
+
+    <h2>What we do not claim</h2>
+    <p>
+      {entityName} does <strong>not</strong> hold SOC 2, ISO 27001, or any other third-party security
+      certification, and this page is not an audit. We are a small team and we would rather say that
+      plainly than imply coverage we do not have.
+    </p>
+    <p>
+      If your procurement process requires an audited framework, a signed security questionnaire, or
+      contractual terms such as a data processing agreement, raise it early. We will tell you
+      directly what we can meet, what we cannot, and what it would take — before you spend time on a
+      process that cannot conclude.
+    </p>
+
+    <h2>Reporting a vulnerability</h2>
+    <p>
+      If you find a security problem in this site or in something we built, please tell us at{' '}
+      <a href={`mailto:${legal.contactEmail}`}>{legal.contactEmail}</a>. Include enough detail to
+      reproduce it. We will acknowledge within one business day and keep you informed while we fix
+      it.
+    </p>
+    <p>
+      We ask that you give us a reasonable chance to fix an issue before publishing it, and that you
+      do not run automated scans against production systems, access or modify data belonging to other
+      people, or degrade service for anyone else while testing. Report in good faith and we will
+      treat you the same way.
+    </p>
+  </Prose>
 </Base>
